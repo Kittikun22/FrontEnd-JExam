@@ -17,6 +17,8 @@ function Profile() {
 
     const { user } = useAuthState();
 
+    console.log(user);
+
     const [activeContent, setActiveContent] = useState('profile-homepage')
     const [facDream, setFacDream] = useState(localStorage.getItem('popup'))
 
@@ -31,15 +33,15 @@ function Profile() {
             case 'profile-homepage':
                 return <ProfileHomepage user={user} />
             case 'profile-myexam':
-                return <ProfileMyExam />
+                return <ProfileMyExam user={user} />
             case 'profile-exams':
-                return <ProfileExams />
+                return <ProfileExams user={user} />
             case 'profile-payment':
-                return <ProfilePayment />
+                return <ProfilePayment user={user} />
             case 'profile-analysis':
-                return <ProfileAnalysis />
+                return <ProfileAnalysis user={user} />
             case 'profile-history':
-                return <ProfileHistory />
+                return <ProfileHistory user={user} />
             case 'profile-setting':
                 return <ProfileSetting user={user} />
 

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect, createContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import GuardRoutes from './utils/GuardRoutes';
 import Home from './pages/Home'
@@ -11,21 +11,21 @@ import Checkout from './pages/Checkout';
 import Message from './pages/Message';
 import ForgotPassword from './pages/ForgotPassword';
 import CartPage from './pages/CartPage';
-import Exams from './pages/Exams';
+import Products from './pages/Products';
 import { AuthProvider } from './context/AuthContext';
 import TestPage from './pages/testPage';
-import ExamsIntroduction from './pages/ExamsIntroduction';
+import ProductIntroduction from './pages/ProductIntroduction';
+import Exams from './pages/Exams'
+import ExamIntroduction from './pages/ExamIntroduction' 
 
 function App() {
 
-  // useEffect(() => {
-  //   const ciphertext = JSON.parse(localStorage.getItem("users"))
-  //   if (ciphertext) {
-  //     const bytes = CryptoJS.AES.decrypt(ciphertext, EncryptSecret);
-  //     const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-  //     setisAuth(decryptedData)
-  //   }
-  // }, [])
+  useEffect(() => {
+    const cart = localStorage.getItem("cart")
+    if (!cart) {
+      localStorage.setItem("cart", JSON.stringify([]))
+    }
+  }, [])
 
   return (
 
@@ -37,11 +37,14 @@ function App() {
             <Route path="/profile" element={<Profile />} exact />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/introduction/:productID" element={<ExamsIntroduction />} />
+            <Route path="/exam-introduction/:exam_id" element={<ExamIntroduction />} />
+            <Route path="/exam" element={<Exams />} />
+
           </Route>
 
           <Route path="/" element={<Home />} />
-          <Route path='/exam-library' element={<Exams />} />
+          <Route path='/exam-library' element={<Products />} />
+          <Route path="/introduction/:productID" element={<ProductIntroduction />} />
           <Route path='/cart' element={<CartPage />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/Logout" element={<Logout />} />

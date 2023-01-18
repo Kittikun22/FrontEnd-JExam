@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Axios from 'axios'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -15,13 +14,16 @@ import Typography from '@mui/material/Typography';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from '@mui/material';
 import { useAuthState, useAuthDispatch, Login } from "../context/AuthContext";
-
+import Slide from '@mui/material/Slide';
 
 const icon = (
     <Box component="svg" sx={{ display: 'flex', justifyContent: 'center' }}>
         <CheckCircleIcon color="success" />
-    </Box>  
+    </Box>
 );
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function LoginDialog({ openLogin, setOpenLogin }) {
 
@@ -51,13 +53,15 @@ export default function LoginDialog({ openLogin, setOpenLogin }) {
                 handleSuccessLogin()
             }
         })
-
-
     }
 
     return (
         <>
-            <Dialog open={openLogin} onClose={handleCloseLogin} >
+            <Dialog
+                open={openLogin}
+                onClose={handleCloseLogin}
+                TransitionComponent={Transition}
+                keepMounted>
                 <DialogTitle sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <IconButton
                         aria-label="close"

@@ -18,6 +18,8 @@ export default function Cart({ rowsData, setRowsData }) {
 
     const [itemInCart, setItemInCart] = useState();
 
+    console.log(itemInCart);
+
     useEffect(() => {
         const arr_id = []
         rowsData.map((val) => {
@@ -43,7 +45,6 @@ export default function Cart({ rowsData, setRowsData }) {
         setSelectedItem(selectedRowsData);
         onSelectedAmount(selectedRowsData)
         handlePromoDiscount(selectedRowsData)
-        console.log('select : ', selectedRowsData);
     };
 
     const onSelectedAmount = (selectedRowsData) => {
@@ -70,8 +71,8 @@ export default function Cart({ rowsData, setRowsData }) {
             setPromoDiscount(10)
         }
     }
-    
-    const handleDelete = (itemToDelete) => () => {
+
+    const handleDelete = (itemToDelete) => {
         const updateItemInCart = itemInCart.filter(row => !itemToDelete.includes(row))
 
         console.log(updateItemInCart);
@@ -84,7 +85,6 @@ export default function Cart({ rowsData, setRowsData }) {
             updateCart: JSON.stringify(updateItemInCart)
         })
     };
-    console.log('RowsData', itemInCart);
 
     if (itemInCart) {
         return (
@@ -112,7 +112,7 @@ export default function Cart({ rowsData, setRowsData }) {
                                 width: '75px',
 
                             }}
-                            onClick={handleDelete(selectedItem)}
+                            onClick={() => handleDelete(selectedItem)}
                         >
                             ลบ
                         </Button>

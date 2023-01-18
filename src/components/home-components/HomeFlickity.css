@@ -13,13 +13,15 @@ https://flickity.metafizzy.co
 .flickity-viewport {
     overflow: hidden;
     position: relative;
-    padding: 30px 20px 15px 20px;
+    padding: 15px 20px 40px 20px !important;
 }
 
 .flickity-slider {
     position: absolute;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 /* ---- flickity-button ---- */
@@ -126,6 +128,12 @@ https://flickity.metafizzy.co
     opacity: 1;
 }
 
-.exams-cell.is-selected {
-    border-color: red;
+.exams-cell.is-selected .card-exams-cell {
+    border-color: #FFBF00;
+    height: 250px;
+}
+
+.exams-cell.is-selected .card-typography {
+    white-space: initial;
+    margin-top: -5.5rem;
 }

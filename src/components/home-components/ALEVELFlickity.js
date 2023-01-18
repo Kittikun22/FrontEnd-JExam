@@ -43,29 +43,30 @@ function ALEVELFlickity() {
             {ALEVELList.map((val, key) => {
                 return (
                     <Box sx={{ mx: 2 }} key={key} className='exams-cell'>
-                            <Card sx={{ width: 225, borderRadius: 10, border: 5, borderColor: 'white' }}>
-                                <CardActionArea href={`/introduction/${val.id}`}>
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        image={val.pic}
-                                        alt={val.name}
-                                    />
-                                    <Typography
-                                        noWrap
-                                        sx={{
-                                            marginTop: "-6rem",
-                                            textAlign: 'center',
-                                            color: 'white',
-                                            fontSize: '1.2rem',
-                                            fontWeight: 600,
-                                            marginLeft: 1.5
-                                        }}
-                                    >
-                                        {val.name}
-                                    </Typography>
-                                </CardActionArea>
-                            </Card>
+                        <Card sx={{ width: 250, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-exams-cell'>
+                            <CardActionArea href={`/introduction/${val.id}`}>
+                                <CardMedia
+                                    component="img"
+                                    height="250"
+                                    image={val.pic}
+                                    alt={val.name}
+                                />
+                                <Typography
+                                    className='card-typography'
+                                    noWrap
+                                    sx={{
+                                        marginTop: "-6rem",
+                                        textAlign: 'center',
+                                        color: 'white',
+                                        fontSize: '1.25rem',
+                                        fontWeight: 600,
+                                        marginLeft: 1.5
+                                    }}
+                                >
+                                    {val.name}
+                                </Typography>
+                            </CardActionArea>
+                        </Card>
                     </Box>
                 )
             })}

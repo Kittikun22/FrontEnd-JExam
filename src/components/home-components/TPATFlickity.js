@@ -45,7 +45,7 @@ function TPATFlickity() {
                 {TPATList.map((val, key) => {
                     return (
                         <Box sx={{ mx: 2 }} key={key} className='exams-cell'>
-                            <Card sx={{ width: 225, borderRadius: 10, border: 5, borderColor: 'white' }}>
+                            <Card sx={{ width: 250, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-exams-cell'>
                                 <CardActionArea href={`/introduction/${val.id}`}>
                                     <CardMedia
                                         component="img"
@@ -54,12 +54,13 @@ function TPATFlickity() {
                                         alt={val.name}
                                     />
                                     <Typography
+                                        className='card-typography'
                                         noWrap
                                         sx={{
                                             marginTop: "-6rem",
                                             textAlign: 'center',
-                                            color: 'white',
-                                            fontSize: '1.2rem',
+                                            color: '#fff',
+                                            fontSize: '1.25rem',
                                             fontWeight: 600,
                                             marginLeft: 2
                                         }}

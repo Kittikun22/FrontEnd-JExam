@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Box from '@mui/material/Box'
 import Flickity from 'react-flickity-component'
 import './ProfileHomeFlickity.css'
@@ -6,61 +6,26 @@ import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardMedia from '@mui/material/CardMedia'
-import Stack from '@mui/material/Stack'
-
-const SubjectList = [
-    {
-        id: 1,
-        name: "Math",
-        img: 'https://cdn.pixabay.com/photo/2017/07/19/16/44/questions-2519654_960_720.png'
-    },
-    {
-        id: 2,
-        name: "Sci",
-        img: 'images/4.jpg'
-    },
-    {
-        id: 3,
-        name: "Computer",
-        img: 'https://cdn.pixabay.com/photo/2020/09/24/16/50/board-5599231_960_720.png'
-    },
-    {
-        id: 4,
-        name: "Chem",
-        img: 'https://cdn.pixabay.com/photo/2020/09/24/16/50/board-5599231_960_720.png'
-    },
-    {
-        id: 5,
-        name: "Bio",
-        img: 'images/4.jpg'
-    },
-    {
-        id: 6,
-        name: "Chem2",
-        img: 'https://cdn.pixabay.com/photo/2020/09/24/16/50/board-5599231_960_720.png'
-    },
-    {
-        id: 7,
-        name: "Chem3",
-        img: 'https://cdn.pixabay.com/photo/2017/07/19/16/44/questions-2519654_960_720.png'
-    },
-    {
-        id: 8,
-        name: "Chem4",
-        img: 'https://cdn.pixabay.com/photo/2017/07/19/16/44/questions-2519654_960_720.png'
-    },
-    {
-        id: 9,
-        name: "Chem5",
-        img: 'images/4.jpg'
-    }
-]
+import Axios from 'axios'
 
 
-function ProfileHomeFlickity() {
+function ProfileHomeFlickity({ user }) {
+
+
+    const [myExamList, setMyExamList] = useState([])
+
+    useEffect(() => {
+        Axios.post('http://localhost:8000/getuserproductandexams', {
+            user_id: user.user_id
+        }).then((res) => {
+            setMyExamList(res.data)
+        })
+    }, [])
+
+    console.log(myExamList.length);
 
     const flickityOptions = {
-        initialIndex: 3,
+        initialIndex: 1,
         selectedAttraction: 0.01,
         friction: 0.15,
         contain: true,
@@ -70,44 +35,48 @@ function ProfileHomeFlickity() {
 
     return (
         <>
-            <Stack>
-                <Box>
-                    <Flickity
-                        className={'carousel'} // default ''
-                        elementType={'div'} // default 'div'
-                        options={flickityOptions} // takes flickity options {}
-                        reloadOnUpdate // default false
-                        static // default false
-                    >
+            <Box sx={{ display: myExamList?.length >= 4 ? 'block' : 'none' }}>
+                <Flickity
+                    className={'carousel'} // default ''
+                    elementType={'div'} // default 'div'
+                    options={flickityOptions} // takes flickity options {}
+                    reloadOnUpdate // default false
+                    static // default false
+                >
 
-                        {SubjectList.map((val, key) => {
-                            return (
-                                <Box sx={{ mx: 2 }} key={key} className='exams-cell'>
-                                    <Card sx={{ width: 200, borderRadius: 5}}>
-                                        <CardActionArea>
-                                            <CardMedia
-                                                component="img"
-                                                height="180"
-                                                image={val.img}
-                                                alt="green iguana"
-                                            />
-                                            <Typography
-                                                sx={{
-                                                    textAlign: 'center',
-                                                    color: 'black',
-                                                    fontSize: '1.3rem',
-                                                }}
-                                            >
-                                                {val.name}
-                                            </Typography>
-                                        </CardActionArea>
-                                    </Card>
-                                </Box>
-                            )
-                        })}
-                    </Flickity>
-                </Box>
-            </Stack >
+                    {myExamList?.map((val, key) => {
+                        return (
+                            <Box sx={{ mx: 2 }} key={key} className='myexams-cell'>
+                                <Card sx={{ width: 300, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-myexams-cell'>
+                                    <CardActionArea href={`/introduction/${val.id}`}>
+                                        <CardMedia
+                                            component="img"
+                                            height="250"
+                                            image={val.pic}
+                                            alt={val.name}
+                                        />
+                                        <Typography
+                                            className='card-typography'
+                                            noWrap
+                                            sx={{
+                                                marginTop: "-6rem",
+                                                textAlign: 'center',
+                                                color: 'white',
+                                                fontSize: '1.2rem',
+                                                fontWeight: 600,
+                                                marginLeft: 1.5
+                                            }}
+                                        >
+                                            {val.name}
+                                        </Typography>
+                                    </CardActionArea>
+                                </Card>
+                            </Box>
+                        )
+                    })}
+                </Flickity>
+
+            </Box >
         </>
 
     )

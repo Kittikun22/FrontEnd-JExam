@@ -17,9 +17,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment'
 import Divider from '@mui/material/Divider'
 import SnackbarAlert from '../SnackbarAlert'
+import Login from '../Login-Dialog';
+import Axios from 'axios'
+import CheckIcon from '@mui/icons-material/Check';
 
-function ExamsList({ user, cartItem, setCartItem, allProduct }) {
+function ProductsList({ user, cartItem, setCartItem, allProduct }) {
 
+    const [openLogin, setOpenLogin] = useState(false)
     const [openSnackBar, setOpenSnackBar] = useState(false)
     const [message, setMessage] = useState('')
     const [snackBarColor, setSnackBarColor] = useState()
@@ -29,10 +33,18 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
     const [searchValue, setSearchValue] = useState();
     const [inputValue, setInputValue] = useState('');
 
+    const [myExamList, setMyExamList] = useState([])
+
     useEffect(() => {
-        console.log('inputValue : ', inputValue);
+        if (user) {
+            Axios.post('http://localhost:8000/getuserproductandexams', {
+                user_id: user.user_id
+            }).then((res) => {
+                setMyExamList(res.data)
+            })
+        }
+
         const filterItem = allProduct.filter(item => item.name === inputValue);
-        console.log(filterItem);
         if (inputValue) {
             filterItem.map((val) => {
                 return setFilterProduct(filterProduct => [...filterProduct, val])
@@ -41,10 +53,8 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
         if (inputValue === '') {
             setFilterProduct([])
         }
+    }, [user, inputValue])
 
-    }, [inputValue])
-
-    console.log('Filter : ', filterProduct);
 
     const staticChip = [
         { key: 1, label: 'TGAT', color: '#C8FFD4' },
@@ -71,27 +81,33 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
                 return setFilterProduct(filterProduct => [...filterProduct, val])
             })
         }
-
     }
 
     const onAddToCart = (product) => {
-        const check_index = cartItem.findIndex(item => item.id === product.id);
-        if (check_index !== -1) {
-            setMessage(product.name + ' มีในตะกร้าอยู่แล้ว')
-            setSnackBarColor('error')
-            setOpenSnackBar(true)
+
+        if (!user) {
+            setOpenLogin(true)
         } else {
-            setCartItem(JSON.parse(localStorage.getItem('cart')))
-            setCartItem(cartItem => [...cartItem, product]);
-            setMessage(product.name + ' ถูกเพิ่มเข้าตะกร้าแล้ว')
-            setSnackBarColor('success')
-            setOpenSnackBar(true)
+            const check_index = cartItem.findIndex(item => item.id === product.id);
+            if (check_index !== -1) {
+                setMessage(product.name + ' มีในตะกร้าอยู่แล้ว')
+                setSnackBarColor('error')
+                setOpenSnackBar(true)
+            } else {
+                setCartItem(JSON.parse(localStorage.getItem('cart')))
+                setCartItem(cartItem => [...cartItem, product]);
+                setMessage(product.name + ' ถูกเพิ่มเข้าตะกร้าแล้ว')
+                setSnackBarColor('success')
+                setOpenSnackBar(true)
+            }
         }
+
     }
 
     if (allProduct) {
         return (
             <>
+                <Login openLogin={openLogin} setOpenLogin={setOpenLogin} />
                 <SnackbarAlert open={openSnackBar} setOpen={setOpenSnackBar} message={message} color={snackBarColor} />
                 <Box>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -137,7 +153,6 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
 
                     </Box>
 
-
                     <Box m={2}>
                         {staticChip.map((data) => {
                             return (
@@ -177,12 +192,18 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
                         })}
                     </Box>
 
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '15px', marginBottom: '80px', marginTop: 2 }}>
+                    <Box sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '15px',
+                        marginBottom: '80px',
+                        marginTop: 2,
+                    }}>
                         {filterProduct?.length === 0 ?
                             <>
-                                {allProduct.map((val, key) => {
+                                {allProduct?.map((val, key) => {
                                     return (
-                                        <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 10 }} key={key}>
+                                        <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7, }} elevation={3} key={key}>
                                             <CardActionArea href={`/introduction/${val.id}`}>
                                                 <CardMedia
                                                     component="img"
@@ -205,14 +226,33 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
                                                 </CardContent>
                                             </CardActionArea>
                                             <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                                                <Button
-                                                    color="primary"
-                                                    startIcon={<AddShoppingCartIcon />}
-                                                    sx={{ fontSize: '1rem' }}
-                                                    onClick={() => onAddToCart(val)}
-                                                >
-                                                    เพิ่มลงรถเข็น
-                                                </Button>
+
+                                                {myExamList?.findIndex(item => item.id === val.id) === -1 ?
+                                                    <Button
+                                                        variant='contained'
+                                                        color="secondary"
+                                                        startIcon={<AddShoppingCartIcon fontSize='large' />}
+                                                        sx={{ borderRadius: 5, width: '200px' }}
+                                                        onClick={() => onAddToCart(val)}
+                                                    >
+                                                        <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                                                            {val.amount} บาท
+                                                        </Typography>
+                                                    </Button>
+                                                    :
+                                                    <Button
+                                                        variant='contained'
+                                                        color="secondary"
+                                                        disabled
+                                                        startIcon={<CheckIcon fontSize='large' />}
+                                                        sx={{ borderRadius: 5, width: '200px' }}
+                                                    >
+                                                        <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                                                            มีข้อสอบนี้แล้ว
+                                                        </Typography>
+                                                    </Button>
+                                                }
+
                                             </CardActions>
                                         </Card>
                                     )
@@ -224,7 +264,7 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
                             <>
                                 {filterProduct.map((val, key) => {
                                     return (
-                                        <Card sx={{ width: 175, borderRadius: 10 }} key={key}>
+                                        <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }} elevation={3} key={key}>
                                             <CardActionArea href={`/introduction/${val.id}`}>
                                                 <CardMedia
                                                     component="img"
@@ -247,14 +287,33 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
                                                 </CardContent>
                                             </CardActionArea>
                                             <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                                                <Button
-                                                    color="primary"
-                                                    startIcon={<AddShoppingCartIcon />}
-                                                    sx={{ fontSize: '1rem' }}
-                                                    onClick={() => onAddToCart(val)}
-                                                >
-                                                    เพิ่มลงรถเข็น
-                                                </Button>
+
+                                                {myExamList?.findIndex(item => item.id === val.id) === -1 ?
+                                                    <Button
+                                                        variant='contained'
+                                                        color="secondary"
+                                                        startIcon={<AddShoppingCartIcon fontSize='large' />}
+                                                        sx={{ borderRadius: 5, width: '200px' }}
+                                                        onClick={() => onAddToCart(val)}
+                                                    >
+                                                        <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                                                            {val.amount} บาท
+                                                        </Typography>
+                                                    </Button>
+                                                    :
+                                                    <Button
+                                                        variant='contained'
+                                                        color="secondary"
+                                                        disabled
+                                                        startIcon={<CheckIcon fontSize='large' />}
+                                                        sx={{ borderRadius: 5, width: '200px' }}
+                                                    >
+                                                        <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                                                            มีข้อสอบนี้แล้ว
+                                                        </Typography>
+                                                    </Button>
+                                                }
+
                                             </CardActions>
                                         </Card>
                                     )
@@ -263,46 +322,7 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
                             </>
 
                         }
-
-                        {/* {allProduct.map((val, key) => {
-                            return (
-                                <Card sx={{ width: 175, borderRadius: 10 }} key={key}>
-                                    <CardActionArea>
-                                        <CardMedia
-                                            component="img"
-                                            height="150px"
-                                            image={val.pic}
-                                            alt={val.name}
-                                        />
-                                        <CardContent>
-                                            <Typography noWrap sx={{ fontSize: '1.2rem', fontWeight: 600 }}>
-                                                {val.name}
-                                            </Typography>
-                                            <Typography color="text.secondary"
-                                                sx={{
-                                                    height: '50px',
-                                                    fontSize: '.85rem'
-
-                                                }}>
-                                                {val.detail}
-                                            </Typography>
-                                        </CardContent>
-                                    </CardActionArea>
-                                    <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                                        <Button
-                                            color="primary"
-                                            startIcon={<AddShoppingCartIcon />}
-                                            sx={{ fontSize: '1rem' }}
-                                            onClick={() => onAddToCart(val)}
-                                        >
-                                            เพิ่มลงรถเข็น
-                                        </Button>
-                                    </CardActions>
-                                </Card>
-                            )
-                        })} */}
                     </Box>
-
 
                 </Box>
             </>
@@ -310,4 +330,4 @@ function ExamsList({ user, cartItem, setCartItem, allProduct }) {
     }
 }
 
-export default ExamsList
+export default ProductsList

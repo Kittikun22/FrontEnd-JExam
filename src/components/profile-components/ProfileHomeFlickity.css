@@ -126,6 +126,12 @@ https://flickity.metafizzy.co
     opacity: 1;
 }
 
-.exams-cell.is-selected {
-    top: -15px;
+.myexams-cell.is-selected .card-myexams-cell {
+    border-color: #FFBF00;
+    height: 225px;
+}
+
+.myexams-cell.is-selected .card-typography {
+    white-space: initial;
+    margin-top: -5rem;
 }

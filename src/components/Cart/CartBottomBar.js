@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import { Button, TextField, Typography } from '@mui/material';
 import Axios from 'axios';
-
+import Alert from '@mui/material/Alert';
 
 const CartBottomBar = ({ selectedItem, selectedAmount, promoDiscount, user_id }) => {
 
@@ -12,10 +12,10 @@ const CartBottomBar = ({ selectedItem, selectedAmount, promoDiscount, user_id })
 
     const discount = selectedAmount * (promoDiscount / 100)
 
-    const totalAmount = (selectedAmount - discount) - codeDis
+    const netAmount = (selectedAmount - discount) - codeDis
 
     const selectedAmountInthai = new Intl.NumberFormat('th').format(selectedAmount)
-    const totalInThai = new Intl.NumberFormat('th').format(totalAmount);
+    const netInThai = new Intl.NumberFormat('th').format(netAmount);
 
 
     useEffect(() => {
@@ -47,7 +47,7 @@ const CartBottomBar = ({ selectedItem, selectedAmount, promoDiscount, user_id })
 
     const handleOnCheckOut = (selectedItem, code, codeDis, promoDiscount, discount) => {
         localStorage.setItem('selectItem', JSON.stringify(selectedItem))
-        localStorage.setItem('discount', JSON.stringify([{ code: code ,  codeDis: codeDis , promoDiscount: promoDiscount , discount: discount }]))
+        localStorage.setItem('discount', JSON.stringify([{ code: code, codeDis: codeDis, promoDiscount: promoDiscount, discount: discount }]))
 
         Axios.put('http://localhost:8000/updateSelectItem', {
             user_id: user_id,
@@ -84,7 +84,6 @@ const CartBottomBar = ({ selectedItem, selectedAmount, promoDiscount, user_id })
                     }
                 </Typography>
             </Box>
-
 
             <Box sx={{ display: 'flex', mx: { xs: 0, md: 2 }, justifyContent: 'space-between', flexDirection: { xs: 'column', md: 'row' } }}>
 
@@ -135,19 +134,20 @@ const CartBottomBar = ({ selectedItem, selectedAmount, promoDiscount, user_id })
                                 alignItems: 'flex-end',
                                 mr: .5
                             }}>
-                            {totalInThai} บาท
+                            {netInThai} บาท
                         </Typography>
 
                         <Button
                             variant='contained'
                             color="error"
                             href='/checkout'
+                            disabled={selectedItem?.length === 0 ? true : false}
                             onClick={() => handleOnCheckOut(selectedItem, code, codeDis, promoDiscount, discount)}
                             size='small'
                             sx={{
                                 fontSize: '1.2rem',
                                 width: { xs: '125px', md: '250px' },
-                                height:{ xs: '', md: '65px' },
+                                height: { xs: '', md: '65px' },
                                 borderRadius: 5,
                             }}
                         >

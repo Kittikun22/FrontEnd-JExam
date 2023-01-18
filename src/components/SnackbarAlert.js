@@ -21,7 +21,7 @@ export default function SnackbarAlert({ message, open, setOpen, color }) {
         onClose={handleClose}
         sx={{ mt: { xs: '60px', md: '50px' } }}
       >
-        <Alert onClose={handleClose} severity={color} sx={{ width: '100%', }}>
+        <Alert onClose={handleClose} severity={color} sx={{ width: '100%',fontSize:'1rem' }}>
           {message}
         </Alert>
       </Snackbar>
