@@ -14,6 +14,8 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
     const [message, setMessage] = useState('')
     const [snackBarColor, setSnackBarColor] = useState()
 
+    console.log(productDetail);
+
     const onAddToCart = (product) => {
         if (!user) {
             setOpenLogin(true)

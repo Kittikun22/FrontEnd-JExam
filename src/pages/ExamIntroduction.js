@@ -8,7 +8,7 @@ import { useAuthState } from '../context/AuthContext'
 
 function ExamIntroduction() {
 
-  const { exam_id } = useParams();
+  const { examId } = useParams();
   const { user } = useAuthState();
 
   console.log(user);
@@ -36,7 +36,7 @@ function ExamIntroduction() {
         background: 'linear-gradient(0deg, rgba(239,245,245,1) 0%, rgba(214,228,229,1) 100%)',
         pb: 10
       }}>
-        <ExamIntro exam_id={exam_id} />
+        <ExamIntro examId={examId} />
 
       </Box>
 

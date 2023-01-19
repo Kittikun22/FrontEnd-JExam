@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Box,
   Button,
@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 
 
-function ExamIntro({ exam_id }) {
+function ExamIntro({ examId }) {
 
 
   return (
@@ -26,7 +26,19 @@ function ExamIntro({ exam_id }) {
           flexDirection: { xs: 'column', md: 'row' }
         }}>
 
-          <Typography>Exam {exam_id}</Typography>
+          <Typography>Exam {examId}</Typography>
+
+          <Button
+            variant='contained'
+            color="warning"
+            sx={{ borderRadius: 5, width: '200px' }}
+            href={`/exam/${examId}`}
+          >
+            <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+              เริ่มทำข้อสอบ
+            </Typography>
+          </Button>
+
         </Paper>
       </Stack >
     </Box >
