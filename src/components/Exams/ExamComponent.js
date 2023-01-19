@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {
   Box,
-  Button,
-  Stack,
-  Paper,
   Typography,
   Radio,
   FormControlLabel,
@@ -11,6 +8,8 @@ import {
 } from '@mui/material';
 
 function ExamComponent({ exam }) {
+
+  console.log(exam);
 
   if (exam) {
     const examContent = JSON.parse(exam.exam_content)
@@ -23,21 +22,19 @@ function ExamComponent({ exam }) {
           return (
             <Typography key={key}>
               <Typography variant='h6'>{key + 1}. {val.question}</Typography>
-              <RadioGroup
-                aria-labelledby=""
-                name="radio-buttons-group"
-              >
+              <RadioGroup>
                 {val.choice.map((val, key) => {
-                  return <>
+                  return (
                     <Typography key={key}>
                       <FormControlLabel value={val.choicevalue} control={<Radio />} label={val.choicetext} />
                     </Typography>
-                  </>
+                  )
                 })}
               </RadioGroup>
             </Typography>
           )
         })}
+        
 
       </Box >
     )

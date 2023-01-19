@@ -37,23 +37,23 @@ function ProfileHomepage({ user }) {
       <Box p={2} m={2} sx={{ borderRadius: 3, bgcolor: 'white', boxShadow: 1 }} >
 
         <Box sx={{ width: '300px', display: 'flex', justifyContent: 'space-between' }}>
-          <Typography>ชื่อ - นามสกุล</Typography>
-          <Typography>{user.fname} {user.lname}</Typography>
+          <Typography sx={{ fontSize: '1.2rem' }}>ชื่อ - นามสกุล</Typography>
+          <Typography sx={{ fontSize: '1.2rem' }}>{user.fname} {user.lname}</Typography>
         </Box>
 
         <Box sx={{ width: '300px', display: 'flex', justifyContent: 'space-between' }}>
-          <Typography>โรงเรียน</Typography>
-          <Typography>{user.school}</Typography>
+          <Typography sx={{ fontSize: '1.2rem' }}>โรงเรียน</Typography>
+          <Typography sx={{ fontSize: '1.2rem' }}>{user.school}</Typography>
         </Box>
 
         <Box sx={{ width: '300px', display: 'flex', justifyContent: 'space-between' }}>
-          <Typography>จังหวัด</Typography>
-          <Typography>{user.province}</Typography>
+          <Typography sx={{ fontSize: '1.2rem' }}>จังหวัด</Typography>
+          <Typography sx={{ fontSize: '1.2rem' }}>{user.province}</Typography>
         </Box>
 
         <Box sx={{ width: '300px', display: 'flex', justifyContent: 'space-between' }}>
-          <Typography>ระดับการศึกษา</Typography>
-          <Typography>{user.grade}</Typography>
+          <Typography sx={{ fontSize: '1.2rem' }}>ระดับการศึกษา</Typography>
+          <Typography sx={{ fontSize: '1.2rem' }}>{user.grade}</Typography>
         </Box>
 
       </Box>
@@ -66,7 +66,7 @@ function ProfileHomepage({ user }) {
 
       <Box p={{ xs: 1, md: 2 }} m={{ xs: 1, md: 2 }} sx={{ borderRadius: 3, bgcolor: 'white', boxShadow: 1 }}>
 
-      <Box sx={{
+        <Box sx={{
           display: myExamList?.length === 0 ? 'block' : 'none',
         }}>
           <Typography sx={{ textAlign: 'center', fontSize: '1.2rem' }}>

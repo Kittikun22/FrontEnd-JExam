@@ -86,7 +86,7 @@ function ProfileMyExam({ user }) {
                     variant='contained'
                     color='warning'
                     sx={{ borderRadius: 5 }}
-                    href={`/exam-introduction/${val.exam_id}`}
+                    href={`/introduction/${val.id}`}
                   >
                     ทำข้อสอบ
                   </Button>

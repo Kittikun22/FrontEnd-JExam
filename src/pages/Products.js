@@ -35,6 +35,7 @@ function Products() {
             <Box
                 sx={{
                     margin: { xs: 1.5, md: 5 },
+                    
                 }}
             >
                 <ProductsList user={user} cartItem={cartItem} setCartItem={setCartItem} allProduct={allProduct} />

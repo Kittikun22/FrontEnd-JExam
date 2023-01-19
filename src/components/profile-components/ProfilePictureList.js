@@ -23,8 +23,8 @@ export default function ProfilePictureList({ setNewPic, newPic }) {
             <Button onClick={() => { setOpen(true) }}>เลือกรูปโปรไฟล์</Button>
             <Dialog
                 open={open}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
+                fullWidth={true}
+                maxWidth={'xs'}
                 onClose={handleClose}
             >
                 <DialogTitle>

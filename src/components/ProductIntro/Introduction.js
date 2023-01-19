@@ -94,7 +94,7 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
                                     variant='contained'
                                     color="warning"
                                     sx={{ borderRadius: 5, width: '200px' }}
-                                    href={`/exam/${productDetail.exam_id}`}
+                                    href={`/exam/${productDetail.product_id}`}
                                 >
                                     <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
                                         เริ่มทำข้อสอบ

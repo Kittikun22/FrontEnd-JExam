@@ -44,7 +44,7 @@ function ProductIntroduction() {
                 <Appbar cartItem={cartItem} />
                 <Box sx={{
                     background: 'linear-gradient(0deg, rgba(239,245,245,1) 0%, rgba(214,228,229,1) 100%)',
-                    pb: 10
+                    minHeight: '100vh',
                 }}>
                     <Introduction user={user} productDetail={productDetail} myExamList={myExamList} cartItem={cartItem} setCartItem={setCartItem} />
                 </Box>

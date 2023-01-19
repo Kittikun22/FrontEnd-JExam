@@ -37,8 +37,8 @@ function App() {
             <Route path="/profile" element={<Profile />} exact />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/exam-introduction/:examId" element={<ExamIntroduction />} />
-            <Route path="/exam/:examId" element={<Exams />} />
+            <Route path="/exam-introduction/:productId" element={<ExamIntroduction />} />
+            <Route path="/exam/:productId" element={<Exams />} />
 
           </Route>
 

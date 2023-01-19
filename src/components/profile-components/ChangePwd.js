@@ -62,9 +62,13 @@ function ChangePwd({ user }) {
             <Button onClick={handleClickOpen}>
                 เปลี่ยนรหัสผ่าน
             </Button>
-            <Dialog open={openChangePwd} onClose={handleCloseChangePwd}>
+            <Dialog
+                open={openChangePwd}
+                onClose={handleCloseChangePwd}
+                fullWidth={true}
+                maxWidth={'xs'}>
 
-                <DialogTitle sx={{ textAlign: 'center' }}>เปลี่ยนรหัสผ่าน</DialogTitle>
+                <DialogTitle sx={{ textAlign: 'center', }}>เปลี่ยนรหัสผ่าน</DialogTitle>
                 <DialogContent>
                     {isSuccess === false ?
                         <Box component='form' onSubmit={handleSubmit(ChangePassword)}>
