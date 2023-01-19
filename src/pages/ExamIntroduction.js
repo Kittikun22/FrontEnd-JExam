@@ -11,17 +11,15 @@ function ExamIntroduction() {
   const { examId } = useParams();
   const { user } = useAuthState();
 
-  console.log(user);
-
   const [exam, setExam] = useState()
 
   useEffect(() => {
     if (user) {
-      Axios.post('http://localhost:8000/getuserproductandexams', {
-        user_id: user.user_id
+      Axios.post('http://localhost:8000/UserProductAndExams', {
+        user_id: user.user_id,
+        product_id: examId
       }).then((res) => {
-        console.log(res);
-        setExam(res.data)
+        setExam(res.data[0])
       })
     }
 
@@ -36,7 +34,7 @@ function ExamIntroduction() {
         background: 'linear-gradient(0deg, rgba(239,245,245,1) 0%, rgba(214,228,229,1) 100%)',
         pb: 10
       }}>
-        <ExamIntro examId={examId} />
+        <ExamIntro examId={examId} exam={exam} />
 
       </Box>
 

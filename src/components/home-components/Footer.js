@@ -11,6 +11,7 @@ function Footer() {
             justifyContent: 'center',
             alignItems: 'center',
             background: 'linear-gradient(180deg, rgba(1,83,82,1) 0%, rgba(0,12,38,1) 100%)',
+            mb: { xs: '60px', md: '0px' }
         }}>
             <Typography sx={{ color: '#fff' }}>
                 Copyright 2023 © J Knowledge Tutor 2023

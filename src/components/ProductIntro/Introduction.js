@@ -77,7 +77,7 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
                                 ราคา : {productDetail.amount} บาท
                             </Typography>
 
-                            {myExamList?.findIndex(item => item.id === productDetail.id) === -1 ?
+                            {myExamList?.findIndex(item => item.id === productDetail.product_id) === -1 ?
                                 <Button
                                     variant='contained'
                                     color="secondary"
@@ -94,10 +94,10 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
                                     variant='contained'
                                     color="warning"
                                     sx={{ borderRadius: 5, width: '200px' }}
-                                    href={`/exam-introduction/${productDetail.id}`}
+                                    href={`/exam/${productDetail.exam_id}`}
                                 >
                                     <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
-                                        ทำข้อสอบ
+                                        เริ่มทำข้อสอบ
                                     </Typography>
                                 </Button>
                             }

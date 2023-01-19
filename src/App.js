@@ -38,7 +38,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/exam-introduction/:examId" element={<ExamIntroduction />} />
-            <Route path="/exam/:examdId" element={<Exams />} />
+            <Route path="/exam/:examId" element={<Exams />} />
 
           </Route>
 

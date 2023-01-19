@@ -82,7 +82,14 @@ function ProfileMyExam({ user }) {
                   </CardContent>
                 </CardActionArea>
                 <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                  <Button variant='contained' color='warning' sx={{ borderRadius: 5 }}>ทำข้อสอบ</Button>
+                  <Button
+                    variant='contained'
+                    color='warning'
+                    sx={{ borderRadius: 5 }}
+                    href={`/exam-introduction/${val.exam_id}`}
+                  >
+                    ทำข้อสอบ
+                  </Button>
                 </CardActions>
               </Card>
             )
