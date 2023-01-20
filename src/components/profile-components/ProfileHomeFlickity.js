@@ -22,8 +22,6 @@ function ProfileHomeFlickity({ user }) {
         })
     }, [])
 
-    console.log(myExamList.length);
-
     const flickityOptions = {
         initialIndex: 1,
         selectedAttraction: 0.01,

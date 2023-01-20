@@ -88,7 +88,7 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
         if (!user) {
             setOpenLogin(true)
         } else {
-            const check_index = cartItem.findIndex(item => item.id === product.id);
+            const check_index = cartItem.findIndex(item => item.product_id === product.product_id);
             if (check_index !== -1) {
                 setMessage(product.name + ' มีในตะกร้าอยู่แล้ว')
                 setSnackBarColor('error')

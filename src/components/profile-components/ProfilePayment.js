@@ -29,12 +29,9 @@ function ProfilePayment({ user }) {
   };
 
   const formatDate = (dateString) => {
-    const options = {year: 'numeric', month: '2-digit',day: '2-digit',hour: 'numeric', hour12: false, minute: '2-digit', second: '2-digit'}
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric', hour12: false, minute: '2-digit', second: '2-digit' }
     return new Date(dateString).toLocaleDateString(undefined, options)
   }
-
-
-  console.log(paymentHistory);
 
   return (
     <Box p={2} m={2} sx={{ borderRadius: 3, bgcolor: 'white', boxShadow: 1 }}>

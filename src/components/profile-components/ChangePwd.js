@@ -42,7 +42,6 @@ function ChangePwd({ user }) {
     }
 
     const ChangePassword = (data) => {
-        console.log(data);
         Axios.put('http://localhost:8000/changePassword', {
             user_id: user.user_id,
             newPassword: data.newPassword

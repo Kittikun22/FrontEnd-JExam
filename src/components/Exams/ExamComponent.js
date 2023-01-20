@@ -7,9 +7,31 @@ import {
   RadioGroup
 } from '@mui/material';
 
-function ExamComponent({ exam }) {
+let count = 0;
 
-  console.log(exam);
+function ExamComponent({ exam }) {
+  const now = new Date().toLocaleTimeString();
+  let [time, setTime] = React.useState(now);
+
+  function updateTime() {
+    const newTime = new Date().toLocaleTimeString();
+    setTime(newTime);
+    count++;
+    localStorage.setItem('interval', count)
+    console.log(count);
+  }
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updateTime();
+    }, 1000);
+
+    return () => {
+      console.log(`clearing interval`);
+      clearInterval(interval);
+    };
+  }, [])
+
 
   if (exam) {
     const examContent = JSON.parse(exam.exam_content)
@@ -34,7 +56,7 @@ function ExamComponent({ exam }) {
             </Typography>
           )
         })}
-        
+
 
       </Box >
     )

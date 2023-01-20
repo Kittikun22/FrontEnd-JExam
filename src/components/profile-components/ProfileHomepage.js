@@ -29,7 +29,7 @@ function ProfileHomepage({ user }) {
     <Box sx={{ mb: '100px' }}>
 
       <Box m={2}>
-        <Typography sx={{ display: 'inline-block', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
+        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
           ประวัติส่วนตัว
         </Typography>
       </Box>
@@ -59,7 +59,7 @@ function ProfileHomepage({ user }) {
       </Box>
 
       <Box m={2}>
-        <Typography sx={{ display: 'inline-block', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
+        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
           ข้อสอบของฉัน
         </Typography>
       </Box>

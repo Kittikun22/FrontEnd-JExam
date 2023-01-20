@@ -40,7 +40,7 @@ function ExamIntro({ examId, exam }) {
                 {examInfo.map((val, key) => {
                   return (
                     <Typography key={key}>
-                      <Typography sx={{ display: 'inline-block', borderBottom: '4px solid #a3cc53', fontSize: '1.3rem', fontWeight: 600 }}>
+                      <Typography sx={{ display: 'inline', borderBottom: '4px solid #a3cc53', fontSize: '1.3rem', fontWeight: 600 }}>
                         {val.Title}
                       </Typography>
                       <p>{val.Description_line_i}</p>

@@ -29,7 +29,7 @@ function ProfileHistory({ user }) {
   return (
     <>
       <Box m={2}>
-        <Typography sx={{ display: 'inline-block', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
+        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
           ประวัติการทำข้อสอบ
         </Typography>
       </Box>

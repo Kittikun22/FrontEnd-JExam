@@ -20,8 +20,6 @@ const icon = (
 
 function FakePayment({ selectedItems, user, amount, netAmount }) {
 
-    console.log(selectedItems);
-
     const [payStatus, setPayStatus] = useState(false)
     const [open, setOpen] = useState(false);
 
@@ -34,7 +32,7 @@ function FakePayment({ selectedItems, user, amount, netAmount }) {
     };
 
     const handleDelete = (itemToDelete) => {
-        const updateItemInCart = JSON.parse(localStorage.getItem("cart")).filter((item) => !itemToDelete.find(i => i.id === item.id));
+        const updateItemInCart = JSON.parse(localStorage.getItem("cart")).filter((item) => !itemToDelete.find(i => i.product_id === item.product_id));
         localStorage.setItem('cart', JSON.stringify(updateItemInCart))
 
         Axios.put('http://localhost:8000/updateCart', {
@@ -48,7 +46,7 @@ function FakePayment({ selectedItems, user, amount, netAmount }) {
     const handleOnSuccess = () => {
         const products_arr = []
         selectedItems.map((val) => {
-            return products_arr.push({ id: val.id });
+            return products_arr.push({ id: val.product_id });
         })
         const randomNumber = Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000;
         let randomString = '';
@@ -73,6 +71,13 @@ function FakePayment({ selectedItems, user, amount, netAmount }) {
                 setPayStatus(true)
                 localStorage.setItem('selectItem', JSON.stringify([]))
                 localStorage.setItem('discount', JSON.stringify([]))
+
+                Axios.put('http://localhost:8000/updateSelectItem', {
+                    user_id: user.user_id,
+                    itemSelected: JSON.stringify([])
+                }).then((res) => {
+                    console.log(res);
+                })
                 setTimeout(() => {
                     localStorage.setItem('ActiveContent', 'profile-myexam')
                     window.location = '/profile'

@@ -38,8 +38,6 @@ const RegisterStep = (props) => {
         })
     }, [])
 
-    console.log(provinceData);
-
     const { method } = props;
 
     const [checked, setChecked] = useState(false);

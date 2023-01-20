@@ -51,7 +51,6 @@ function Signin(userPhone, userPwd) {
             password: userPwd,
         }).then((res) => {
             if (res.data.status === 'ok') {
-                console.log(res.data);
                 const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(res.data.message[0]), EncryptSecret).toString();
                 localStorage.setItem('users', JSON.stringify(ciphertext))
                 localStorage.setItem('accessToken', res.data.token)

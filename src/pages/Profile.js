@@ -17,8 +17,6 @@ function Profile() {
 
     const { user } = useAuthState();
 
-    console.log(user);
-
     const [activeContent, setActiveContent] = useState('profile-homepage')
     const [facDream, setFacDream] = useState(localStorage.getItem('popup'))
 
@@ -62,7 +60,9 @@ function Profile() {
                         </Box>
                         <Box flex={10}
                             sx={{
-                                background: 'linear-gradient(0deg, rgba(239,245,245,1) 0%, rgba(214,228,229,1) 100%)'
+                                background: 'linear-gradient(0deg, rgba(239,245,245,1) 0%, rgba(214,228,229,1) 100%)',
+                                minHeight: '100vh'
+
                             }}>
                             {getContent(activeContent)}
                         </Box>

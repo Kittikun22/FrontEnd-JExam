@@ -22,9 +22,6 @@ function Exams() {
 
   useEffect(() => {
     if (user) {
-      console.log(productId);
-      console.log(user.user_id);
-
       Axios.post('http://localhost:8000/UserProductAndExams', {
         user_id: user.user_id,
         product_id: productId
@@ -48,7 +45,7 @@ function Exams() {
       <Appbar />
 
       <Box sx={{
-        background: 'linear-gradient(0deg, rgba(239,245,245,1) 0%, rgba(214,228,229,1) 100%)',
+        background: '#f9fbe7',
         minHeight: '100vh',
       }}>
         <ExamComponent exam={exam} />

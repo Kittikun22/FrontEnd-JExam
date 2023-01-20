@@ -18,13 +18,12 @@ export default function Cart({ rowsData, setRowsData }) {
 
     const [itemInCart, setItemInCart] = useState();
 
-    console.log(itemInCart);
-
     useEffect(() => {
         const arr_id = []
         rowsData.map((val) => {
-            return arr_id.push(val.id);
+            return arr_id.push(val.product_id);
         })
+
         Axios.post('http://localhost:8000/getProductInCart', {
             product_id: arr_id
         }).then((res) => {
@@ -75,8 +74,6 @@ export default function Cart({ rowsData, setRowsData }) {
     const handleDelete = (itemToDelete) => {
         const updateItemInCart = itemInCart.filter(row => !itemToDelete.includes(row))
 
-        console.log(updateItemInCart);
-
         localStorage.setItem('cart', JSON.stringify(updateItemInCart))
         setItemInCart(updateItemInCart)
 
@@ -95,7 +92,7 @@ export default function Cart({ rowsData, setRowsData }) {
                         <Typography
                             sx={{
                                 fontSize: '2rem',
-                                display: 'inline-block',
+                                display: 'inline',
                                 borderBottom: 5,
                                 borderColor: '#a3cc53',
                                 mb: 2

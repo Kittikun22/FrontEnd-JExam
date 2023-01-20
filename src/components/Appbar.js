@@ -260,7 +260,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="เปิดตัวเลือก">
                                 <IconButton onClick={() => { setOpenDrawer(true) }} sx={{ p: 0 }}>
-                                    {profilePic !== null ? <Avatar alt="J Knowledge Tutor" src={profilePic} /> : <Avatar alt="J Knowledge Tutor" src='' />}
+                                    {profilePic !== null ? <Avatar alt="J Knowledge Tutor" src={`/${profilePic}`} /> : <Avatar alt="J Knowledge Tutor" src='' />}
                                 </IconButton>
                             </Tooltip>
                         </Box>

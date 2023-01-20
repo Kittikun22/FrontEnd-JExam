@@ -62,7 +62,7 @@ function ProfileSetting({ user }) {
             {user ?
                 <>
                     <Box m={2}>
-                        <Typography sx={{ display: 'inline-block', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
+                        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
                             แก้ไขโปรไฟล์
                         </Typography>
                     </Box>

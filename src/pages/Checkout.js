@@ -48,12 +48,13 @@ function Checkout() {
           p={2}
           sx={{
             background: 'linear-gradient(0deg, rgba(239,245,245,1) 0%, rgba(214,228,229,1) 100%)',
+            minHeight:'100vh',
             pb: 15
           }}>
           <Typography
             sx={{
               fontSize: '2rem',
-              display: 'inline-block',
+              display: 'inline',
               borderBottom: 5,
               borderColor: '#a3cc53',
               mb: 2,

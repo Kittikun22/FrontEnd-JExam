@@ -14,13 +14,11 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
     const [message, setMessage] = useState('')
     const [snackBarColor, setSnackBarColor] = useState()
 
-    console.log(productDetail);
-
     const onAddToCart = (product) => {
         if (!user) {
             setOpenLogin(true)
         } else {
-            const check_index = cartItem.findIndex(item => item.id === product.id);
+            const check_index = cartItem.findIndex(item => item.product_id === product.product_id);
             if (check_index !== -1) {
                 setMessage(product.name + ' มีในตะกร้าอยู่แล้ว')
                 setSnackBarColor('error')
@@ -42,8 +40,9 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
             <Login openLogin={openLogin} setOpenLogin={setOpenLogin} />
 
             <Box sx={{
-                py: 2,
+                py: 5,
                 mx: { xs: 2, md: 15 },
+                pb: 10
             }}>
                 <Stack spacing={2}>
                     <Paper elevation={2} sx={{
@@ -64,7 +63,7 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
 
                         <Stack spacing={2}>
                             <Box>
-                                <Typography sx={{ display: 'inline-block', borderBottom: '4px solid #a3cc53', fontSize: '1.3rem', fontWeight: 600 }}>
+                                <Typography sx={{ display: 'inline', borderBottom: '4px solid #a3cc53', fontSize: '1.3rem', fontWeight: 600,textAlign:'center' }}>
                                     {productDetail.name}
                                 </Typography>
                             </Box>
@@ -77,29 +76,34 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
                                 ราคา : {productDetail.amount} บาท
                             </Typography>
 
-                            {myExamList?.findIndex(item => item.id === productDetail.product_id) === -1 ?
-                                <Button
-                                    variant='contained'
-                                    color="secondary"
-                                    startIcon={<AddShoppingCartIcon />}
-                                    sx={{ borderRadius: 5, width: '200px' }}
-                                    onClick={() => onAddToCart(productDetail)}
-                                >
-                                    <Typography sx={{ fontSize: '1.1rem', fontWeight: 600 }}>
-                                        เพิ่มลงรถเข็น
-                                    </Typography>
-                                </Button>
+                            {myExamList?.findIndex(item => item.id === productDetail.product_id) === -1
+                                ?
+                                <Box sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }}>
+                                    <Button
+                                        variant='contained'
+                                        color="secondary"
+                                        startIcon={<AddShoppingCartIcon />}
+                                        sx={{ borderRadius: 5, width: '200px' }}
+                                        onClick={() => onAddToCart(productDetail)}
+                                    >
+                                        <Typography sx={{ fontSize: '1.1rem', fontWeight: 600 }}>
+                                            เพิ่มลงรถเข็น
+                                        </Typography>
+                                    </Button>
+                                </Box>
                                 :
-                                <Button
-                                    variant='contained'
-                                    color="warning"
-                                    sx={{ borderRadius: 5, width: '200px' }}
-                                    href={`/exam/${productDetail.product_id}`}
-                                >
-                                    <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
-                                        เริ่มทำข้อสอบ
-                                    </Typography>
-                                </Button>
+                                <Box sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }}>
+                                    <Button
+                                        variant='contained'
+                                        color="warning"
+                                        sx={{ borderRadius: 5, width: '200px' }}
+                                        href={`/exam/${productDetail.product_id}`}
+                                    >
+                                        <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                                            เริ่มทำข้อสอบ
+                                        </Typography>
+                                    </Button>
+                                </Box>
                             }
                         </Stack>
                     </Paper>
@@ -109,7 +113,7 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
                         bluePrint ?
                             <>
                                 <Box>
-                                    <Typography sx={{ display: 'inline-block', borderBottom: '4px solid #a3cc53', fontSize: '1.5rem', fontWeight: 600 }}>
+                                    <Typography sx={{ display: 'inline', borderBottom: '4px solid #a3cc53', fontSize: '1.5rem', fontWeight: 600 }}>
                                         โครงสร้างข้อสอบ (EXAM BLUEPRINT)
                                     </Typography>
                                 </Box>
@@ -127,7 +131,7 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
                             :
                             <>
                                 <Box>
-                                    <Typography sx={{ display: 'inline-block', borderBottom: '4px solid #a3cc53', fontSize: '1.5rem', fontWeight: 600 }}>
+                                    <Typography sx={{ display: 'inline', borderBottom: '4px solid #a3cc53', fontSize: '1.5rem', fontWeight: 600 }}>
                                         โครงสร้างข้อสอบ (EXAM BLUEPRINT)
                                     </Typography>
                                 </Box>

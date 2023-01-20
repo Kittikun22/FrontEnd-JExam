@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from '@mui/material/Button';
@@ -10,36 +10,64 @@ import Axios from 'axios'
 import { useAuthState } from '../context/AuthContext'
 
 
-const options = ['แพท', 'ครู', 'วิศวะ'];
-
 export default function DialogDreamFac({ open, setOpen }) {
 
     const { user } = useAuthState();
 
-    const [dreamOne, setDreamOne] = React.useState();
-    const [dreamTwo, setDreamTwo] = React.useState();
+    const [faculty, setFaculty] = useState([]);
 
-    const [valueOne, setValueOne] = React.useState('');
-    const [valueTwo, setValueTwo] = React.useState('');
+    const [dreamFacOne, setDreamFacOne] = useState(null);
+    const [dreamFacTwo, setDreamFacTwo] = useState(null);
+
+    const [majorOne, setMajorOne] = useState([]);
+    const [majorTwo, setMajorTwo] = useState([]);
+
+    const [majorFacOne, setMajorFacOne] = useState(null);
+    const [majorFacTwo, setMajorFacTwo] = useState(null);
+
+    const [valueFacOne, setValueFacOne] = useState();
+    const [valueFacTwo, setValueFacTwo] = useState();
+
+    const [valueMajorOne, setValueMajorOne] = useState();
+    const [valueMajorTwo, setValueMajorTwo] = useState();
+
+    useEffect(() => {
+        Axios.get('http://localhost:8000/getFaculty').then((res) => {
+            setFaculty(res.data)
+        })
+
+        if (dreamFacOne) {
+            Axios.post('http://localhost:8000/getMajor', {
+                faculty_id: dreamFacOne.faculty_id
+            }).then((res) => {
+                setMajorOne(res.data)
+            })
+        }
+        if (dreamFacTwo) {
+            Axios.post('http://localhost:8000/getMajor', {
+                faculty_id: dreamFacTwo.faculty_id
+            }).then((res) => {
+                setMajorTwo(res.data)
+            })
+        }
+    }, [dreamFacOne, dreamFacTwo])
 
     const handleClose = () => {
         setOpen(false);
     };
 
     const handleSubmit = () => {
-        console.log('dreamOne : ', dreamOne);
-        console.log('dreamTwo : ', dreamTwo);
-
         Axios.put('http://localhost:8000/updateDreamFac', {
-            dream1: dreamOne,
-            dream2: dreamTwo,
+            dream1: dreamFacOne.faculty_id,
+            dream2: dreamFacTwo.faculty_id,
+            major1: majorFacOne.major_id,
+            major2: majorFacTwo.major_id,
             user_id: user.user_id
         }).then(() => {
             localStorage.setItem('popup', false)
             handleClose()
         })
     }
-
 
     return (
         <>
@@ -53,33 +81,71 @@ export default function DialogDreamFac({ open, setOpen }) {
                         <Autocomplete
                             size='small'
                             fullWidth
-                            value={dreamOne}
+                            value={dreamFacOne}
                             onChange={(event, newValue) => {
-                                setDreamOne(newValue);
+                                setDreamFacOne(newValue)
+                                setMajorFacOne(null)
                             }}
-                            inputValue={valueOne}
+                            inputValue={valueFacOne}
                             onInputChange={(event, newInputValue) => {
-                                setValueOne(newInputValue);
+                                setValueFacOne(newInputValue);
                             }}
                             id="controllable-states-demo"
-                            options={options}
-                            renderInput={(params) => <TextField {...params} label="เลือกคณะในฝันอันดับที่ 1" />}
+                            options={faculty}
+                            getOptionLabel={(faculty) => faculty.faculty_name}
+                            renderInput={(params) => <TextField {...params} label="เลือคณะในฝันอันดับที่ 1" />}
                         />
 
                         <Autocomplete
                             size='small'
                             fullWidth
-                            value={dreamTwo}
+                            value={majorFacOne}
                             onChange={(event, newValue) => {
-                                setDreamTwo(newValue);
+                                setMajorFacOne(newValue);
                             }}
-                            inputValue={valueTwo}
+                            inputValue={valueMajorOne}
                             onInputChange={(event, newInputValue) => {
-                                setValueTwo(newInputValue);
+                                setValueMajorOne(newInputValue);
                             }}
                             id="controllable-states-demo"
-                            options={options}
+                            options={majorOne}
+                            getOptionLabel={(majorOne) => majorOne.major_name}
+                            renderInput={(params) => <TextField {...params} label="สาขา" />}
+                        />
+
+                        <Autocomplete
+                            size='small'
+                            fullWidth
+                            value={dreamFacTwo}
+                            onChange={(event, newValue) => {
+                                setDreamFacTwo(newValue)
+                                setMajorFacTwo(null)
+                            }}
+                            inputValue={valueFacTwo}
+                            onInputChange={(event, newInputValue) => {
+                                setValueFacTwo(newInputValue);
+                            }}
+                            id="controllable-states-demo"
+                            options={faculty}
+                            getOptionLabel={(faculty) => faculty.faculty_name}
                             renderInput={(params) => <TextField {...params} label="เลือกคณะในฝันอันดับที่ 2" />}
+                        />
+
+                        <Autocomplete
+                            size='small'
+                            fullWidth
+                            value={majorFacTwo}
+                            onChange={(event, newValue) => {
+                                setMajorFacTwo(newValue);
+                            }}
+                            inputValue={valueMajorTwo}
+                            onInputChange={(event, newInputValue) => {
+                                setValueMajorTwo(newInputValue);
+                            }}
+                            id="controllable-states-demo"
+                            options={majorTwo}
+                            getOptionLabel={(majorTwo) => majorTwo.major_name}
+                            renderInput={(params) => <TextField {...params} label="สาขา" />}
                         />
 
                     </Stack>
