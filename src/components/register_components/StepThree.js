@@ -13,8 +13,10 @@ import Student from './Student';
 import Parent from './Parent';
 import Teacher from './Teacher';
 
-function StepThree({ provinceData }) {
+function StepThree({ provinceData, termAndCondition,expectationOption }) {
   const { register } = useFormContext();
+
+  const termAndConditionContent = JSON.parse(termAndCondition.content)
 
   const [roleSelect, setRoleSelect] = useState(null);
 
@@ -33,9 +35,9 @@ function StepThree({ provinceData }) {
   const SwitchRole = (roleSelect) => {
     switch (roleSelect) {
       case 'นักเรียน':
-        return <Student provinceData={provinceData} />
+        return <Student provinceData={provinceData} expectationOption={expectationOption}/>
       case 'ผู้ปกครอง':
-        return <Parent provinceData={provinceData} />
+        return <Parent provinceData={provinceData} expectationOption={expectationOption}/>
       case 'คุณครู':
         return <Teacher provinceData={provinceData} />
       default:
@@ -90,13 +92,33 @@ function StepThree({ provinceData }) {
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle id="scroll-dialog-title">ข้อตกลงและเงื่อนไข</DialogTitle>
+        <DialogTitle id="scroll-dialog-title">{termAndCondition?.title}</DialogTitle>
         <DialogContent dividers={scroll === 'paper'}>
           <DialogContentText
             id="scroll-dialog-description"
             tabIndex={-1}
           >
-            เงื่อนไข
+            {termAndConditionContent?.map((val, key) => {
+                return (
+                    <Box key={key} sx={{ mb: 2 }}>
+                        <Typography sx={{ fontSize: '1.2rem', color: '#0081C9', fontWeight: 600 }}>{val.topic}</Typography>
+                        {val.subtopics.map((val, key) => {
+                            return (
+                                <Box key={key}>
+                                    <Typography sx={{ ml: 2, fontSize: '1rem', fontWeight: 600, mt: 1 }}>{val.subtopic ? `${key + 1}. ${val.subtopic}` : null}</Typography>
+                                    <Typography sx={{ ml: 4 }}>{val.explanation}</Typography>
+                                    {val.details.map((val, key) => {
+                                        return (
+                                            <Typography sx={{ ml: 4, mt: 1 }} key={key}>{val.detail ? <li>{val.detail}</li> : null}</Typography>
+                                        )
+                                    })}
+                                </Box>
+                            )
+                        })}
+
+                    </Box>
+                )
+            })}
           </DialogContentText>
         </DialogContent>
       </Dialog>

@@ -46,7 +46,7 @@ function NETSATFlickity() {
                     return (
                         <Box sx={{ mx: 2 }} key={key} className='exams-cell'>
                             <Card sx={{ width: 250, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-exams-cell'>
-                                <CardActionArea href={`/introduction/${val.id}`}>
+                                <CardActionArea href={`/introduction/${val.product_id}`}>
                                     <CardMedia
                                         component="img"
                                         height="250"

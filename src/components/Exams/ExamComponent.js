@@ -9,7 +9,7 @@ import {
 
 let count = 0;
 
-function ExamComponent({ exam }) {
+function ExamComponent({ exam, selectExam }) {
   const now = new Date().toLocaleTimeString();
   let [time, setTime] = React.useState(now);
 
@@ -18,9 +18,9 @@ function ExamComponent({ exam }) {
     setTime(newTime);
     count++;
     localStorage.setItem('interval', count)
-    console.log(count);
+    // console.log(count);
   }
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       updateTime();
@@ -32,9 +32,13 @@ function ExamComponent({ exam }) {
     };
   }, [])
 
+  const checkAnswer = () => {
+
+  }
+
 
   if (exam) {
-    const examContent = JSON.parse(exam.exam_content)
+    const examContent = JSON.parse(exam[selectExam].exam_content)
     return (
       <Box sx={{
         py: 2,
@@ -45,10 +49,16 @@ function ExamComponent({ exam }) {
             <Typography key={key}>
               <Typography variant='h6'>{key + 1}. {val.question}</Typography>
               <RadioGroup>
+
                 {val.choice.map((val, key) => {
                   return (
                     <Typography key={key}>
-                      <FormControlLabel value={val.choicevalue} control={<Radio />} label={val.choicetext} />
+                      {val.choicetext === '' ?
+                        null
+                        :
+                        <FormControlLabel value={val.choicevalue} control={<Radio />} label={val.choicetext} />
+                      }
+
                     </Typography>
                   )
                 })}

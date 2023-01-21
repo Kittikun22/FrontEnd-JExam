@@ -35,6 +35,8 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
 
     const [myExamList, setMyExamList] = useState([])
 
+    console.log(allProduct);
+
     useEffect(() => {
         if (user) {
             Axios.post('http://localhost:8000/getuserproductandexams', {
@@ -204,7 +206,7 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
                                 {allProduct?.map((val, key) => {
                                     return (
                                         <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7, }} elevation={3} key={key}>
-                                            <CardActionArea href={`/introduction/${val.id}`}>
+                                            <CardActionArea href={`/introduction/${val.product_id}`}>
                                                 <CardMedia
                                                     component="img"
                                                     height="150px"
@@ -227,7 +229,7 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
                                             </CardActionArea>
                                             <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
 
-                                                {myExamList?.findIndex(item => item.id === val.id) === -1 ?
+                                                {myExamList?.findIndex(item => item.product_id === val.product_id) === -1 ?
                                                     <Button
                                                         variant='contained'
                                                         color="secondary"
@@ -265,7 +267,7 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
                                 {filterProduct.map((val, key) => {
                                     return (
                                         <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }} elevation={3} key={key}>
-                                            <CardActionArea href={`/introduction/${val.id}`}>
+                                            <CardActionArea href={`/introduction/${val.product_id}`}>
                                                 <CardMedia
                                                     component="img"
                                                     height="150px"
@@ -288,7 +290,7 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
                                             </CardActionArea>
                                             <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
 
-                                                {myExamList?.findIndex(item => item.id === val.id) === -1 ?
+                                                {myExamList?.findIndex(item => item.product_id === val.product_id) === -1 ?
                                                     <Button
                                                         variant='contained'
                                                         color="secondary"

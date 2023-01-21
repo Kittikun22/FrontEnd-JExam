@@ -41,7 +41,7 @@ export const dataRadar = {
             label: 'A-Level',
             data: [78, 91, 61, 43, 100, 69, 54],
             backgroundColor: '#a3cc5380',
-            borderColor: '#0e3746',
+            borderColor: '#4E6C50',
             borderWidth: 3,
         },
     ],
@@ -106,7 +106,7 @@ function ProfileAnalysis({ user }) {
                         return (
                             <>
                                 <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }} key={key}>
-                                    <CardActionArea href={`/introduction/${val.id}`}>
+                                    <CardActionArea href={`/introduction/${val.product_id}`}>
                                         <CardMedia
                                             component="img"
                                             height="150px"

@@ -8,7 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import WarningIcon from '@mui/icons-material/Warning';
 import ListSubheader from '@mui/material/ListSubheader';
 
-function Parent({ provinceData }) {
+function Parent({ provinceData, expectationOption }) {
 
     const { register, formState: { errors } } = useFormContext();
 
@@ -174,14 +174,6 @@ function Parent({ provinceData }) {
                     <MenuItem value='มัธยมศึกษาปีที่ 3'>มัธยมศึกษาปีที่ 3</MenuItem>
                     <MenuItem value='มัธยมศึกษาปีที่ 2'>มัธยมศึกษาปีที่ 2</MenuItem>
                     <MenuItem value='มัธยมศึกษาปีที่ 1'>มัธยมศึกษาปีที่ 1</MenuItem>
-                    <ListSubheader>ประถมศึกษาตอนปลาย</ListSubheader>
-                    <MenuItem value='ประถมศึกษาปีที่ 6'>ประถมศึกษาปีที่ 6</MenuItem>
-                    <MenuItem value='ประถมศึกษาปีที่ 5'>ประถมศึกษาปีที่ 5</MenuItem>
-                    <MenuItem value='ประถมศึกษาปีที่ 4'>ประถมศึกษาปีที่ 4</MenuItem>
-                    <ListSubheader>ประถมศึกษาตอนต้น</ListSubheader>
-                    <MenuItem value='ประถมศึกษาปีที่ 3'>ประถมศึกษาปีที่ 3</MenuItem>
-                    <MenuItem value='ประถมศึกษาปีที่ 2'>ประถมศึกษาปีที่ 2</MenuItem>
-                    <MenuItem value='ประถมศึกษาปีที่ 1'>ประถมศึกษาปีที่ 1</MenuItem>
                 </Select>
             </FormControl>
 
@@ -275,9 +267,9 @@ function Parent({ provinceData }) {
                     value={expectation}
                     onChange={(e) => { setExpectation(e.target.value) }}
                 >
-                    <MenuItem value='สอบเข้ามหาวิทยาลัย'>สอบเข้ามหาวิทยาลัย</MenuItem>
-                    <MenuItem value='ทบทวนบทเรียน'>ทบทวนบทเรียน</MenuItem>
-                    
+                    {expectationOption.map((val, key) => {
+                        return <MenuItem key={key} value={val.expectation_value}>{val.expectation_value}</MenuItem>
+                    })}
                 </Select>
             </FormControl>
 

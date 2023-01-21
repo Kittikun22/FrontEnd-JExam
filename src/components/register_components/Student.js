@@ -8,7 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import WarningIcon from '@mui/icons-material/Warning';
 import ListSubheader from '@mui/material/ListSubheader';
 
-function Student({ provinceData }) {
+function Student({ provinceData, expectationOption }) {
 
     const { register, formState: { errors } } = useFormContext();
 
@@ -214,9 +214,10 @@ function Student({ provinceData }) {
                     value={expectation}
                     onChange={(e) => { setExpectation(e.target.value) }}
                 >
-                    <MenuItem value='สอบเข้ามหาวิทยาลัย'>สอบเข้ามหาวิทยาลัย</MenuItem>
-                    <MenuItem value='ทบทวนบทเรียน'>ทบทวนบทเรียน</MenuItem>
-                    <MenuItem value='เพิ่มผลการเรียน'>เพิ่มผลการเรียน</MenuItem>
+
+                    {expectationOption.map((val,key) => {
+                        return <MenuItem key={key} value={val.expectation_value}>{val.expectation_value}</MenuItem>
+                    })}
                 </Select>
             </FormControl>
 

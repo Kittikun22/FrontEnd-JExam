@@ -39,8 +39,8 @@ export default function Cart({ rowsData, setRowsData }) {
     const [selectedAmount, setSelectedAmount] = useState(0);
     const [promoDiscount, setPromoDiscount] = useState(0);
 
-    const onRowsSelectionHandler = (ids) => {
-        const selectedRowsData = ids.map((id) => itemInCart.find((row) => row.id === id));
+    const onRowsSelectionHandler = (product_ids) => {
+        const selectedRowsData = product_ids.map((product_id) => itemInCart.find((row) => row.product_id === product_id));
         setSelectedItem(selectedRowsData);
         onSelectedAmount(selectedRowsData)
         handlePromoDiscount(selectedRowsData)
@@ -117,6 +117,7 @@ export default function Cart({ rowsData, setRowsData }) {
 
                     <DataGrid
                         rows={itemInCart}
+                        getRowId={(row) => row.product_id}
                         columns={columns}
                         pageSize={pageSize}
                         onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}

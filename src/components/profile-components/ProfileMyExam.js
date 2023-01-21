@@ -38,9 +38,11 @@ function ProfileMyExam({ user }) {
         <Box sx={{
           display: myExamList?.length === 0 ? 'block' : 'none',
         }}>
+
           <Typography sx={{ textAlign: 'center', fontSize: '1.2rem' }}>
             ยังไม่มีข้อสอบ
           </Typography>
+
           <Typography sx={{ textAlign: 'center' }}>
             <Typography
               component={Link}
@@ -61,7 +63,7 @@ function ProfileMyExam({ user }) {
           {myExamList?.map((val, key) => {
             return (
               <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }} key={key}>
-                <CardActionArea href={`/introduction/${val.id}`}>
+                <CardActionArea href={`/introduction/${val.product_id}`}>
                   <CardMedia
                     component="img"
                     height="150px"
@@ -86,7 +88,7 @@ function ProfileMyExam({ user }) {
                     variant='contained'
                     color='warning'
                     sx={{ borderRadius: 5 }}
-                    href={`/introduction/${val.id}`}
+                    href={`/introduction/${val.product_id}`}
                   >
                     ทำข้อสอบ
                   </Button>

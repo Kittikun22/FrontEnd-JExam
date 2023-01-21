@@ -16,7 +16,7 @@ import DialogContent from '@mui/material/DialogContent';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Zoom from '@mui/material/Zoom'
 import { Typography } from '@mui/material';
-import { useAuthState, useAuthDispatch, Login } from "../../context/AuthContext";
+import { useAuthDispatch, Login } from "../../context/AuthContext";
 
 const steps = ['OTP', 'สร้างบัญชีผู้ใช้', 'ข้อมูลผู้ใช้'];
 
@@ -27,16 +27,26 @@ const icon = (
 )
 const RegisterStep = (props) => {
 
-    const { user: loggedUser, status, error } = useAuthState();
     const dispatch = useAuthDispatch();
 
     const [provinceData, setProvinceData] = useState();
+    const [termAndCondition, setTermAndCondition] = useState();
+    const [expectationOption, setExpectationOption] = useState()
 
     useEffect(() => {
         Axios.get('http://localhost:8000/getProvince').then((res) => {
             setProvinceData(res.data)
         })
+        Axios.get('http://localhost:8000/getTermAndCondition').then((res) => {
+            setTermAndCondition(res.data[0])
+        })
+        Axios.get('http://localhost:8000/getExpectation').then((res) => {
+            setExpectationOption(res.data)
+        })
+
     }, [])
+
+    console.log(expectationOption);
 
     const { method } = props;
 
@@ -110,7 +120,7 @@ const RegisterStep = (props) => {
             case 1:
                 return <StepTwo />
             case 2:
-                return <StepThree provinceData={provinceData} />
+                return <StepThree provinceData={provinceData} termAndCondition={termAndCondition} expectationOption={expectationOption} />
 
             default:
         }

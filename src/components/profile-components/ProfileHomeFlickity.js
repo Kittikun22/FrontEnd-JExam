@@ -46,7 +46,7 @@ function ProfileHomeFlickity({ user }) {
                         return (
                             <Box sx={{ mx: 2 }} key={key} className='myexams-cell'>
                                 <Card sx={{ width: 300, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-myexams-cell'>
-                                    <CardActionArea href={`/introduction/${val.id}`}>
+                                    <CardActionArea href={`/introduction/${val.product_id}`}>
                                         <CardMedia
                                             component="img"
                                             height="250"

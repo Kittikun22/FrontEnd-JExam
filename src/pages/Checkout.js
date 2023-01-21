@@ -23,7 +23,7 @@ function Checkout() {
 
     const arr_id = []
     selectedItem.map((val) => {
-      return arr_id.push(val.id);
+      return arr_id.push(val.product_id);
     })
     Axios.post('http://localhost:8000/getProductInCart', {
       product_id: arr_id

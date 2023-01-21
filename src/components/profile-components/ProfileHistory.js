@@ -56,7 +56,7 @@ function ProfileHistory({ user }) {
           {myExamList?.map((val, key) => {
             return (
               <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }} key={key}>
-                <CardActionArea href={`/introduction/${val.id}`}>
+                <CardActionArea href={`/introduction/${val.product_id}`}>
                   <CardMedia
                     component="img"
                     height="150px"

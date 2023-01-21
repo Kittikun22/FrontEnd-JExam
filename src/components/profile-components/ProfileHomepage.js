@@ -88,7 +88,7 @@ function ProfileHomepage({ user }) {
               return (
                 <Box>
                   <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }} key={key}>
-                    <CardActionArea href={`/introduction/${val.id}`}>
+                    <CardActionArea href={`/introduction/${val.product_id}`}>
                       <CardMedia
                         component="img"
                         height="150px"

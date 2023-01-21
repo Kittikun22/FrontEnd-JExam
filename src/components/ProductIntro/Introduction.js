@@ -76,7 +76,7 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
                                 ราคา : {productDetail.amount} บาท
                             </Typography>
 
-                            {myExamList?.findIndex(item => item.id === productDetail.product_id) === -1
+                            {myExamList?.findIndex(item => item.product_id === productDetail.product_id) === -1
                                 ?
                                 <Box sx={{ display: 'flex', justifyContent: { xs: 'center', md: 'flex-start' } }}>
                                     <Button
