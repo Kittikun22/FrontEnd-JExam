@@ -129,7 +129,7 @@ const RegisterStep = (props) => {
     return (
         <>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Paper sx={{ px: 2, py: 5, borderRadius: 10, width: '500px', marginBottom: '100px' }} elevation={2}>
+                <Paper sx={{ px: 2, py: 5, borderRadius: 10, width: '900px', marginBottom: '100px' }} elevation={2}>
                     <Stepper activeStep={activeStep} alternativeLabel >
                         {steps.map((label, key) => {
                             const stepProps = {};

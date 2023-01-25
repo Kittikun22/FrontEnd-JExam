@@ -54,10 +54,10 @@ function Checkout() {
           <Typography
             sx={{
               fontSize: '2rem',
-              display: 'inline',
+              display: 'inline-block',
               borderBottom: 5,
               borderColor: '#a3cc53',
-              mb: 2,
+              mb:2,
               ml: 1
             }}
           >
