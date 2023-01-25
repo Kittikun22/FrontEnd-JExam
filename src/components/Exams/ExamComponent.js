@@ -11,14 +11,15 @@ let count = 0;
 
 function ExamComponent({ exam, selectExam }) {
   const now = new Date().toLocaleTimeString();
-  let [time, setTime] = React.useState(now);
+  let [time, setTime] = useState(now);
 
   function updateTime() {
     const newTime = new Date().toLocaleTimeString();
     setTime(newTime);
     count++;
     localStorage.setItem('interval', count)
-    // console.log(count);
+    console.log(time);
+    console.log(count);
   }
 
   useEffect(() => {
@@ -32,9 +33,6 @@ function ExamComponent({ exam, selectExam }) {
     };
   }, [])
 
-  const checkAnswer = () => {
-
-  }
 
 
   if (exam) {

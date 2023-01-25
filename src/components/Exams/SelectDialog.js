@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Box } from '@mui/material'
+import { Button, Box, Typography } from '@mui/material'
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
@@ -11,8 +11,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 function SelectDialog({ openSelectDialog, setOpenSelectDialog, exam, setSelectExam, setLoading }) {
-
-    console.log(exam);
 
     const handleClose = (key) => {
         setSelectExam(key)
@@ -31,16 +29,28 @@ function SelectDialog({ openSelectDialog, setOpenSelectDialog, exam, setSelectEx
                 <DialogTitle sx={{ textAlign: 'center', fontSize: '2rem' }}>เลือกชุดข้อสอบ</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
+
                         <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
                             {exam?.map((val, key) => {
                                 return (
-                                    <Button variant='contained' key={key} onClick={() => handleClose(key)}>{val.exam_name}</Button>
+                                    <Button
+                                        variant='text'
+                                        key={key}
+                                        onClick={() => handleClose(key)}
+                                        sx={{display:'block'}}>
+                                        <Box component='img'
+                                            src={`/${val.pic}`}
+                                            sx={{
+                                                width: '50%',
+                                                borderRadius: 3
+                                            }}
+                                        />
+                                        <Typography>
+                                            {val.exam_name}
+                                        </Typography>
+                                    </Button>
                                 )
                             })}
-                            {/* <Button variant='contained' >1111111111</Button>
-                            <Button variant='contained' >2222222222</Button> */}
-
-
                         </Box>
 
                     </DialogContentText>

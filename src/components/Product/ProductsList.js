@@ -35,8 +35,6 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
 
     const [myExamList, setMyExamList] = useState([])
 
-    console.log(allProduct);
-
     useEffect(() => {
         if (user) {
             Axios.post('http://localhost:8000/getuserproductandexams', {
