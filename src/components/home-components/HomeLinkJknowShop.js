@@ -8,7 +8,6 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 import { Divider, Link, Button, CardActions, CardContent } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
-import { height } from "@mui/system";
 
 const shopList = [
   {
