@@ -46,9 +46,6 @@ function Exams() {
 
   }, [user])
 
-  console.log(exam);
-  console.log(selectExam);
-
   return (
     <>
       <ExamAlertDialog openDialog={openDialog} setOpenDialog={setOpenDialog} message={message} productId={productId} />

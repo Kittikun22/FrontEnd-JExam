@@ -17,6 +17,8 @@ import TestPage from './pages/testPage';
 import ProductIntroduction from './pages/ProductIntroduction';
 import Exams from './pages/Exams'
 import ExamIntroduction from './pages/ExamIntroduction' 
+import Takeanexam from './pages/Takeanexam';
+
 
 function App() {
 
@@ -39,7 +41,7 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/exam-introduction/:productId" element={<ExamIntroduction />} />
             <Route path="/exam/:productId" element={<Exams />} />
-
+            <Route path="/takeanexam/netsat/:subject" element={<Takeanexam />} />
           </Route>
 
           <Route path="/" element={<Home />} />
