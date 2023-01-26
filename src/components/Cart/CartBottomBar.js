@@ -3,6 +3,8 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { Button, TextField, Typography } from "@mui/material";
 import Axios from "axios";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import InputAdornment from '@mui/material/InputAdornment';
 
 const CartBottomBar = ({
   selectedItem,
@@ -14,25 +16,25 @@ const CartBottomBar = ({
 }) => {
   const [code, setCode] = useState();
   const [codeDis, setCodeDis] = useState(0);
+  const [checkCode, setCheckCode] = useState(false)
 
   const discount = selectedAmount * (promoDiscount / 100);
 
   const netAmount = selectedAmount - discount - codeDis;
 
-  const selectedAmountInthai = new Intl.NumberFormat("th").format(
-    selectedAmount
-  );
+  const selectedAmountInthai = new Intl.NumberFormat("th").format(selectedAmount);
   const netInThai = new Intl.NumberFormat("th").format(netAmount);
-
 
   const handleChangeCode = (event, codeList) => {
     const code = event.target.value.toUpperCase();
     setCode(code)
     const selectedCode = codeList.find(codeItem => codeItem.code_name === code);
-    if(selectedCode) {
+    if (selectedCode) {
       setCodeDis(selectedCode.code_discount);
+      setCheckCode(true)
     } else {
       setCodeDis(0);
+      setCheckCode(false)
     }
   };
 
@@ -40,11 +42,10 @@ const CartBottomBar = ({
     let selected = selectedItem?.length;
     let promotion = promotions.find((promo) => selected < promo.promotion_min);
     if (!promotion) {
-      return ;
+      return;
     }
-    return `เพิ่มอีก ${
-      promotion.promotion_min - selected
-    } รายการเพื่อรับโปรโมชั่นส่วนลด ${promotion.promotion_discount}%`;
+    return `เพิ่มอีก ${promotion.promotion_min - selected
+      } รายการเพื่อรับโปรโมชั่นส่วนลด ${promotion.promotion_discount}%`;
   };
 
   const handleOnCheckOut = (
@@ -129,11 +130,18 @@ const CartBottomBar = ({
         >
           <Typography sx={{ mr: 1 }}>โค้ดส่วนลด </Typography>
           <TextField
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <CheckCircleIcon sx={{ display: checkCode === true ? 'flex' : 'none', color: '#a3cc53' }} />
+                </InputAdornment>
+              ),
+            }}
             size="small"
             label="กรอกโค้ดส่วนลด..."
             value={code}
             onChange={(event) => handleChangeCode(event, codeList)}
-            sx={{ width: { xs: "150px", md: "200px" } }}
+            sx={{ width: { xs: "175px", md: "250px" } }}
           />
         </Box>
 
@@ -191,7 +199,7 @@ const CartBottomBar = ({
                 mr: 0.5,
               }}
             >
-              {netInThai} บาท
+              {netInThai <= 0 ? 0 : netInThai} บาท
             </Typography>
 
             <Button

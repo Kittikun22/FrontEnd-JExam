@@ -5,10 +5,11 @@ import BluePrint from './BluePrint';
 import SnackbarAlert from '../SnackbarAlert'
 import Login from '../Login-Dialog';
 
-function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }) {
+function Introduction({ subject, user, productDetail, myExamList, cartItem, setCartItem }) {
 
     const bluePrint = JSON.parse(productDetail.blueprint)
 
+    console.log(subject);
     const [openLogin, setOpenLogin] = useState(false)
     const [openSnackBar, setOpenSnackBar] = useState(false)
     const [message, setMessage] = useState('')
@@ -63,7 +64,7 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
 
                         <Stack spacing={2}>
                             <Box>
-                                <Typography sx={{ display: 'inline', borderBottom: '4px solid #a3cc53', fontSize: '1.3rem', fontWeight: 600,textAlign:'center' }}>
+                                <Typography sx={{ display: 'inline', borderBottom: '4px solid #a3cc53', fontSize: '1.3rem', fontWeight: 600, textAlign: 'center' }}>
                                     {productDetail.name}
                                 </Typography>
                             </Box>
@@ -97,7 +98,8 @@ function Introduction({ user, productDetail, myExamList, cartItem, setCartItem }
                                         variant='contained'
                                         color="warning"
                                         sx={{ borderRadius: 5, width: '200px' }}
-                                        href={`/exam/${productDetail.product_id}`}
+                                        // href={`/exam/${productDetail.product_id}`}
+                                        href={subject ? `/takeanexam/netsat/${subject}` : `/exam/${productDetail.product_id}`}
                                     >
                                         <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
                                             เริ่มทำข้อสอบ

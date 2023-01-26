@@ -30,6 +30,8 @@ import { chemistryexam } from "./questiondatanetsatchemistry";
 import { biologyexam } from "./questiondatanetsatbiology";
 import { physicsexam } from "./questiondatanetsatphysics";
 
+import ExamAlertDialog from "../Exams/ExamAlertDialog";
+
 let examing;
 let score;
 const Modalstyle = {
@@ -45,8 +47,8 @@ const Modalstyle = {
   px: 4,
   pb: 1.5,
 };
-function System({ subject }) {
-  console.log(subject);
+function System({ subject, productId, user }) {
+
   const [userAuth, setUserAuth] = useState();
   if (!userAuth) {
     setUserAuth(JSON.parse(localStorage.getItem("users")));
@@ -514,7 +516,7 @@ function System({ subject }) {
   const [newarrarranged, setArrarrange] = React.useState(null);
   const [checkanswer, setCheckanswer] = useState([]);
   const [newcheckanswer, setNewcheckanswer] = useState([]);
-  const arrangearr = (i, order) => {};
+  const arrangearr = (i, order) => { };
   const [newdata, setNewdata] = useState({});
   const [data, setData] = useState({});
   const runloop = () => {
@@ -743,7 +745,7 @@ function System({ subject }) {
     handleSetActiveContent();
     //Cal Point
     let point = 0;
-    for (let i = 0; i < examing.questions.length; ) {
+    for (let i = 0; i < examing.questions.length;) {
       const answerkey = newexam[i].Answer;
       const categorytemp = newexam[i].Category;
       const categoryname = newexam[i].Category;
@@ -786,7 +788,7 @@ function System({ subject }) {
 
       if (sendanswer !== true) {
         let point = 0;
-        for (let i = 0; i < examing.questions.length; ) {
+        for (let i = 0; i < examing.questions.length;) {
           const answerkey = newexam[i].Answer;
           const categorytemp = newexam[i].Category;
           const categoryname = newexam[i].Category;
@@ -836,7 +838,7 @@ function System({ subject }) {
           setInputdisable(true);
           handleSetActiveContent();
           let point = 0;
-          for (let i = 0; i < examing.questions.length; ) {
+          for (let i = 0; i < examing.questions.length;) {
             const answerkey = newexam[i].Answer;
             const categorytemp = newexam[i].Category;
             const categoryname = newexam[i].Category;
@@ -1008,21 +1010,43 @@ function System({ subject }) {
     window.location.pathname = "radarchart/temp";
   };
 
+
+  const [openDialog, setOpenDialog] = useState(false)
+  const [message, setMessage] = useState('')
+
+
   useEffect(() => {
-    initailExam(subject);
-    actionshuffle();
-    runloop();
-    getTakingAnswer();
+
+    if (user) {
+      Axios.post('http://localhost:8000/UserProduct', {
+        user_id: user.user_id,
+        product_id: productId
+      }).then((res) => {
+        if (res.data.message === 'ok') {
+          console.log(user.user_id);
+          initailExam(subject);
+          actionshuffle();
+          runloop();
+          getTakingAnswer();
+        } else {
+          window.location = '/'
+        }
+      })
+    }
+
   }, []);
 
   return (
     <>
-      <div className="System-Question-Haeder">
+
+      <ExamAlertDialog openDialog={openDialog} setOpenDialog={setOpenDialog} message={message} productId={productId} />
+
+      <div className="System-Question-Haeder" >
         <div
           id="header"
           style={{ display: "none", padding: "0.5vh 3vh 0vh 3vh" }}
         >
-          <div className="">
+          <div className="" >
             {examing.questioninfo.map((info, key) => (
               <div
                 className="text-left my-1"
@@ -1122,7 +1146,7 @@ function System({ subject }) {
               <span id="page"></span>
             </a>
           </div>
-          <div id="initialsection">
+          <div id="initialsection" >
             {examing.questioninfo.map((info, key) => (
               <div className="text-center my-1" key={key}>
                 <h1>{info.Title}</h1>
@@ -1381,13 +1405,14 @@ function System({ subject }) {
               </div>
             </Box>
           </Modal>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} >
             {examing.questions.map((question, i) => (
               <div
                 className="question"
                 style={{ display: "none" }}
                 key={i}
                 id={i}
+
               >
                 <FormControl>
                   <a className="fw-5 fz-09">

@@ -131,7 +131,8 @@ function ProfileAnalysis({ user }) {
                                             variant='contained'
                                             color='warning'
                                             sx={{
-                                                borderRadius: 5
+                                                borderRadius: 5,
+                                                fontSize: { xs: '.8rem', md: '' }
                                             }}
                                             onClick={() => handleClickOpen()}>
                                             ดูผลการวิเคราะห์คะแนน

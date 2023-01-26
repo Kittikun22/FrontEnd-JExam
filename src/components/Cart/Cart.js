@@ -48,8 +48,6 @@ export default function Cart({ rowsData, setRowsData }) {
   const [selectedAmount, setSelectedAmount] = useState(0);
   const [promoDiscount, setPromoDiscount] = useState(0);
 
-  console.log(pageSize);
-
   const onRowsSelectionHandler = (product_ids) => {
     const selectedRowsData = product_ids.map((product_id) =>
       itemInCart.find((row) => row.product_id === product_id)
