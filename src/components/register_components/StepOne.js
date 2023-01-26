@@ -35,7 +35,7 @@ const StepOne = ({ setActiveButton }) => {
 
 
   const phoneAvailable = (phoneNumber) => {
-    Axios.post('http://localhost:8000/checkAvailable', {
+    Axios.post('https://jexamapi.jknowledgetutor.com/checkAvailable', {
       phone: phoneNumber
     }).then((res) => {
       setAvailableStatus(res.data.status)
@@ -47,7 +47,7 @@ const StepOne = ({ setActiveButton }) => {
   const ReqOtp = (phone) => {
     try {
       if (availableStatus === 'ok') {
-        Axios.post('http://localhost:8000/request-otp', {
+        Axios.post('https://jexamapi.jknowledgetutor.com/request-otp', {
           headers: {
             accept: 'application/json',
             'content-type': 'application/x-www-form-urlencoded'
@@ -65,7 +65,7 @@ const StepOne = ({ setActiveButton }) => {
 
   const VerifyOtp = (otpToken, otpCode) => {
     try {
-      Axios.post('http://localhost:8000/verify-otp', {
+      Axios.post('https://jexamapi.jknowledgetutor.com/verify-otp', {
         headers: {
           accept: 'application/json',
           'content-type': 'application/x-www-form-urlencoded'

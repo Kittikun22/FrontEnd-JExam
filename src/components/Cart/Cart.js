@@ -25,17 +25,17 @@ export default function Cart({ rowsData, setRowsData }) {
       return arr_id.push(val.product_id);
     });
 
-    Axios.post("http://localhost:8000/getProductInCart", {
+    Axios.post("https://jexamapi.jknowledgetutor.com/getProductInCart", {
       product_id: arr_id,
     }).then((res) => {
       setItemInCart(res.data);
     });
 
-    Axios.get("http://localhost:8000/getCode").then((res) => {
+    Axios.get("https://jexamapi.jknowledgetutor.com/getCode").then((res) => {
       setCodeList(res.data);
     });
 
-    Axios.get("http://localhost:8000/getPromotion").then((res) => {
+    Axios.get("https://jexamapi.jknowledgetutor.com/getPromotion").then((res) => {
       setPromotion(res.data);
     });
 
@@ -84,7 +84,7 @@ export default function Cart({ rowsData, setRowsData }) {
     localStorage.setItem("cart", JSON.stringify(updateItemInCart));
     setItemInCart(updateItemInCart);
 
-    Axios.put("http://localhost:8000/updateCart", {
+    Axios.put("https://jexamapi.jknowledgetutor.com/updateCart", {
       user_id: user.user_id,
       updateCart: JSON.stringify(updateItemInCart),
     });

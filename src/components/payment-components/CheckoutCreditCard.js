@@ -33,7 +33,7 @@ export default function CreditCard({ user, amount }) {
         OmiseCard.open({
             amount: amount * 100,
             onCreateTokenSuccess: (token) => {
-                Axios.post('http://localhost:8000/checkout-credit-card', {
+                Axios.post('https://jexamapi.jknowledgetutor.com/checkout-credit-card', {
                     user_id: user.user_id,
                     payment_method: 'Card',
                     email: user.user_email,

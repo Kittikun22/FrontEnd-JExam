@@ -161,7 +161,7 @@ function System({ subject, productId, user }) {
   };
 
   const SaveAnswerUser = (data) => {
-    Axios.post("http://localhost:8000/saveAnswer", {
+    Axios.post("https://jexamapi.jknowledgetutor.com/saveAnswer", {
       user_id: data.user_id,
       exam_id: data.exam_id,
       answer: data.answer,
@@ -176,7 +176,7 @@ function System({ subject, productId, user }) {
 
   const [Retake, setRetake] = React.useState(false);
   const getTakingAnswer = () => {
-    Axios.post("http://localhost:8000/getTakingAnswer", {
+    Axios.post("https://jexamapi.jknowledgetutor.com/getTakingAnswer", {
       user_id: userAuth.user_id,
       exam_id: exam_id,
     }).then((res) => {
@@ -1018,7 +1018,7 @@ function System({ subject, productId, user }) {
   useEffect(() => {
 
     if (user) {
-      Axios.post('http://localhost:8000/UserProduct', {
+      Axios.post('https://jexamapi.jknowledgetutor.com/UserProduct', {
         user_id: user.user_id,
         product_id: productId
       }).then((res) => {

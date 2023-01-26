@@ -33,7 +33,7 @@ export default function Promptpay({ amount, payerName, payerEmail }) {
         OmiseCard.open({
             amount: amount * 100,
             onCreateTokenSuccess: (token) => {
-                Axios.post('http://localhost:8000/checkout-promptpay', {
+                Axios.post('https://jexamapi.jknowledgetutor.com/checkout-promptpay', {
                         email: payerEmail,
                         name: payerName,
                         amount: amount * 100,

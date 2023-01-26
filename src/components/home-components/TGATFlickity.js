@@ -12,7 +12,7 @@ function TGATFlickity() {
     const [TGATList, setTGATList] = useState([])
     useEffect(() => {
 
-        Axios.get('http://localhost:8000/getTGAT').then((res) => {
+        Axios.get('https://jexamapi.jknowledgetutor.com/getTGAT').then((res) => {
             setTGATList(res.data)
         })
 

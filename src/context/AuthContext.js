@@ -46,7 +46,7 @@ function AuthProvider(props) {
 
 function Signin(userPhone, userPwd) {
     return new Promise((resolve, reject) =>
-        Axios.post("http://localhost:8000/signin", {
+        Axios.post("https://jexamapi.jknowledgetutor.com/signin", {
             phone: userPhone,
             password: userPwd,
         }).then((res) => {

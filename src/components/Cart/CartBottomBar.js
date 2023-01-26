@@ -68,7 +68,7 @@ const CartBottomBar = ({
       ])
     );
 
-    Axios.put("http://localhost:8000/updateSelectItem", {
+    Axios.put("https://jexamapi.jknowledgetutor.com/updateSelectItem", {
       user_id: user_id,
       itemSelected: JSON.stringify(selectedItem),
     }).then((res) => {

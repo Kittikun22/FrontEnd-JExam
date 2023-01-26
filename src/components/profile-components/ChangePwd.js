@@ -31,7 +31,7 @@ function ChangePwd({ user }) {
 
 
     const CheckPassword = () => {
-        Axios.post('http://localhost:8000/getAPassword', {
+        Axios.post('https://jexamapi.jknowledgetutor.com/getAPassword', {
             user_id: user.user_id,
             password: oldPwd
         }).then((res) => {
@@ -42,7 +42,7 @@ function ChangePwd({ user }) {
     }
 
     const ChangePassword = (data) => {
-        Axios.put('http://localhost:8000/changePassword', {
+        Axios.put('https://jexamapi.jknowledgetutor.com/changePassword', {
             user_id: user.user_id,
             newPassword: data.newPassword
         }).then((res) => {
