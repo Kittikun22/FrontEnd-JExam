@@ -145,7 +145,7 @@ function ProfileSetting({ user }) {
                                     <Grid item xs={3}>
                                     </Grid>
                                     <Grid item xs={9}>
-                                        <Button onClick={updateAUser} variant='contained' color='success'>บันทึก</Button>
+                                        <Button sx={{width:'175px'}} onClick={updateAUser} variant='contained' color='success'>บันทึก</Button>
                                     </Grid>
                                 </Stack>
                             </Grid>
