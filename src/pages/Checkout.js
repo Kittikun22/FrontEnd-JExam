@@ -25,7 +25,7 @@ function Checkout() {
     selectedItem.map((val) => {
       return arr_id.push(val.product_id);
     })
-    Axios.post('https://jexamapi.jknowledgetutor.com/getProductInCart', {
+    Axios.post('http://localhost:8000/getProductInCart', {
       product_id: arr_id
     }).then((res) => {
       setCheckOutItem(res.data);

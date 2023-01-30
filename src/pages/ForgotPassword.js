@@ -32,7 +32,7 @@ function ForgotPassword() {
     const ReqOtp = (phone) => {
         try {
             if (ableOtp === false) {
-                Axios.post('https://jexamapi.jknowledgetutor.com/request-otp', {
+                Axios.post('http://localhost:8000/request-otp', {
                     headers: {
                         accept: 'application/json',
                         'content-type': 'application/x-www-form-urlencoded'
@@ -51,7 +51,7 @@ function ForgotPassword() {
 
     const VerifyOtp = (otpToken, otpCode) => {
         try {
-            Axios.post('https://jexamapi.jknowledgetutor.com/verify-otp', {
+            Axios.post('http://localhost:8000/verify-otp', {
                 headers: {
                     accept: 'application/json',
                     'content-type': 'application/x-www-form-urlencoded'
@@ -76,7 +76,7 @@ function ForgotPassword() {
     }
 
     const handleForgotPassword = (data) => {
-        Axios.post('https://jexamapi.jknowledgetutor.com/forgotPassword', {
+        Axios.post('http://localhost:8000/forgotPassword', {
             phone: data.phone,
             password: data.password
         }).then(() => {

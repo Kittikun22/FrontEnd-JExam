@@ -45,7 +45,7 @@ function ProfileSetting({ user }) {
     const [newPic, setNewPic] = useState();
 
     const updateAUser = () => {
-        Axios.put('https://jexamapi.jknowledgetutor.com/updateAUser'
+        Axios.put('http://localhost:8000/updateAUser'
             , { fname: newFname, lname: newLname, email: newEmail, user_pic: newPic, user_id: user.user_id })
             .then((res) => {
                 const ciphertext = CryptoJS.AES.encrypt(JSON.stringify({ fname: newFname, lname: newLname, email: newEmail, phone: user.phone, user_id: user.user_id, grade: user.grade, school: user.school, province: user.province, user_pic: newPic }), EncryptSecret).toString();
@@ -54,9 +54,7 @@ function ProfileSetting({ user }) {
                 handleClose()
             })
     }
-
-
-
+    
     return (
         <>
             {user ?

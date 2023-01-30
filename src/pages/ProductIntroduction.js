@@ -20,12 +20,12 @@ function ProductIntroduction() {
     useEffect(() => {
 
         if (productID) {
-            Axios.get(`https://jexamapi.jknowledgetutor.com/getProduct/${productID}`).then((res) => {
+            Axios.get(`http://localhost:8000/getProduct/${productID}`).then((res) => {
                 setProductDetail(res.data[0])
             })
         }
         if (user) {
-            Axios.post('https://jexamapi.jknowledgetutor.com/getuserproductandexams', {
+            Axios.post('http://localhost:8000/getuserproductandexams', {
                 user_id: user.user_id
             }).then((res) => {
                 setMyExamList(res.data)
@@ -33,7 +33,7 @@ function ProductIntroduction() {
         }
         if (user) {
             localStorage.setItem('cart', JSON.stringify(cartItem))
-            Axios.put('https://jexamapi.jknowledgetutor.com/updateCart', {
+            Axios.put('http://localhost:8000/updateCart', {
                 user_id: user.user_id,
                 updateCart: JSON.stringify(cartItem)
             })

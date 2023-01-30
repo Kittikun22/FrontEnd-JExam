@@ -33,7 +33,7 @@ export default function InternetBanking({ user, amount }) {
         OmiseCard.open({
             amount: amount * 100,
             onCreateTokenSuccess: (token) => {
-                Axios.post('https://jexamapi.jknowledgetutor.com/checkout-internet-banking', {
+                Axios.post('http://localhost:8000/checkout-internet-banking', {
                     email: user.email,
                     name: user.fname + " " + user.lname,
                     amount: amount * 100,

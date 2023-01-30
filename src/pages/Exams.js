@@ -13,8 +13,6 @@ function Exams() {
   const { productId } = useParams();
   const { user } = useAuthState();
 
-  console.log(user);
-
   const [exam, setExam] = useState()
   const [selectExam, setSelectExam] = useState(0)
 
@@ -27,7 +25,7 @@ function Exams() {
 
   useEffect(() => {
     if (user) {
-      Axios.post('https://jexamapi.jknowledgetutor.com/UserProduct', {
+      Axios.post('http://localhost:8000/UserProduct', {
         user_id: user.user_id,
         product_id: productId
       }).then((res) => {

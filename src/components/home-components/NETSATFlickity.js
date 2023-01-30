@@ -15,7 +15,7 @@ function NETSATFlickity() {
     const [NETSATList, setNETSATList] = useState([])
     useEffect(() => {
 
-        Axios.get('https://jexamapi.jknowledgetutor.com/getNETSAT').then((res) => {
+        Axios.get('http://localhost:8000/getNETSAT').then((res) => {
             setNETSATList(res.data)
         })
 

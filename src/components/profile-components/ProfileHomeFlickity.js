@@ -15,7 +15,7 @@ function ProfileHomeFlickity({ user }) {
     const [myExamList, setMyExamList] = useState([])
 
     useEffect(() => {
-        Axios.post('https://jexamapi.jknowledgetutor.com/getuserproductandexams', {
+        Axios.post('http://localhost:8000/getuserproductandexams', {
             user_id: user.user_id
         }).then((res) => {
             setMyExamList(res.data)

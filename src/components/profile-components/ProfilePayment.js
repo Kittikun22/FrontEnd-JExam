@@ -15,7 +15,7 @@ function ProfilePayment({ user }) {
   const [paymentHistory, setPaymentHistory] = useState()
 
   useEffect(() => {
-    Axios.post('https://jexamapi.jknowledgetutor.com/paymentHistory', {
+    Axios.post('http://localhost:8000/paymentHistory', {
       user_id: user.user_id
     }).then((res) => {
       setPaymentHistory(res.data)

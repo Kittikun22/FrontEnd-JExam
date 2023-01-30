@@ -10,7 +10,7 @@ const GuardRoutes = () => {
 
     useEffect(() => {
         const accessToken = localStorage.getItem('accessToken')
-        Axios.post('https://jexamapi.jknowledgetutor.com/authsignin', {
+        Axios.post('http://localhost:8000/authsignin', {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + accessToken
