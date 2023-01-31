@@ -23,7 +23,6 @@ function ExamAlertDialog({ openDialog, setOpenDialog, message, productId }) {
 
     }, [openDialog])
 
-
     const handleClose = () => {
         setOpenDialog(false);
         window.location = `/introduction/${productId}`
