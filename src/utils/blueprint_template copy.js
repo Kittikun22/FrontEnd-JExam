@@ -1,27 +1,441 @@
-[
-  {
-    topic: "",
-    subtopics: [
-      {
-        subtopic: "การเป็นสมาชิก",
-        explanation:
-          "ผู้ใช้ที่ไม่ได้เป็นสมาชิกหรือยังไม่ได้เข้าสู่ระบบจะสามารถเข้าถึงเนื้อหาได้เพียงบางส่วน ผู้ใช้บริการจำเป็นต้องสมัครสมาชิกและเข้าสู่ระบบเพื่อเข้าถึงเนื้อหาภายในเว็บไซต์ได้มากขึ้น รวมถึงการซื้อสินค้าและบริการจากเรา",
-        details: [
-          {
-            detail: "",
-          },
-        ],
-      },
-      {
-        subtopic: "ทรัพย์สินทางปัญญา",
-        explanation:
-          "J Knowledge Tutor ขอแจ้งให้ผู้ใช้บริการทราบว่าเนื้อหาทั้งหมดที่ปรากฏบนเว็บไซต์ ห้ามมิให้บุคคลใดลอกเลียน ปลอมแปลง ทำซ้ำ ดัดแปลง เผยแพร่ต่อสาธารณชน จำหน่าย หรือการกระทำใดๆ ในลักษณะที่เป็นการแสวงหาประโยนช์ ทางการค้าหรือประโยชน์โดยมิชอบ",
-        details: [
-          {
-            detail: "",
-          },
-        ],
-      },
-    ],
-  },
-];
+[{
+	"id": 1,
+	"question": " ข้อใดเป็นการใช้ความเปรียบเทียบที่แตกต่างจากข้ออื่น",
+	"question_image_sm": "/images/exams/netsat/NETSAT_Thai.png",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "ครูคือแม่พิมพ์ของชาติ",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "b",
+		"choicetext": "ท่าทางหล่อนราวกับนางพญา",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "c",
+		"choicetext": "ไพเราะกังวานปานเสียงนกร้อง",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "d",
+		"choicetext": "ฟันเรียงสลอนเหมือนข้าวโพดพันธุ์ดี",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "a",
+	"category": ""
+}, {
+	"id": 2,
+	"question": "ผู้นำที่ดีจะต้องมี________ในการบริหารที่กว้างไกล  ในขณะที่ผู้นำที่บางประเภทมักจะชอบสร้าง_________ให้น่าเชื่อถือมากกว่าลงมือปฏิบัติ",
+  	"question_image_sm": "",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "มุมมอง , ภาพพจน์",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "b",
+		"choicetext": "มุมมอง , ภาพลักษณ์",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "c",
+		"choicetext": "วิสัยทัศน์ , ภาพพจน์",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "d",
+		"choicetext": "วิสัยทัศน์ , ภาพลักษณ์",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "d",
+	"category": ""
+}, {
+	"id": 3,
+	"question": "เลือกทำตอบ",
+	"question_image_sm": "",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "b",
+		"choicetext": "ถูก 0.5",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0.5
+	}, {
+		"choicevalue": "c",
+		"choicetext": "ถูก 1",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "d",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "c",
+	"category": ""
+}, {
+	"id": 4,
+	"question": "เลือกทำตอบ",
+  	"question_image_sm": "",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "b",
+		"choicetext": "ถูก 0.5",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0.5
+	}, {
+		"choicevalue": "c",
+		"choicetext": "ถูก 1",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "d",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "c",
+	"category": ""
+}, {
+	"id": 5,
+	"question": "เลือกทำตอบ",
+  	"question_image_sm": "",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "b",
+		"choicetext": "ถูก 0.5",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0.5
+	}, {
+		"choicevalue": "c",
+		"choicetext": "ถูก 1",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "d",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "c",
+	"category": ""
+}, {
+	"id": 6,
+	"question": "เลือกทำตอบ",
+  	"question_image_sm": "",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "b",
+		"choicetext": "ถูก 0.5",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0.5
+	}, {
+		"choicevalue": "c",
+		"choicetext": "ถูก 1",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "d",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "c",
+	"category": ""
+}, {
+	"id": 7,
+	"question": "เลือกทำตอบ",
+  	"question_image_sm": "",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "b",
+		"choicetext": "ถูก 0.5",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0.5
+	}, {
+		"choicevalue": "c",
+		"choicetext": "ถูก 1",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "d",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "c",
+	"category": ""
+}, {
+	"id": 8,
+	"question": "เลือกทำตอบ",
+  	"question_image_sm": "",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "b",
+		"choicetext": "ถูก 0.5",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0.5
+	}, {
+		"choicevalue": "c",
+		"choicetext": "ถูก 1",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "d",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "c",
+	"category": ""
+}, {
+	"id": 9,
+	"question": "เลือกทำตอบ",
+  	"question_image_sm": "",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "b",
+		"choicetext": "ถูก 0.5",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0.5
+	}, {
+		"choicevalue": "c",
+		"choicetext": "ถูก 1",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "d",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "c",
+	"category": ""
+}, {
+	"id": 10,
+	"question": "เลือกทำตอบ",
+  	"question_image_sm": "",
+	"question_image_md": "",
+	"question_image_lg": "",
+	"choice": [{
+		"choicevalue": "a",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "b",
+		"choicetext": "ถูก 0.5",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0.5
+	}, {
+		"choicevalue": "c",
+		"choicetext": "ถูก 1",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 1
+	}, {
+		"choicevalue": "d",
+		"choicetext": "ผิด",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
+	}],
+	"answer": "c",
+	"category": ""
+}]

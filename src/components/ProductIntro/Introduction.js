@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { Box, Typography, Button, Paper, Stack } from '@mui/material'
 import BluePrint from './BluePrint';
@@ -9,7 +9,6 @@ function Introduction({ subject, user, productDetail, myExamList, cartItem, setC
 
     const bluePrint = JSON.parse(productDetail.blueprint)
 
-    console.log(subject);
     const [openLogin, setOpenLogin] = useState(false)
     const [openSnackBar, setOpenSnackBar] = useState(false)
     const [message, setMessage] = useState('')
