@@ -37,7 +37,7 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
 
     useEffect(() => {
         if (user) {
-            Axios.post('https://jexamapi.jknowledgetutor.com/getuserproductandexams', {
+            Axios.post('http://localhost:8000/getuserproductandexams', {
                 user_id: user.user_id
             }).then((res) => {
                 setMyExamList(res.data)

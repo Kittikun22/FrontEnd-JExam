@@ -35,7 +35,7 @@ function FakePayment({ selectedItems, user, amount, netAmount }) {
         const updateItemInCart = JSON.parse(localStorage.getItem("cart")).filter((item) => !itemToDelete.find(i => i.product_id === item.product_id));
         localStorage.setItem('cart', JSON.stringify(updateItemInCart))
 
-        Axios.put('https://jexamapi.jknowledgetutor.com/updateCart', {
+        Axios.put('http://localhost:8000/updateCart', {
             user_id: user.user_id,
             updateCart: JSON.stringify(updateItemInCart)
         }).then((res) => {
@@ -58,7 +58,7 @@ function FakePayment({ selectedItems, user, amount, netAmount }) {
             randomString += randomChar;
         }
 
-        Axios.post('https://jexamapi.jknowledgetutor.com/fakepay', {
+        Axios.post('http://localhost:8000/fakepay', {
             user_id: user.user_id,
             transaction: `trxn-${randomString}${randomNumber}`,
             amount: amount,
@@ -72,7 +72,7 @@ function FakePayment({ selectedItems, user, amount, netAmount }) {
                 localStorage.setItem('selectItem', JSON.stringify([]))
                 localStorage.setItem('discount', JSON.stringify([]))
 
-                Axios.put('https://jexamapi.jknowledgetutor.com/updateSelectItem', {
+                Axios.put('http://localhost:8000/updateSelectItem', {
                     user_id: user.user_id,
                     itemSelected: JSON.stringify([])
                 }).then((res) => {

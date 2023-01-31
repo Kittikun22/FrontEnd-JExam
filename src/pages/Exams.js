@@ -27,7 +27,7 @@ function Exams() {
 
   useEffect(() => {
     if (user) {
-      Axios.post('https://jexamapi.jknowledgetutor.com/UserProduct', {
+      Axios.post('http://localhost:8000/UserProduct', {
         user_id: user.user_id,
         product_id: productId
       }).then((res) => {

@@ -32,19 +32,19 @@ export default function DialogDreamFac({ open, setOpen }) {
     const [valueMajorTwo, setValueMajorTwo] = useState();
 
     useEffect(() => {
-        Axios.get('https://jexamapi.jknowledgetutor.com/getFaculty').then((res) => {
+        Axios.get('http://localhost:8000/getFaculty').then((res) => {
             setFaculty(res.data)
         })
 
         if (dreamFacOne) {
-            Axios.post('https://jexamapi.jknowledgetutor.com/getMajor', {
+            Axios.post('http://localhost:8000/getMajor', {
                 faculty_id: dreamFacOne.faculty_id
             }).then((res) => {
                 setMajorOne(res.data)
             })
         }
         if (dreamFacTwo) {
-            Axios.post('https://jexamapi.jknowledgetutor.com/getMajor', {
+            Axios.post('http://localhost:8000/getMajor', {
                 faculty_id: dreamFacTwo.faculty_id
             }).then((res) => {
                 setMajorTwo(res.data)
@@ -57,7 +57,7 @@ export default function DialogDreamFac({ open, setOpen }) {
     };
 
     const handleSubmit = () => {
-        Axios.put('https://jexamapi.jknowledgetutor.com/updateDreamFac', {
+        Axios.put('http://localhost:8000/updateDreamFac', {
             dream1: dreamFacOne.faculty_id,
             dream2: dreamFacTwo.faculty_id,
             major1: majorFacOne.major_id,

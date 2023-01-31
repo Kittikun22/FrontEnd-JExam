@@ -34,13 +34,13 @@ const RegisterStep = (props) => {
     const [expectationOption, setExpectationOption] = useState()
 
     useEffect(() => {
-        Axios.get('https://jexamapi.jknowledgetutor.com/getProvince').then((res) => {
+        Axios.get('http://localhost:8000/getProvince').then((res) => {
             setProvinceData(res.data)
         })
-        Axios.get('https://jexamapi.jknowledgetutor.com/getTermAndCondition').then((res) => {
+        Axios.get('http://localhost:8000/getTermAndCondition').then((res) => {
             setTermAndCondition(res.data[0])
         })
-        Axios.get('https://jexamapi.jknowledgetutor.com/getExpectation').then((res) => {
+        Axios.get('http://localhost:8000/getExpectation').then((res) => {
             setExpectationOption(res.data)
         })
 
@@ -85,7 +85,7 @@ const RegisterStep = (props) => {
     }
 
     const CreateUser = (data) => {
-        Axios.post('https://jexamapi.jknowledgetutor.com/create-user', {
+        Axios.post('http://localhost:8000/create-user', {
             phone: data.phone,
             password: data.password,
             fname: data.fname,

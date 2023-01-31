@@ -13,7 +13,7 @@ function TPATFlickity() {
     const [TPATList, setTPATList] = useState([])
     useEffect(() => {
 
-        Axios.get('https://jexamapi.jknowledgetutor.com/getTPAT').then((res) => {
+        Axios.get('http://localhost:8000/getTPAT').then((res) => {
             setTPATList(res.data)
         })
 

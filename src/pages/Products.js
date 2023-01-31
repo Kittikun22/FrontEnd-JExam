@@ -15,13 +15,13 @@ function Products() {
 
     useEffect(() => {
 
-        Axios.get('https://jexamapi.jknowledgetutor.com/getAllProduct').then((res) => {
+        Axios.get('http://localhost:8000/getAllProduct').then((res) => {
             setAllProduct(res.data)
         })
 
         if (user) {
             localStorage.setItem('cart', JSON.stringify(cartItem))
-            Axios.put('https://jexamapi.jknowledgetutor.com/updateCart', {
+            Axios.put('http://localhost:8000/updateCart', {
                 user_id: user.user_id,
                 updateCart: JSON.stringify(cartItem)
             })

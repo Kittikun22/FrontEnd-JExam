@@ -16,7 +16,7 @@ export default function ProfilePictureList({ setNewPic, newPic }) {
   const [pictureList, setPictureList] = useState();
 
   useEffect(() => {
-    Axios.get("https://jexamapi.jknowledgetutor.com/getProfilePicture").then((res) => {
+    Axios.get("http://localhost:8000/getProfilePicture").then((res) => {
       setPictureList(res.data);
     });
   }, []);

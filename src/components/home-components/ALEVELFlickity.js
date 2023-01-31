@@ -16,7 +16,7 @@ function ALEVELFlickity() {
     const [ALEVELList, setALEVELList] = useState([])
     useEffect(() => {
 
-        Axios.get('https://jexamapi.jknowledgetutor.com/getALEVEL').then((res) => {
+        Axios.get('http://localhost:8000/getALEVEL').then((res) => {
             setALEVELList(res.data)
         })
 
