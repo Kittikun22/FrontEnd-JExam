@@ -13,8 +13,6 @@ function Exams() {
   const { productId } = useParams();
   const { user } = useAuthState();
 
-  console.log(user);
-
   const [exam, setExam] = useState()
   const [selectExam, setSelectExam] = useState(0)
 

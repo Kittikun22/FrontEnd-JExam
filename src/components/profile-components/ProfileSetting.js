@@ -54,9 +54,7 @@ function ProfileSetting({ user }) {
                 handleClose()
             })
     }
-
-
-
+    
     return (
         <>
             {user ?

@@ -8,9 +8,13 @@ import {
   FormControl,
   Button,
 } from "@mui/material";
+import ExamScoreAlertDialog from "./ExamScoreAlertDialog";
 
 function ExamComponent({ exam, selectExam }) {
   const [duration, setDuration] = useState(600);
+  const [answers, setAnswers] = useState([]);
+  const [totalScore, setTotalScore] = useState(0);
+  const [openDialog, setOpenDialog] = useState(false);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -24,21 +28,29 @@ function ExamComponent({ exam, selectExam }) {
     return () => clearInterval(intervalId);
   }, [duration]);
 
-  const [answers, setAnswers] = useState({});
-
   const handleAnswerChange = (event, questions) => {
-    setAnswers({...answers,[questions.id]: event.target.value,});
+    const selectedChoice = questions.choice.find(
+      (choice) => choice.choicevalue === event.target.value
+    );
+
+    console.log(selectedChoice);
+    const newAnswer = {
+      id: questions.id,
+      choose: event.target.value,
+      point: selectedChoice.point,
+    };
+    setAnswers((prevAnswersArray) => [...prevAnswersArray, newAnswer]);
   };
 
-  const handleExamSubmit = (examContent) => {
+  const handleExamSubmit = () => {
     console.log(answers);
     let score = 0;
-    Object.keys(answers).forEach((id) => {
-      if (answers[id] === examContent[id - 1].Answer) {
-        score++;
-      }
+    answers.map((val) => {
+      return (score += val.point);
     });
-    alert(`Your score is ${score}`);
+
+    setTotalScore(score);
+    setOpenDialog(true);
   };
 
   if (exam) {
@@ -46,6 +58,12 @@ function ExamComponent({ exam, selectExam }) {
 
     return (
       <>
+        <ExamScoreAlertDialog
+          openDialog={openDialog}
+          setOpenDialog={setOpenDialog}
+          totalScore={totalScore}
+        />
+
         <Box
           sx={{
             py: 2,
@@ -57,20 +75,21 @@ function ExamComponent({ exam, selectExam }) {
               return (
                 <Box key={key}>
                   <Typography variant="h6">
-                    {key + 1}. {questions.question}
+                    {questions.id}. {questions.question}
                   </Typography>
-                  <RadioGroup
-                    onChange={(e) => handleAnswerChange(e, questions)}
-                    value={answers[questions.id]}
-                  >
+                  <RadioGroup value={answers[questions.id]}>
                     {questions.choice.map((choices, key) => {
                       return (
-                        <Typography key={key}>
+                        <Typography variant="span" key={key}>
                           {choices.choicetext === "" ? null : (
                             <FormControlLabel
                               value={choices.choicevalue}
                               control={<Radio />}
                               label={choices.choicetext}
+                              data-point={choices.point}
+                              onClick={(e) =>
+                                handleAnswerChange(e, questions, choices.point)
+                              }
                             />
                           )}
                         </Typography>
@@ -84,10 +103,7 @@ function ExamComponent({ exam, selectExam }) {
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <Button
-            variant="contained"
-            onClick={() => handleExamSubmit(examContent)}
-          >
+          <Button variant="contained" onClick={() => handleExamSubmit()}>
             ส่งคำตอบ
           </Button>
         </Box>
