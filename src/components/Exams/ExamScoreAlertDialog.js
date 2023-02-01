@@ -13,6 +13,7 @@ function ExamScoreAlertDialog({
   examContent,
   totalScore,
   timeSpend,
+  examFullScore
 }) {
   const timeSpending = new Date(timeSpend * 1000)
     .toISOString()
@@ -66,7 +67,7 @@ function ExamScoreAlertDialog({
                   textAlign: "center",
                 }}
               >
-                คะแนนที่ได้ : {totalScore} / {examContent.length} คะแนน
+                คะแนนที่ได้ : {totalScore} / {examFullScore} คะแนน
               </Typography>
             </Box>
 
@@ -86,6 +87,8 @@ function ExamScoreAlertDialog({
                 เวลาที่ใช้ : {timeSpending} นาที
               </Typography>
             </Box>
+
+
           </Box>
         </Box>
 
@@ -98,19 +101,29 @@ function ExamScoreAlertDialog({
             gap: 1,
           }}
         >
-          <Button variant="contained" color="success" onClick={handleClose}>
+          <Button
+            variant="contained"
+            color="success"
+            sx={{ borderRadius: 3 }}
+            onClick={handleClose}
+          >
             <Typography sx={{ color: "#fff" }}>ดูเฉลย</Typography>
           </Button>
           <Button
             variant="contained"
             color="warningOrange"
+            sx={{ borderRadius: 3 }}
             onClick={handleClose}
           >
             <Typography sx={{ color: "#fff" }}>
               ดูผลการวิเคราะห์คะแนน
             </Typography>
           </Button>
-          <Button variant="contained" onClick={handleClose}>
+          <Button
+            variant="contained"
+            onClick={handleClose}
+            sx={{ borderRadius: 3 }}
+          >
             <Typography>กลับหน้าโปรไฟล์</Typography>
           </Button>
         </Box>

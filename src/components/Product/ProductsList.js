@@ -248,7 +248,7 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
                                                         sx={{ borderRadius: 5, width: '200px' }}
                                                     >
                                                         <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
-                                                            มีข้อสอบนี้แล้ว
+                                                            มีข้อสอบแล้ว
                                                         </Typography>
                                                     </Button>
                                                 }

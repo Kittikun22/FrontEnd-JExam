@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -22,6 +22,25 @@ function ExamComponent({ exam, selectExam }) {
   const [totalScore, setTotalScore] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [openStartDialog, setOpenStartDialog] = useState(true);
+
+  const [step, setStep] = useState(0);
+
+  const handleNext = () => {
+    setStep(step + 1)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  const handleBack = () => {
+    setStep(step - 1)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
 
   const handleAnswerChange = (event, questions) => {
     const selectedChoice = questions.choice.find(
@@ -67,8 +86,17 @@ function ExamComponent({ exam, selectExam }) {
     if (duration === 0) {
       setDuration(examInfo[selectExam].Duration * 60);
     }
-
     const examName = exam[selectExam].exam_name;
+
+    let examFullScore = 0
+
+    examContent.map((val => {
+      return examFullScore += val.point
+    }))
+
+
+    const currentQuestions = examContent.slice(step * 5, (step + 1) * 5);
+
 
     return (
       <>
@@ -80,15 +108,16 @@ function ExamComponent({ exam, selectExam }) {
           examName={examName}
           examContent={examContent}
           duration={examInfo[selectExam].Duration}
+          examFullScore={examFullScore}
         />
 
         <ExamScoreAlertDialog
           openDialog={openDialog}
           setOpenDialog={setOpenDialog}
           examName={examName}
-          examContent={examContent}
           totalScore={totalScore}
           timeSpend={timeSpend}
+          examFullScore={examFullScore}
         />
 
         <ExamNavbar
@@ -98,12 +127,15 @@ function ExamComponent({ exam, selectExam }) {
           setTimeSpend={setTimeSpend}
           duration={duration}
           setOpenDialog={setOpenDialog}
+          examContent={examContent}
+          answers={answers}
+          examName={examName}
         />
         {loading ? null : (
           <Box>
-            <Box sx={{ py: 2, mx: { xs: 2, md: 15 } }}>
+            <Box sx={{ py: 4, mx: { xs: 2, md: 40 } }}>
               <FormControl>
-                {examContent.map((questions, key) => {
+                {currentQuestions.map((questions, key) => {
                   return (
                     <Box key={key} mb={2}>
                       <Typography variant="h6">
@@ -115,7 +147,7 @@ function ExamComponent({ exam, selectExam }) {
                           src={questions.question_image_sm}
                           alt="Jknowledge"
                           sx={{
-                            width: { xs: "150px", md: "150px" },
+                            width: { xs: "150px", md: "200px" },
                             ml: { xs: "", sm: 4 },
                           }}
                         />
@@ -126,7 +158,7 @@ function ExamComponent({ exam, selectExam }) {
                           src={questions.question_image_md}
                           alt="Jknowledge"
                           sx={{
-                            width: { xs: "250px", md: "350px" },
+                            width: { xs: "250px", md: "400px" },
                             ml: { xs: "", sm: 4 },
                           }}
                         />
@@ -136,7 +168,7 @@ function ExamComponent({ exam, selectExam }) {
                           component="img"
                           src={questions.question_image_lg}
                           sx={{
-                            width: { xs: "350px", md: "600px" },
+                            width: { xs: "350px", md: "700px" },
                             ml: { xs: "", sm: 4 },
                           }}
                           alt="Jknowledge"
@@ -151,7 +183,29 @@ function ExamComponent({ exam, selectExam }) {
                                 <FormControlLabel
                                   value={choices.choicevalue}
                                   control={<Radio />}
-                                  label={choices.choicetext}
+                                  label={<Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, my: 1 }}>
+                                    {choices?.choice_image_sm === "" ? null :
+                                      <Box
+                                        component="img"
+                                        src={choices.choice_image_sm}
+                                        sx={{ width: '100px', mr: 1 }}
+                                      />}
+                                    {choices?.choice_image_md === "" ? null :
+                                      <Box
+                                        component="img"
+                                        src={choices.choice_image_md}
+                                        sx={{ width: '175px', mr: 1 }}
+                                      />}
+                                    {choices?.choice_image_lg === "" ? null :
+                                      <Box
+                                        component="img"
+                                        src={choices.choice_image_lg}
+                                        sx={{ width: '300px', mr: 1 }}
+                                      />}
+                                    <Typography sx={{ alignSelf: { xs: '', sm: 'center' } }}>
+                                      {choices.choicetext}
+                                    </Typography>
+                                  </Box>}
                                   data-point={choices.point}
                                   onClick={(e) =>
                                     handleAnswerChange(
@@ -170,18 +224,45 @@ function ExamComponent({ exam, selectExam }) {
                   );
                 })}
               </FormControl>
+
             </Box>
 
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
+
               <Button
                 variant="contained"
-                onClick={() => handleExamSubmit()}
-                color="error"
+                disabled={step === 0 ? true : false}
+                onClick={() => handleBack()}
                 sx={{ borderRadius: 3, width: "125px" }}
               >
-                <Typography sx={{ fontSize: "1.2rem" }}>ส่งคำตอบ</Typography>
+                <Typography sx={{ fontSize: "1.2rem" }}>ย้อนกลับ</Typography>
               </Button>
+
+              {step === Math.ceil(examContent.length / 5 - 1) ?
+                <Button
+                  variant="contained"
+                  onClick={() => handleExamSubmit()}
+                  color="error"
+                  sx={{ borderRadius: 3, width: "125px" }}
+                >
+                  <Typography sx={{ fontSize: "1.2rem" }}>ส่งคำตอบ</Typography>
+                </Button>
+                :
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleNext()}
+                  sx={{ borderRadius: 3, width: "125px" }}
+                >
+                  <Typography sx={{ fontSize: "1.2rem" }}>ต่อไป</Typography>
+                </Button>
+
+              }
+
             </Box>
+
+
+
           </Box>
         )}
       </>

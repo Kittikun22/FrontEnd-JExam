@@ -7,6 +7,9 @@ import {
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import ExamTimerPic from '../../asset/timer-exam.png'
+
+
 
 function ExamStartDialog({
   openStartDialog,
@@ -16,6 +19,7 @@ function ExamStartDialog({
   examName,
   examContent,
   duration,
+  examFullScore
 }) {
   const handleClose = () => {
     setTimeControl(true);
@@ -29,9 +33,10 @@ function ExamStartDialog({
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: { xs: "", md: "center" },
+          alignItems: "center",
         }}
       >
+        <Box component="img" src={ExamTimerPic} width='200px'/>
         <Typography
           sx={{
             fontSize: "1.2rem",
@@ -51,7 +56,7 @@ function ExamStartDialog({
             textAlign: "center",
           }}
         >
-          มีข้อสอบ {examContent.length} ข้อ
+          มีข้อสอบ {examContent.length} ข้อ {examFullScore} คะแนน
         </Typography>
 
         <Box mb={2}>
@@ -79,7 +84,7 @@ function ExamStartDialog({
           sx={{
             fontSize: ".9rem",
             textAlign: "center",
-            color: "#FF7878",
+            color: "#F55050",
           }}
         >
           *หากหมดเวลาจะไม่สามารถทำข้อสอบได้และส่งคำตอบอัตโนมัติ

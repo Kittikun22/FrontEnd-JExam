@@ -14,6 +14,12 @@ const theme = createTheme({
         },
         warningOrange: {
             main: '#f57c00'
+        },
+        greenNeon: {
+            main:'#a3cc53'
+        },
+        backButton:{
+            main:'#0081B4'
         }
     },
 

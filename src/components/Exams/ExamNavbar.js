@@ -9,21 +9,26 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import logo from '../../asset/Jknowledge-Logo.png';
 import ExamTimeClock from './ExamTimeClock';
+import ExamDrawer from './ExamDrawer';
 
-const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, duration, setOpenDialog }) => {
+const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, duration, setOpenDialog, examContent, answers, examName }) => {
 
     const [anchorElNav, setAnchorElNav] = useState(null);
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
+    const handleDrawerOpen = () => {
+        setOpenDrawer(true);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
+    const handleDrawerClose = () => {
+        setOpenDrawer(false);
     };
+
+    const [openDrawer, setOpenDrawer] = useState(false)
 
     return (
         <>
+            <ExamDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} examContent={examContent} answers={answers} examName={examName}/>
+
             <AppBar position="sticky"
                 sx={{ background: '#0e3746' }}
             >
@@ -34,7 +39,7 @@ const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, dura
                             <IconButton
                                 size="large"
                                 aria-haspopup="true"
-                                onClick={handleOpenNavMenu}
+                                onClick={handleDrawerOpen}
                                 color="black"
                             >
                                 <MenuIcon sx={{ color: '#a3cc53' }} />
@@ -52,7 +57,7 @@ const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, dura
                                     horizontal: 'left',
                                 }}
                                 open={Boolean(anchorElNav)}
-                                onClose={handleCloseNavMenu}
+                                onClose={handleDrawerClose}
                                 sx={{
                                     display: { xs: 'flex', md: 'none' },
                                 }}
