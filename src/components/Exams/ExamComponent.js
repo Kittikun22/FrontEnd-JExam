@@ -42,6 +42,7 @@ function ExamComponent({ exam, selectExam }) {
   }
 
 
+
   const handleAnswerChange = (event, questions) => {
     const selectedChoice = questions.choice.find(
       (choice) => choice.choicevalue === event.target.value

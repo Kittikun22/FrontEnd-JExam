@@ -24,7 +24,6 @@ function ExamDrawer({ openDrawer, setOpenDrawer, examContent, answers, examName 
                 sx={{ width: 275, height: '100%', background: '#0e3746', borderRight: 5, borderColor: '#a3cc53' }}
                 onClick={handleDrawerOpen}
                 onKeyDown={handleDrawerClose}
-
             >
                 <Box my={2}>
                     <Typography sx={{ fontSize: '1.2rem', color: '#fff', textAlign: 'center' }}>
@@ -35,7 +34,7 @@ function ExamDrawer({ openDrawer, setOpenDrawer, examContent, answers, examName 
 
                 <Box my={2} sx={{ display: 'flex' }}>
                     <Box sx={{ width: '200px', mx: 2 }}>
-                        <LinearProgress variant="determinate" color='warning' sx={{ height: 15 }} value={progresses} />
+                        <LinearProgress variant="determinate" color={progresses === 100 ? 'success' : 'warning'} sx={{ height: 15 }} value={progresses} />
                     </Box>
                     <Box sx={{ minWidth: 35, alignSelf: 'center' }}>
                         <Typography variant="body2" color="#fff">
