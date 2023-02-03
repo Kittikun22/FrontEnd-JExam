@@ -11,7 +11,7 @@ import logo from '../../asset/Jknowledge-Logo.png';
 import ExamTimeClock from './ExamTimeClock';
 import ExamDrawer from './ExamDrawer';
 
-const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, duration, setOpenDialog, examContent, answers, examName }) => {
+const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, duration, setOpenDialog, examContent, answers, examName, handleExamSubmit, setOpenSubmitDialog }) => {
 
     const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -27,7 +27,15 @@ const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, dura
 
     return (
         <>
-            <ExamDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} examContent={examContent} answers={answers} examName={examName}/>
+            <ExamDrawer
+                openDrawer={openDrawer}
+                setOpenDrawer={setOpenDrawer}
+                examContent={examContent}
+                answers={answers}
+                examName={examName}
+                handleExamSubmit={handleExamSubmit}
+                setOpenSubmitDialog={setOpenSubmitDialog}
+            />
 
             <AppBar position="sticky"
                 sx={{ background: '#0e3746' }}

@@ -36,7 +36,7 @@ function ExamStartDialog({
           alignItems: "center",
         }}
       >
-        <Box component="img" src={ExamTimerPic} width='200px'/>
+        <Box component="img" src={ExamTimerPic} width='200px' />
         <Typography
           sx={{
             fontSize: "1.2rem",
@@ -45,7 +45,7 @@ function ExamStartDialog({
             textAlign: "center",
           }}
         >
-          ข้อสอบ {examName}
+          ข้อสอบ : {examName}
         </Typography>
 
         <Typography
@@ -56,7 +56,18 @@ function ExamStartDialog({
             textAlign: "center",
           }}
         >
-          มีข้อสอบ {examContent.length} ข้อ {examFullScore} คะแนน
+          มีข้อสอบ : {examContent.length} ข้อ
+        </Typography>
+
+        <Typography
+          sx={{
+            fontSize: "1.2rem",
+            fontWeight: 600,
+            width: "265px",
+            textAlign: "center",
+          }}
+        >
+          คะแนนเต็ม : {examFullScore} คะแนน
         </Typography>
 
         <Box mb={2}>
@@ -68,13 +79,13 @@ function ExamStartDialog({
               textAlign: "center",
             }}
           >
-            มีเวลาในการทำ {duration} นาที
+            มีเวลาในการทำ : {duration} นาที
           </Typography>
         </Box>
 
         <Typography
           sx={{
-            fontSize: "1rem",
+            fontSize: "1.2rem",
             textAlign: "center",
           }}
         >

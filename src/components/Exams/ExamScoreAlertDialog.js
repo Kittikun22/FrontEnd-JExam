@@ -10,7 +10,6 @@ function ExamScoreAlertDialog({
   openDialog,
   setOpenDialog,
   examName,
-  examContent,
   totalScore,
   timeSpend,
   examFullScore

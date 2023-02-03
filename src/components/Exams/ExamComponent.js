@@ -11,17 +11,26 @@ import {
 import ExamScoreAlertDialog from "./ExamScoreAlertDialog";
 import ExamNavbar from "./ExamNavbar";
 import ExamStartDialog from "./ExamStartDialog";
+import ExamSubmitAlert from './ExamSubmitAlert';
+
 
 function ExamComponent({ exam, selectExam }) {
+
+  const examContent = JSON.parse(exam[selectExam].exam_content);
+  const examInfo = JSON.parse(exam[selectExam].exam_info);
+
   const [loading, setLoading] = useState(true);
   const [duration, setDuration] = useState(0);
   const [timeSpend, setTimeSpend] = useState(0);
   const [timeControl, setTimeControl] = useState(false);
 
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState(examContent.map((question) => ({ id: question.id, choose: '' })));
   const [totalScore, setTotalScore] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [openStartDialog, setOpenStartDialog] = useState(true);
+  const [openSubmitDialog, setOpenSubmitDialog] = useState(false)
+
+  console.log(answers);
 
   const [step, setStep] = useState(0);
 
@@ -30,44 +39,51 @@ function ExamComponent({ exam, selectExam }) {
     window.scrollTo({
       top: 0,
       behavior: "smooth"
-    });
+    })
   }
 
   const handleBack = () => {
     setStep(step - 1)
     window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+      top: 0
+    })
   }
 
-
-
-  const handleAnswerChange = (event, questions) => {
-    const selectedChoice = questions.choice.find(
-      (choice) => choice.choicevalue === event.target.value
+  const handleAnswerChange = (questionId) => (event) => {
+    setAnswers(
+      answers.map((answer) =>
+      answer.id === questionId
+          ? { ...answer, choose: event.target.value }
+          : answer
+      )
     );
-
-    const newAnswer = {
-      id: questions.id,
-      choose: event.target.value,
-      point: selectedChoice.point,
-    };
-
-    const answerIndex = answers.findIndex(
-      (answer) => answer.id === questions.id
-    );
-
-    if (answerIndex !== -1) {
-      setAnswers((prevAnswersArray) => [
-        ...prevAnswersArray.slice(0, answerIndex),
-        newAnswer,
-        ...prevAnswersArray.slice(answerIndex + 1),
-      ]);
-    } else {
-      setAnswers((prevAnswersArray) => [...prevAnswersArray, newAnswer]);
-    }
   };
+
+  // const handleAnswerChange = (event, questions) => {
+  //   const selectedChoice = questions.choice.find(
+  //     (choice) => choice.choicevalue === event.target.value
+  //   );
+
+  //   const newAnswer = {
+  //     id: questions.id,
+  //     choose: event.target.value,
+  //     point: selectedChoice.point,
+  //   };
+
+  //   const answerIndex = answers.findIndex(
+  //     (answer) => answer.id === questions.id
+  //   );
+
+  //   if (answerIndex !== -1) {
+  //     setAnswers((prevAnswersArray) => [
+  //       ...prevAnswersArray.slice(0, answerIndex),
+  //       newAnswer,
+  //       ...prevAnswersArray.slice(answerIndex + 1),
+  //     ]);
+  //   } else {
+  //     setAnswers((prevAnswersArray) => [...prevAnswersArray, newAnswer]);
+  //   }
+  // };
 
   const handleExamSubmit = () => {
     setTimeControl(false);
@@ -82,8 +98,7 @@ function ExamComponent({ exam, selectExam }) {
   };
 
   if (exam) {
-    const examContent = JSON.parse(exam[selectExam].exam_content);
-    const examInfo = JSON.parse(exam[selectExam].exam_info);
+
     if (duration === 0) {
       setDuration(examInfo[selectExam].Duration * 60);
     }
@@ -95,9 +110,7 @@ function ExamComponent({ exam, selectExam }) {
       return examFullScore += val.point
     }))
 
-
     const currentQuestions = examContent.slice(step * 5, (step + 1) * 5);
-
 
     return (
       <>
@@ -131,100 +144,42 @@ function ExamComponent({ exam, selectExam }) {
           examContent={examContent}
           answers={answers}
           examName={examName}
+          handleExamSubmit={handleExamSubmit}
+          setOpenSubmitDialog={setOpenSubmitDialog}
         />
+
+        <ExamSubmitAlert
+          openSubmitDialog={openSubmitDialog}
+          setOpenSubmitDialog={setOpenSubmitDialog}
+          handleExamSubmit={handleExamSubmit}
+          examContent={examContent}
+          answers={answers}
+        />
+
+
         {loading ? null : (
           <Box>
             <Box sx={{ py: 4, mx: { xs: 2, md: 40 } }}>
-              <FormControl>
-                {currentQuestions.map((questions, key) => {
-                  return (
-                    <Box key={key} mb={2}>
-                      <Typography variant="h6">
-                        {questions.id}. {questions.question}
-                      </Typography>
-                      {questions?.question_image_sm ? (
-                        <Box
-                          component="img"
-                          src={questions.question_image_sm}
-                          alt="Jknowledge"
-                          sx={{
-                            width: { xs: "150px", md: "200px" },
-                            ml: { xs: "", sm: 4 },
-                          }}
+              {currentQuestions.map((question) => {
+                return (
+                  <Box key={question.id}>
+                    <Typography variant="h5">{question.question}</Typography>
+                    <RadioGroup
+                      value={answers.find((selectedValue) => selectedValue.id === question.id).value}
+                      onChange={handleAnswerChange(question.id)}
+                    >
+                      {question.choice.map((choice, index) => (
+                        <FormControlLabel
+                          value={choice}
+                          key={index}
+                          control={<Radio />}
+                          label={choice}
                         />
-                      ) : null}
-                      {questions?.question_image_md ? (
-                        <Box
-                          component="img"
-                          src={questions.question_image_md}
-                          alt="Jknowledge"
-                          sx={{
-                            width: { xs: "250px", md: "400px" },
-                            ml: { xs: "", sm: 4 },
-                          }}
-                        />
-                      ) : null}
-                      {questions?.question_image_lg ? (
-                        <Box
-                          component="img"
-                          src={questions.question_image_lg}
-                          sx={{
-                            width: { xs: "350px", md: "700px" },
-                            ml: { xs: "", sm: 4 },
-                          }}
-                          alt="Jknowledge"
-                        />
-                      ) : null}
-
-                      <RadioGroup value={answers[questions.id]}>
-                        {questions.choice.map((choices, key) => {
-                          return (
-                            <Typography variant="span" key={key}>
-                              {choices.choicetext === "" ? null : (
-                                <FormControlLabel
-                                  value={choices.choicevalue}
-                                  control={<Radio />}
-                                  label={<Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, my: 1 }}>
-                                    {choices?.choice_image_sm === "" ? null :
-                                      <Box
-                                        component="img"
-                                        src={choices.choice_image_sm}
-                                        sx={{ width: '100px', mr: 1 }}
-                                      />}
-                                    {choices?.choice_image_md === "" ? null :
-                                      <Box
-                                        component="img"
-                                        src={choices.choice_image_md}
-                                        sx={{ width: '175px', mr: 1 }}
-                                      />}
-                                    {choices?.choice_image_lg === "" ? null :
-                                      <Box
-                                        component="img"
-                                        src={choices.choice_image_lg}
-                                        sx={{ width: '300px', mr: 1 }}
-                                      />}
-                                    <Typography sx={{ alignSelf: { xs: '', sm: 'center' } }}>
-                                      {choices.choicetext}
-                                    </Typography>
-                                  </Box>}
-                                  data-point={choices.point}
-                                  onClick={(e) =>
-                                    handleAnswerChange(
-                                      e,
-                                      questions,
-                                      choices.point
-                                    )
-                                  }
-                                />
-                              )}
-                            </Typography>
-                          );
-                        })}
-                      </RadioGroup>
-                    </Box>
-                  );
-                })}
-              </FormControl>
+                      ))}
+                    </RadioGroup>
+                  </Box>
+                )
+              })}
 
             </Box>
 
@@ -242,7 +197,7 @@ function ExamComponent({ exam, selectExam }) {
               {step === Math.ceil(examContent.length / 5 - 1) ?
                 <Button
                   variant="contained"
-                  onClick={() => handleExamSubmit()}
+                  onClick={() => answers.length !== JSON.parse(exam[selectExam].exam_content).length ? setOpenSubmitDialog(true) : handleExamSubmit()}
                   color="error"
                   sx={{ borderRadius: 3, width: "125px" }}
                 >
