@@ -11,11 +11,9 @@ import {
 import ExamScoreAlertDialog from "./ExamScoreAlertDialog";
 import ExamNavbar from "./ExamNavbar";
 import ExamStartDialog from "./ExamStartDialog";
-import ExamSubmitAlert from './ExamSubmitAlert';
-
+import ExamSubmitAlert from "./ExamSubmitAlert";
 
 function ExamComponent({ exam, selectExam }) {
-
   const examContent = JSON.parse(exam[selectExam].exam_content);
   const examInfo = JSON.parse(exam[selectExam].exam_info);
 
@@ -24,35 +22,37 @@ function ExamComponent({ exam, selectExam }) {
   const [timeSpend, setTimeSpend] = useState(0);
   const [timeControl, setTimeControl] = useState(false);
 
-  const [answers, setAnswers] = useState(examContent.map((question) => ({ id: question.id, choose: '' })));
+  const [answers, setAnswers] = useState(
+    examContent.map((question) => ({ id: question.id, choose: "" }))
+  );
   const [totalScore, setTotalScore] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [openStartDialog, setOpenStartDialog] = useState(true);
-  const [openSubmitDialog, setOpenSubmitDialog] = useState(false)
+  const [openSubmitDialog, setOpenSubmitDialog] = useState(false);
 
   console.log(answers);
 
   const [step, setStep] = useState(0);
 
   const handleNext = () => {
-    setStep(step + 1)
+    setStep(step + 1);
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
-    })
-  }
+      behavior: "smooth",
+    });
+  };
 
   const handleBack = () => {
-    setStep(step - 1)
+    setStep(step - 1);
     window.scrollTo({
-      top: 0
-    })
-  }
+      top: 0,
+    });
+  };
 
   const handleAnswerChange = (questionId) => (event) => {
     setAnswers(
       answers.map((answer) =>
-      answer.id === questionId
+        answer.id === questionId
           ? { ...answer, choose: event.target.value }
           : answer
       )
@@ -98,17 +98,16 @@ function ExamComponent({ exam, selectExam }) {
   };
 
   if (exam) {
-
     if (duration === 0) {
       setDuration(examInfo[selectExam].Duration * 60);
     }
     const examName = exam[selectExam].exam_name;
 
-    let examFullScore = 0
+    let examFullScore = 0;
 
-    examContent.map((val => {
-      return examFullScore += val.point
-    }))
+    examContent.map((val) => {
+      return (examFullScore += val.point);
+    });
 
     const currentQuestions = examContent.slice(step * 5, (step + 1) * 5);
 
@@ -156,35 +155,41 @@ function ExamComponent({ exam, selectExam }) {
           answers={answers}
         />
 
-
         {loading ? null : (
           <Box>
             <Box sx={{ py: 4, mx: { xs: 2, md: 40 } }}>
-              {currentQuestions.map((question) => {
+              {currentQuestions.map((question, key) => {
                 return (
-                  <Box key={question.id}>
-                    <Typography variant="h5">{question.question}</Typography>
+                  <Box key={key}>
+                    <Typography variant="h5">
+                      {question.id}. {question.question}
+                    </Typography>
                     <RadioGroup
-                      value={answers.find((selectedValue) => selectedValue.id === question.id).value}
+                      value={
+                        answers.find((answer) => answer.id === question.id)
+                          .value
+                      }
                       onChange={handleAnswerChange(question.id)}
                     >
-                      {question.choice.map((choice, index) => (
-                        <FormControlLabel
-                          value={choice}
-                          key={index}
-                          control={<Radio />}
-                          label={choice}
-                        />
+                      {question.choice.map((choice, key) => (
+                        <Box key={key}>
+                          {choice.choicetext === "" ? null : (
+                            <FormControlLabel
+                              value={choice.choicevalue}
+                              key={key}
+                              control={<Radio />}
+                              label={choice.choicetext}
+                            />
+                          )}
+                        </Box>
                       ))}
                     </RadioGroup>
                   </Box>
-                )
+                );
               })}
-
             </Box>
 
-            <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
-
+            <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button
                 variant="contained"
                 disabled={step === 0 ? true : false}
@@ -194,16 +199,20 @@ function ExamComponent({ exam, selectExam }) {
                 <Typography sx={{ fontSize: "1.2rem" }}>ย้อนกลับ</Typography>
               </Button>
 
-              {step === Math.ceil(examContent.length / 5 - 1) ?
+              {step === Math.ceil(examContent.length / 5 - 1) ? (
                 <Button
                   variant="contained"
-                  onClick={() => answers.length !== JSON.parse(exam[selectExam].exam_content).length ? setOpenSubmitDialog(true) : handleExamSubmit()}
+                  onClick={() =>
+                    answers.length !== examContent.length
+                      ? setOpenSubmitDialog(true)
+                      : handleExamSubmit()
+                  }
                   color="error"
                   sx={{ borderRadius: 3, width: "125px" }}
                 >
                   <Typography sx={{ fontSize: "1.2rem" }}>ส่งคำตอบ</Typography>
                 </Button>
-                :
+              ) : (
                 <Button
                   variant="contained"
                   color="primary"
@@ -212,13 +221,8 @@ function ExamComponent({ exam, selectExam }) {
                 >
                   <Typography sx={{ fontSize: "1.2rem" }}>ต่อไป</Typography>
                 </Button>
-
-              }
-
+              )}
             </Box>
-
-
-
           </Box>
         )}
       </>
