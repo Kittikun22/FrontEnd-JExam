@@ -6,9 +6,14 @@ import {
   Dialog,
   DialogContent,
   DialogActions,
+  Slide
 } from "@mui/material";
 import ExamTimerPic from '../../asset/timer-exam.png'
 
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 
 function ExamStartDialog({
@@ -28,7 +33,7 @@ function ExamStartDialog({
   };
 
   return (
-    <Dialog open={openStartDialog} fullWidth={true} maxWidth={"sm"}>
+    <Dialog open={openStartDialog} fullWidth={true} maxWidth={"md"} TransitionComponent={Transition}>
       <DialogContent
         sx={{
           display: "flex",

@@ -77,7 +77,7 @@ function ProfileHistory({ user }) {
                   </CardContent>
                 </CardActionArea>
                 <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                  <Button variant='contained' color='warning' sx={{ borderRadius: 5, fontSize:{xs:'.8rem' , md:''} }}>ดูประวัติการทำข้อสอบ</Button>
+                  <Button variant='contained' color='warning' sx={{ borderRadius: 3, fontSize:{xs:'.8rem' , md:''} }}>ดูประวัติการทำข้อสอบ</Button>
                 </CardActions>
               </Card>
             )

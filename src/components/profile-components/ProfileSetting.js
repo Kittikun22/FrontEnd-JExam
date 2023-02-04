@@ -54,7 +54,7 @@ function ProfileSetting({ user }) {
                 handleClose()
             })
     }
-    
+
     return (
         <>
             {user ?
@@ -132,7 +132,7 @@ function ProfileSetting({ user }) {
                                         <Typography>รหัสผ่าน</Typography>
                                     </Grid>
                                     <Grid item xs={9} >
-                                        <ChangePwd user={user}/>
+                                        <ChangePwd user={user} />
 
                                     </Grid>
                                 </Stack>
@@ -143,7 +143,13 @@ function ProfileSetting({ user }) {
                                     <Grid item xs={3}>
                                     </Grid>
                                     <Grid item xs={9}>
-                                        <Button sx={{width:'175px'}} onClick={updateAUser} variant='contained' color='success'>บันทึก</Button>
+                                        <Button
+                                            sx={{ width: '175px', borderRadius: 3 }}
+                                            onClick={updateAUser}
+                                            variant='contained'
+                                            color='success'>
+                                            บันทึก
+                                        </Button>
                                     </Grid>
                                 </Stack>
                             </Grid>

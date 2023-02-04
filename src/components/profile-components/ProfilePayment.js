@@ -48,7 +48,7 @@ function ProfilePayment({ user }) {
           >
             <ListItemButton
               onClick={handleClick}
-              sx={{ background: '#D7E9B9', borderRadius: 7 }}
+              sx={{ background: '#D7E9B9', borderRadius: 3 }}
             >
               <ListItemText primary={formatDate(val.paid_at)} />
               {open ? <ExpandLess /> : <ExpandMore />}

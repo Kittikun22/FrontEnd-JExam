@@ -1,14 +1,19 @@
 import React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { Typography, Box, Button, Divider } from "@mui/material";
+import { Typography, Box, Button, Divider, Slide } from "@mui/material";
 import ScoreBadge from "../../asset/badge.png";
 import StarIcon from "@mui/icons-material/Star";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 function ExamScoreAlertDialog({
   openDialog,
   setOpenDialog,
+  exam_id,
   examName,
   totalScore,
   timeSpend,
@@ -18,12 +23,10 @@ function ExamScoreAlertDialog({
     .toISOString()
     .substring(14, 19);
 
-  const handleClose = () => {
-    setOpenDialog(false);
-  };
+  console.log(exam_id);
 
   return (
-    <Dialog open={openDialog} fullWidth={true} maxWidth={"md"}>
+    <Dialog open={openDialog} fullWidth={true} maxWidth={"md"} TransitionComponent={Transition}>
       <DialogContent>
         <Box
           sx={{
@@ -104,7 +107,9 @@ function ExamScoreAlertDialog({
             variant="contained"
             color="success"
             sx={{ borderRadius: 3 }}
-            onClick={handleClose}
+            onClick={() => {
+              window.location = `/answer/${exam_id}`;
+            }}
           >
             <Typography sx={{ color: "#fff" }}>ดูเฉลย</Typography>
           </Button>
@@ -112,7 +117,10 @@ function ExamScoreAlertDialog({
             variant="contained"
             color="warningOrange"
             sx={{ borderRadius: 3 }}
-            onClick={handleClose}
+            onClick={() => {
+              localStorage.setItem("ActiveContent", "profile-analysis");
+              window.location = '/profile';
+            }}
           >
             <Typography sx={{ color: "#fff" }}>
               ดูผลการวิเคราะห์คะแนน
@@ -120,7 +128,10 @@ function ExamScoreAlertDialog({
           </Button>
           <Button
             variant="contained"
-            onClick={handleClose}
+            onClick={() => {
+              localStorage.setItem("ActiveContent", "profile-homepage");
+              window.location = '/profile';
+            }}
             sx={{ borderRadius: 3 }}
           >
             <Typography>กลับหน้าโปรไฟล์</Typography>

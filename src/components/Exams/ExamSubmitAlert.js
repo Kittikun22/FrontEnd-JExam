@@ -1,8 +1,12 @@
 import React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
-import { Typography, Box, Button, DialogActions } from "@mui/material";
+import { Typography, Box, Button, DialogActions, Slide } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function ExamSubmitAlert({
   openSubmitDialog,
@@ -22,7 +26,7 @@ function ExamSubmitAlert({
   };
 
   return (
-    <Dialog open={openSubmitDialog} fullWidth={true} maxWidth={"md"}>
+    <Dialog open={openSubmitDialog} fullWidth={true} maxWidth={"md"} TransitionComponent={Transition}>
       <DialogContent
         sx={{
           display: "flex",
@@ -50,7 +54,7 @@ function ExamSubmitAlert({
                     variant="contained"
                     key={key}
                     color="warning"
-                    onClick={() => handleGoToQuestion(val.id)}
+                    onClick={() => { handleGoToQuestion(val.id); setOpenSubmitDialog(false); }}
                     sx={{
                       borderRadius: 3,
                       minWidth: "50px",

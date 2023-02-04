@@ -109,18 +109,6 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                         </ListItemButton>
 
                         <ListItemButton
-                            onClick={() => { handleSetActiveContent('profile-exams') }}
-                            component={Link}
-                            href='/profile'
-                        >
-                            <ListItemIcon>
-                                <MenuBookIcon sx={{ color: '#a3cc53' }} />
-                            </ListItemIcon>
-                            <ListItemText primary="ข้อสอบทั้งหมด" sx={{ color: '#a3cc53' }} />
-                        </ListItemButton>
-
-
-                        <ListItemButton
                             onClick={() => { handleSetActiveContent('profile-analysis') }}
                             component={Link}
                             href='/profile'

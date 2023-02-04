@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, Slide } from '@mui/material';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Zoom from '@mui/material/Zoom'
 
@@ -11,6 +11,11 @@ const icon = (
         <CancelIcon sx={{ color: '#FF4A4A' }} />
     </Box>
 );
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
+
 
 function ExamAlertDialog({ openDialog, setOpenDialog, message, productId }) {
 
@@ -34,6 +39,7 @@ function ExamAlertDialog({ openDialog, setOpenDialog, message, productId }) {
             onClose={handleClose}
             fullWidth={true}
             maxWidth={'sm'}
+            TransitionComponent={Transition}
         >
             <DialogContent sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: '', md: 'center' } }}>
                 <Zoom in={true}>{icon}</Zoom>

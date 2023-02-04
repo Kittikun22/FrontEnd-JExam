@@ -87,7 +87,7 @@ function ProfileMyExam({ user }) {
                   <Button
                     variant='contained'
                     color='warning'
-                    sx={{ borderRadius: 5 }}
+                    sx={{ borderRadius: 3 }}
                     href={`/introduction/${val.product_id}`}
                   >
                     ทำข้อสอบ

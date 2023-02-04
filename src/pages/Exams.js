@@ -87,7 +87,7 @@ function Exams() {
         }}
       >
         {loading === true ? (
-          <ExamComponent exam={exam} selectExam={selectExam} />
+          <ExamComponent exam={exam} selectExam={selectExam} user={user} />
         ) : null}
       </Box>
     </>

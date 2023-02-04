@@ -22,7 +22,7 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
     <>
       {user ?
         <List>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: '20px', minWidth: '225px' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: '20px', width: '250px' }}>
 
             <Avatar
               sx={{
@@ -56,15 +56,6 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
               <AutoStoriesIcon sx={{ color: activeContent === 'profile-myexam' ? '#a3cc53' : null }} />
             </ListItemIcon>
             <ListItemText primary="ข้อสอบของฉัน" />
-          </ListItemButton>
-
-          <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-exams' ? '5px solid #a3cc53' : null }}
-            onClick={() => { handleSetActiveContent('profile-exams') }}>
-            <ListItemIcon>
-              <MenuBookIcon sx={{ color: activeContent === 'profile-exams' ? '#a3cc53' : null }} />
-            </ListItemIcon>
-            <ListItemText primary="ข้อสอบทั้งหมด" />
           </ListItemButton>
 
 

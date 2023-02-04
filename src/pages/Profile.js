@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 import ProfileHomepage from '../components/profile-components/ProfileHomepage'
 import ProfileMyExam from '../components/profile-components/ProfileMyExam'
-import ProfileExams from '../components/profile-components/ProfileExams'
 import ProfilePayment from '../components/profile-components/ProfilePayment'
 import ProfileSetting from '../components/profile-components/ProfileSetting'
 import ProfileAnalysis from '../components/profile-components/ProfileAnalysis'
@@ -32,8 +31,6 @@ function Profile() {
                 return <ProfileHomepage user={user} />
             case 'profile-myexam':
                 return <ProfileMyExam user={user} />
-            case 'profile-exams':
-                return <ProfileExams user={user} />
             case 'profile-payment':
                 return <ProfilePayment user={user} />
             case 'profile-analysis':

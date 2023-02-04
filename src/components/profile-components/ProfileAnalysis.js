@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios'
-import { Link } from '@mui/material';
-import {
-    Chart as ChartJS,
-    RadialLinearScale,
-    PointElement,
-    LineElement,
-    Filler, ArcElement, Tooltip, Legend
-} from 'chart.js';
-
-import { Radar } from 'react-chartjs-2';
+import { Link, Stack } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -20,48 +11,15 @@ import {
     Box,
     Button
 } from '@mui/material'
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import Slide from '@mui/material/Slide';
-ChartJS.register(RadialLinearScale,
-    PointElement,
-    LineElement,
-    Filler,
-    ArcElement,
-    Tooltip,
-    Legend);
-
-
-export const dataRadar = {
-    labels: ['Topic 1', 'Topic 2', 'Topic 3', 'Topic 4', 'Topic 4', 'Topic 5', 'Topic 6'],
-    datasets: [
-        {
-            label: 'A-Level',
-            data: [78, 91, 61, 43, 100, 69, 54],
-            backgroundColor: '#a3cc5380',
-            borderColor: '#4E6C50',
-            borderWidth: 3,
-        },
-    ],
-};
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
+import ProfileAnalysisDialog from './ProfileAnalysisDialog';
 
 
 function ProfileAnalysis({ user }) {
 
-    const [open, setOpen] = useState(false);
+    const [openAnalysisDialog, setOpenAnalysisDialog] = useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
+    const handleOpenAnalysisDialog = () => {
+        setOpenAnalysisDialog(true);
     };
 
     const [myExamList, setMyExamList] = useState([])
@@ -75,8 +33,11 @@ function ProfileAnalysis({ user }) {
     }, [])
 
 
+
     return (
         <>
+            <ProfileAnalysisDialog openAnalysisDialog={openAnalysisDialog} setOpenAnalysisDialog={setOpenAnalysisDialog} myExamList={myExamList}/>
+
             <Box m={2}>
                 <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
                     วิเคราะห์คะแนน
@@ -126,17 +87,31 @@ function ProfileAnalysis({ user }) {
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
-                                    <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                                        <Button
-                                            variant='contained'
-                                            color='warning'
-                                            sx={{
-                                                borderRadius: 5,
-                                                fontSize: { xs: '.8rem', md: '' }
-                                            }}
-                                            onClick={() => handleClickOpen()}>
-                                            ดูผลการวิเคราะห์คะแนน
-                                        </Button>
+                                    <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+                                        <Stack spacing={1}>
+                                            <Button
+                                                variant='contained'
+                                                color='success'
+                                                onClick={()=> window.location = `/answer/${val.product_id}`}
+                                                sx={{
+                                                    borderRadius: 3,
+                                                    fontSize: { xs: '.8rem', md: '' }
+                                                }}
+                                            >
+                                                ดูเฉลย
+                                            </Button>
+
+                                            <Button
+                                                variant='contained'
+                                                color='warning'
+                                                sx={{
+                                                    borderRadius: 3,
+                                                    fontSize: { xs: '.8rem', md: '' }
+                                                }}
+                                                onClick={() => handleOpenAnalysisDialog()}>
+                                                ดูผลการวิเคราะห์คะแนน
+                                            </Button>
+                                        </Stack>
                                     </CardActions>
 
 
@@ -149,25 +124,7 @@ function ProfileAnalysis({ user }) {
             </Box>
 
 
-            <Dialog
-                open={open}
-                TransitionComponent={Transition}
-                fullWidth={true}
-                keepMounted
-                maxWidth='lg'
-                onClose={handleClose}
-            >
-                <DialogTitle sx={{ textAlign: 'center', fontSize: '2rem' }}>วิเคราะห์คะแนน</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        <Box sx={{ display: 'flex', justifyContent: 'center', }}>
-                            <Box sx={{ display: 'flex', justifyContent: 'center', width: 'auto' }}>
-                                <Radar data={dataRadar} />
-                            </Box>
-                        </Box>
-                    </DialogContentText>
-                </DialogContent>
-            </Dialog>
+
 
         </>
     )
