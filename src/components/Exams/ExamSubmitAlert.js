@@ -10,6 +10,7 @@ function ExamSubmitAlert({
   handleExamSubmit,
   examContent,
   answers,
+  handleGoToQuestion
 }) {
   const handleClose = () => {
     setOpenSubmitDialog(false);
@@ -43,11 +44,13 @@ function ExamSubmitAlert({
         <Box sx={{ width: { xs: "80 %", sm: "50%" } }}>
           {examContent.map((val, key) => {
             return (
-              <Box key={key}>
-                {answers?.findIndex((item) => item.id === val.id) === -1 ? (
+              <>
+                {answers?.findIndex((answer) => answer.id === val.id && answer.choose === '') ? (
                   <Button
                     variant="contained"
+                    key={key}
                     color="warning"
+                    onClick={() => handleGoToQuestion(val.id)}
                     sx={{
                       borderRadius: 3,
                       minWidth: "50px",
@@ -59,9 +62,12 @@ function ExamSubmitAlert({
                       {val.id}
                     </Typography>
                   </Button>
-                ) : null}
-              </Box>
-            );
+                )
+                  :
+                  null
+                }
+              </>
+            )
           })}
         </Box>
 

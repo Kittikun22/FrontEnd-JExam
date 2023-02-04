@@ -5,7 +5,6 @@ import {
   Button,
   Typography,
   LinearProgress,
-  Stack,
 } from "@mui/material";
 
 function ExamDrawer({
@@ -16,6 +15,7 @@ function ExamDrawer({
   examName,
   handleExamSubmit,
   setOpenSubmitDialog,
+  handleGoToQuestion
 }) {
   const handleDrawerOpen = () => {
     setOpenDrawer(true);
@@ -25,9 +25,7 @@ function ExamDrawer({
     setOpenDrawer(false);
   };
 
-  const scrollToQuestion = (question_id) => {};
-
-  let progresses = (answers.length / examContent.length) * 100;
+  const progresses = (answers.filter(ans => ans.choose !== "").length / examContent.length) * 100;
 
   return (
     <>
@@ -73,10 +71,11 @@ function ExamDrawer({
                 <Button
                   key={key}
                   variant="contained"
+                  onClick={() => handleGoToQuestion(val.id)}
                   color={
-                    answers.findIndex((answer) => answer.id === val.id) === -1
-                      ? "warning"
-                      : "success"
+                    answers.findIndex((answer) => answer.id === val.id && answer.choose === '') === -1
+                      ? "success"
+                      : "warning"
                   }
                   sx={{
                     borderRadius: 3,
@@ -98,10 +97,8 @@ function ExamDrawer({
               variant="contained"
               color="error"
               sx={{ borderRadius: 3, width: "125px" }}
-              onClick={() =>
-                answers.length !== examContent.length
-                  ? setOpenSubmitDialog(true)
-                  : handleExamSubmit()
+              onClick={
+                () => answers.filter(ans => ans.choose !== "").length === examContent.length ? handleExamSubmit() : setOpenSubmitDialog(true)
               }
             >
               <Typography sx={{ fontSize: "1.2rem" }}>ส่งคำตอบ</Typography>

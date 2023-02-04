@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
   Radio,
   FormControlLabel,
   RadioGroup,
-  FormControl,
   Button,
 } from "@mui/material";
 import ExamScoreAlertDialog from "./ExamScoreAlertDialog";
 import ExamNavbar from "./ExamNavbar";
 import ExamStartDialog from "./ExamStartDialog";
 import ExamSubmitAlert from "./ExamSubmitAlert";
+import Examination from './Examination'
 
 function ExamComponent({ exam, selectExam }) {
   const examContent = JSON.parse(exam[selectExam].exam_content);
@@ -23,7 +23,7 @@ function ExamComponent({ exam, selectExam }) {
   const [timeControl, setTimeControl] = useState(false);
 
   const [answers, setAnswers] = useState(
-    examContent.map((question) => ({ id: question.id, choose: "" }))
+    examContent.map((question) => ({ id: question.id, choose: "", point: 0 }))
   );
   const [totalScore, setTotalScore] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
@@ -34,8 +34,17 @@ function ExamComponent({ exam, selectExam }) {
 
   const [step, setStep] = useState(0);
 
+  const [goToQuestionId, setGoToQuestionId] = useState(null)
+
+  useEffect(() => {
+    const question = document.getElementById(`question-${goToQuestionId}`);
+    if (question) {
+      question.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  }, [goToQuestionId]);
+
   const handleNext = () => {
-    setStep(step + 1);
+    setStep((prevStep) => prevStep + 1);
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -43,47 +52,34 @@ function ExamComponent({ exam, selectExam }) {
   };
 
   const handleBack = () => {
-    setStep(step - 1);
+    setStep((prevStep) => prevStep - 1);
     window.scrollTo({
       top: 0,
     });
   };
 
-  const handleAnswerChange = (questionId) => (event) => {
-    setAnswers(
-      answers.map((answer) =>
-        answer.id === questionId
-          ? { ...answer, choose: event.target.value }
-          : answer
-      )
-    );
+  const handleGoToQuestion = (questionId) => {
+    const questionIndex = examContent.findIndex(question => question.id === questionId);
+    const newStep = Math.floor(questionIndex / 5);
+    setStep(newStep);
+    setGoToQuestionId(questionId);
   };
 
-  // const handleAnswerChange = (event, questions) => {
-  //   const selectedChoice = questions.choice.find(
-  //     (choice) => choice.choicevalue === event.target.value
-  //   );
-
-  //   const newAnswer = {
-  //     id: questions.id,
-  //     choose: event.target.value,
-  //     point: selectedChoice.point,
-  //   };
-
-  //   const answerIndex = answers.findIndex(
-  //     (answer) => answer.id === questions.id
-  //   );
-
-  //   if (answerIndex !== -1) {
-  //     setAnswers((prevAnswersArray) => [
-  //       ...prevAnswersArray.slice(0, answerIndex),
-  //       newAnswer,
-  //       ...prevAnswersArray.slice(answerIndex + 1),
-  //     ]);
-  //   } else {
-  //     setAnswers((prevAnswersArray) => [...prevAnswersArray, newAnswer]);
-  //   }
-  // };
+  const handleAnswerChange = (questionId) => (event) => {
+    const newAnswer = answers.map((answer) => {
+      if (answer.id === questionId) {
+        return {
+          id: answer.id,
+          choose: event.target.value,
+          point: examContent.find((question) => question.id === answer.id)
+            .choice.find((choice) => choice.choicevalue === event.target.value)
+            .point
+        };
+      }
+      return answer;
+    });
+    setAnswers(newAnswer);
+  };
 
   const handleExamSubmit = () => {
     setTimeControl(false);
@@ -145,6 +141,8 @@ function ExamComponent({ exam, selectExam }) {
           examName={examName}
           handleExamSubmit={handleExamSubmit}
           setOpenSubmitDialog={setOpenSubmitDialog}
+          setStep={setStep}
+          handleGoToQuestion={handleGoToQuestion}
         />
 
         <ExamSubmitAlert
@@ -157,37 +155,9 @@ function ExamComponent({ exam, selectExam }) {
 
         {loading ? null : (
           <Box>
-            <Box sx={{ py: 4, mx: { xs: 2, md: 40 } }}>
-              {currentQuestions.map((question, key) => {
-                return (
-                  <Box key={key}>
-                    <Typography variant="h5">
-                      {question.id}. {question.question}
-                    </Typography>
-                    <RadioGroup
-                      value={
-                        answers.find((answer) => answer.id === question.id)
-                          .value
-                      }
-                      onChange={handleAnswerChange(question.id)}
-                    >
-                      {question.choice.map((choice, key) => (
-                        <Box key={key}>
-                          {choice.choicetext === "" ? null : (
-                            <FormControlLabel
-                              value={choice.choicevalue}
-                              key={key}
-                              control={<Radio />}
-                              label={choice.choicetext}
-                            />
-                          )}
-                        </Box>
-                      ))}
-                    </RadioGroup>
-                  </Box>
-                );
-              })}
-            </Box>
+
+            <Examination currentQuestions={currentQuestions} answers={answers} handleAnswerChange={handleAnswerChange} />
+            
 
             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button
