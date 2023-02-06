@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Appbar from "../components/Appbar";
-import AnswerComponent from "../components/Answer/AnswerComponent";
+import AnalysisComponent from "../components/Analysis/AnalysisComponent";
 import Axios from "axios";
 import { useAuthState, useAuthDispatch } from "../context/AuthContext";
-import AnswerSelectExams from "../components/Answer/AnswerSelectExams";
+import AnalysisSelectExams from "../components/Analysis/AnalysisSelectExams";
 
 const CryptoJS = require("crypto-js");
 const EncryptSecret = "Jknow2022";
 
-function Answer() {
+function Analysis() {
   const { productId } = useParams();
   const { user } = useAuthState();
   const dispatch = useAuthDispatch();
@@ -62,7 +62,7 @@ function Answer() {
 
   return (
     <>
-      <AnswerSelectExams
+      <AnalysisSelectExams
         openSelectDialog={openSelectDialog}
         setOpenSelectDialog={setOpenSelectDialog}
         exam={exam}
@@ -71,12 +71,11 @@ function Answer() {
       />
 
       <Appbar />
-
       {loading === true ? (
-        <AnswerComponent exam={exam} selectExam={selectExam} user={user} />
+        <AnalysisComponent exam={exam} selectExam={selectExam} user={user} />
       ) : null}
     </>
   );
 }
 
-export default Answer;
+export default Analysis;

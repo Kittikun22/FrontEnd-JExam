@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
+import AnalysisContent from "./AnalysisContent";
 import Axios from "axios";
-import AnswerContent from "./AnswerContent";
 
-function AnswerComponent({ exam, selectExam, user }) {
-  const examContent = JSON.parse(exam[selectExam].exam_content);
+function AnalysisComponent({ exam, selectExam, user }) {
 
   const [answered, setAnswered] = useState([]);
 
@@ -16,9 +15,7 @@ function AnswerComponent({ exam, selectExam, user }) {
     });
   }, [user]);
 
-  console.log(answered);
-
-  return <AnswerContent examContent={examContent} answered={answered} />;
+  return <AnalysisContent answered={answered} />;
 }
 
-export default AnswerComponent;
+export default AnalysisComponent;

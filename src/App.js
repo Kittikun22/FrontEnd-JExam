@@ -19,6 +19,7 @@ import Exams from "./pages/Exams";
 import ExamIntroduction from "./pages/ExamIntroduction";
 import Takeanexam from "./pages/Takeanexam";
 import Answer from "./pages/Answer";
+import Analysis from "./pages/Analysis";
 
 function App() {
   useEffect(() => {
@@ -46,6 +47,7 @@ function App() {
               element={<Takeanexam />}
             />
             <Route path="/answer/:productId" element={<Answer />} />
+            <Route path="/analysis/:productId" element={<Analysis />} />
           </Route>
 
           <Route path="/" element={<Home />} />

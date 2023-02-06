@@ -11,14 +11,9 @@ import {
   Box,
   Button,
 } from "@mui/material";
-import ProfileAnalysisDialog from "./ProfileAnalysisDialog";
 
 function ProfileAnalysis({ user }) {
-  const [openAnalysisDialog, setOpenAnalysisDialog] = useState(false);
 
-  const handleOpenAnalysisDialog = () => {
-    setOpenAnalysisDialog(true);
-  };
 
   const [myExamList, setMyExamList] = useState([]);
 
@@ -33,12 +28,6 @@ function ProfileAnalysis({ user }) {
 
   return (
     <>
-      <ProfileAnalysisDialog
-        openAnalysisDialog={openAnalysisDialog}
-        setOpenAnalysisDialog={setOpenAnalysisDialog}
-        myExamList={myExamList}
-      />
-
       <Box m={2}>
         <Typography
           sx={{
@@ -125,9 +114,7 @@ function ProfileAnalysis({ user }) {
                       <Button
                         variant="contained"
                         color="success"
-                        onClick={() =>
-                          (window.location = `/answer/${val.product_id}`)
-                        }
+                        href={`/answer/${val.product_id}`}
                         sx={{
                           borderRadius: 3,
                           fontSize: { xs: ".8rem", md: "" },
@@ -143,7 +130,7 @@ function ProfileAnalysis({ user }) {
                           borderRadius: 3,
                           fontSize: { xs: ".8rem", md: "" },
                         }}
-                        onClick={() => handleOpenAnalysisDialog()}
+                        href={`/analysis/${val.product_id}`}
                       >
                         ดูผลการวิเคราะห์คะแนน
                       </Button>

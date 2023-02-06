@@ -7,7 +7,10 @@ import {
   FormControlLabel,
 } from "@mui/material";
 
-function AnswerContent({ examContent, answer }) {
+function AnswerContent({ examContent, answered }) {
+
+  console.log(answered);
+  
   return (
     <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
       {examContent.map((question, key) => {
