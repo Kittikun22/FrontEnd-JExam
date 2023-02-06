@@ -17,16 +17,20 @@ function ExamScoreAlertDialog({
   examName,
   totalScore,
   timeSpend,
-  examFullScore
+  examFullScore,
+  productId
 }) {
   const timeSpending = new Date(timeSpend * 1000)
     .toISOString()
     .substring(14, 19);
 
-  console.log(exam_id);
-
   return (
-    <Dialog open={openDialog} fullWidth={true} maxWidth={"md"} TransitionComponent={Transition}>
+    <Dialog
+      open={openDialog}
+      fullWidth={true}
+      maxWidth={"md"}
+      TransitionComponent={Transition}
+    >
       <DialogContent>
         <Box
           sx={{
@@ -89,8 +93,6 @@ function ExamScoreAlertDialog({
                 เวลาที่ใช้ : {timeSpending} นาที
               </Typography>
             </Box>
-
-
           </Box>
         </Box>
 
@@ -108,7 +110,7 @@ function ExamScoreAlertDialog({
             color="success"
             sx={{ borderRadius: 3 }}
             onClick={() => {
-              window.location = `/answer/${exam_id}`;
+              window.location = `/answer/${productId}`;
             }}
           >
             <Typography sx={{ color: "#fff" }}>ดูเฉลย</Typography>
@@ -119,7 +121,7 @@ function ExamScoreAlertDialog({
             sx={{ borderRadius: 3 }}
             onClick={() => {
               localStorage.setItem("ActiveContent", "profile-analysis");
-              window.location = '/profile';
+              window.location = "/profile";
             }}
           >
             <Typography sx={{ color: "#fff" }}>
@@ -130,7 +132,7 @@ function ExamScoreAlertDialog({
             variant="contained"
             onClick={() => {
               localStorage.setItem("ActiveContent", "profile-homepage");
-              window.location = '/profile';
+              window.location = "/profile";
             }}
             sx={{ borderRadius: 3 }}
           >

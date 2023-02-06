@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { useAuthState, useAuthDispatch } from "../context/AuthContext";
 import { useParams } from "react-router-dom";
-import { Box } from "@mui/material";
-import ExamComponent from "../components/Exams/ExamComponent";
+import Appbar from "../components/Appbar";
+import AnswerComponent from "../components/Answer/AnswerComponent";
 import Axios from "axios";
-import ExamAlertDialog from "../components/Exams/ExamAlertDialog";
-import SelectDialog from "../components/Exams/SelectDialog";
+import { useAuthState, useAuthDispatch } from "../context/AuthContext";
+import AnswerSelectExams from "../components/Answer/AnswerSelectExams";
 
 const CryptoJS = require("crypto-js");
 const EncryptSecret = "Jknow2022";
 
-function Exams() {
+function Answer() {
   const { productId } = useParams();
   const { user } = useAuthState();
   const dispatch = useAuthDispatch();
 
-  const [exam, setExam] = useState();
+  const [loading, setLoading] = useState(false);
+  const [exam, setExam] = useState([]);
+
   const [selectExam, setSelectExam] = useState(0);
-
-  const [openDialog, setOpenDialog] = useState(false);
-  const [message, setMessage] = useState("");
-
   const [openSelectDialog, setOpenSelectDialog] = useState(false);
 
-  const [loading, setLoading] = useState(false);
+  console.log(exam);
 
   useEffect(() => {
     const ciphertext = JSON.parse(localStorage.getItem("users"));
@@ -40,7 +37,7 @@ function Exams() {
 
   useEffect(() => {
     if (user) {
-      Axios.post("http://localhost:8000/UserProduct", {
+      Axios.post("http://localhost:8000/getExamAnswer", {
         user_id: user.user_id,
         product_id: productId,
       }).then((res) => {
@@ -53,10 +50,11 @@ function Exams() {
             setExam(res.data.result);
           }
         } else {
-          setOpenDialog(true);
-          setMessage(
-            "ไม่มีสิทธิ์ในการเข้าถึงข้อสอบ เนื่องจากยังไม่ได้ซื้อข้อสอบชุดนี้"
-          );
+          // setOpenDialog(true);
+          // setMessage(
+          //   "ไม่มีสิทธิ์ในการเข้าถึงข้อสอบ เนื่องจากยังไม่ได้ซื้อข้อสอบชุดนี้"
+          // );
+          alert("ไม่มีข้อสอบ");
         }
       });
     }
@@ -64,14 +62,7 @@ function Exams() {
 
   return (
     <>
-      <ExamAlertDialog
-        openDialog={openDialog}
-        setOpenDialog={setOpenDialog}
-        message={message}
-        productId={productId}
-      />
-
-      <SelectDialog
+      <AnswerSelectExams
         openSelectDialog={openSelectDialog}
         setOpenSelectDialog={setOpenSelectDialog}
         exam={exam}
@@ -79,19 +70,13 @@ function Exams() {
         setLoading={setLoading}
       />
 
-      <Box
-        sx={{
-          background: "#f9fbe7",
-          minHeight: "100vh",
-          pb: 10,
-        }}
-      >
-        {loading === true ? (
-          <ExamComponent exam={exam} selectExam={selectExam} user={user} productId={productId}/>
-        ) : null}
-      </Box>
+      <Appbar />
+
+      {loading === true ? (
+        <AnswerComponent exam={exam} selectExam={selectExam} user={user} />
+      ) : null}
     </>
   );
 }
 
-export default Exams;
+export default Answer;

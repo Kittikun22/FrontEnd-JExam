@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import ExamScoreAlertDialog from "./ExamScoreAlertDialog";
 import ExamNavbar from "./ExamNavbar";
 import ExamStartDialog from "./ExamStartDialog";
 import ExamSubmitAlert from "./ExamSubmitAlert";
-import Examination from './Examination'
-import Axios from 'axios'
+import Examination from "./Examination";
+import Axios from "axios";
 
-
-function ExamComponent({ exam, selectExam, user }) {
-
+function ExamComponent({ exam, selectExam, user,productId }) {
   const examContent = JSON.parse(exam[selectExam].exam_content);
   const examInfo = JSON.parse(exam[selectExam].exam_info);
 
@@ -23,7 +17,12 @@ function ExamComponent({ exam, selectExam, user }) {
   const [timeControl, setTimeControl] = useState(false);
 
   const [answers, setAnswers] = useState(
-    examContent.map((question) => ({ id: question.id, choose: "", point: 0, category: '' }))
+    examContent.map((question) => ({
+      id: question.id,
+      choose: "",
+      point: 0,
+      category: "",
+    }))
   );
   const [totalScore, setTotalScore] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
@@ -34,7 +33,7 @@ function ExamComponent({ exam, selectExam, user }) {
 
   const [step, setStep] = useState(0);
 
-  const [goToQuestionId, setGoToQuestionId] = useState(null)
+  const [goToQuestionId, setGoToQuestionId] = useState(null);
 
   useEffect(() => {
     const question = document.getElementById(`question-${goToQuestionId}`);
@@ -59,7 +58,9 @@ function ExamComponent({ exam, selectExam, user }) {
   };
 
   const handleGoToQuestion = (questionId) => {
-    const questionIndex = examContent.findIndex(question => question.id === questionId);
+    const questionIndex = examContent.findIndex(
+      (question) => question.id === questionId
+    );
     const newStep = Math.floor(questionIndex / 5);
     setStep(newStep);
     setGoToQuestionId(questionId);
@@ -71,11 +72,12 @@ function ExamComponent({ exam, selectExam, user }) {
         return {
           id: answer.id,
           choose: event.target.value,
-          point: examContent.find((question) => question.id === answer.id)
+          point: examContent
+            .find((question) => question.id === answer.id)
             .choice.find((choice) => choice.choicevalue === event.target.value)
             .point,
           category: examContent.find((question) => question.id === answer.id)
-            .category
+            .category,
         };
       }
       return answer;
@@ -96,24 +98,22 @@ function ExamComponent({ exam, selectExam, user }) {
       exam_id: exam[selectExam].exam_id,
       answer: JSON.stringify(answers),
       score: score,
-      timeSpend: timeSpend
+      timeSpend: timeSpend,
     }).then((res) => {
-      if (res.data.message === 'success') {
+      if (res.data.message === "success") {
         setTotalScore(score);
         setOpenDialog(true);
       }
-    })
+    });
   };
-
-
 
   if (exam) {
     if (duration === 0) {
-      setDuration(examInfo[selectExam].Duration * 60);
+      setDuration(examInfo[0].Duration * 60);
     }
     const examName = exam[selectExam].exam_name;
 
-    const exam_id = exam[selectExam].exam_id
+    const exam_id = exam[selectExam].exam_id;
 
     let examFullScore = 0;
 
@@ -132,7 +132,7 @@ function ExamComponent({ exam, selectExam, user }) {
           setLoading={setLoading}
           examName={examName}
           examContent={examContent}
-          duration={examInfo[selectExam].Duration}
+          duration={examInfo[0].Duration}
           examFullScore={examFullScore}
         />
 
@@ -144,6 +144,7 @@ function ExamComponent({ exam, selectExam, user }) {
           totalScore={totalScore}
           timeSpend={timeSpend}
           examFullScore={examFullScore}
+          productId={productId}
         />
 
         <ExamNavbar
@@ -173,9 +174,11 @@ function ExamComponent({ exam, selectExam, user }) {
 
         {loading ? null : (
           <Box>
-
-            <Examination currentQuestions={currentQuestions} answers={answers} handleAnswerChange={handleAnswerChange} />
-
+            <Examination
+              currentQuestions={currentQuestions}
+              answers={answers}
+              handleAnswerChange={handleAnswerChange}
+            />
 
             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button
@@ -190,8 +193,11 @@ function ExamComponent({ exam, selectExam, user }) {
               {step === Math.ceil(examContent.length / 5 - 1) ? (
                 <Button
                   variant="contained"
-                  onClick={
-                    () => answers.filter(ans => ans.choose !== "").length === examContent.length ? handleExamSubmit() : setOpenSubmitDialog(true)
+                  onClick={() =>
+                    answers.filter((ans) => ans.choose !== "").length ===
+                    examContent.length
+                      ? handleExamSubmit()
+                      : setOpenSubmitDialog(true)
                   }
                   color="error"
                   sx={{ borderRadius: 3, width: "125px" }}

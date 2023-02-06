@@ -116,6 +116,7 @@ function ProfileHomepage({ user }) {
                         sx={{
                           borderRadius: 3
                         }}
+                        href={`/introduction/${val.product_id}`}
                       >
                         เริ่มทำข้อสอบ
                       </Button>

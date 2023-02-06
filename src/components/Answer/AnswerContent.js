@@ -1,0 +1,132 @@
+import React from "react";
+import {
+  Box,
+  Typography,
+  RadioGroup,
+  Radio,
+  FormControlLabel,
+} from "@mui/material";
+
+function AnswerContent({ examContent, answer }) {
+  return (
+    <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
+      {examContent.map((question, key) => {
+        return (
+          <Box key={key} m={2} id={`question-${question.id}`}>
+            <Typography variant="h5">
+              {question.id}. {question.question}
+            </Typography>
+
+            {question.question_image_sm === "" ? null : (
+              <Box
+                component="img"
+                src={question.question_image_sm}
+                width={{ xs: "175px", sm: "175px", md: "175px" }}
+                ml={2}
+              />
+            )}
+            {question.question_image_md === "" ? null : (
+              <Box
+                component="img"
+                src={question.question_image_md}
+                width={{ xs: "250px", sm: "300px", md: "400px" }}
+                ml={2}
+              />
+            )}
+            {question.question_image_lg === "" ? null : (
+              <Box
+                component="img"
+                src={question.question_image_lg}
+                width={{ xs: "300px", sm: "400px", md: "600px" }}
+                ml={2}
+              />
+            )}
+
+            <RadioGroup value={question.answer}>
+              {question.choice.map((choice, key) => (
+                <Box key={key}>
+                  {choice.choicetext === "" ? null : (
+                    <FormControlLabel
+                      key={key}
+                      value={choice.choicevalue}
+                      control={<Radio color="success" />}
+                      label={
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: { xs: "start", md: "center" },
+                            flexDirection:
+                              choice.choice_image_sm !== "" ||
+                              choice.choice_image_md !== "" ||
+                              choice.choice_image_lg !== ""
+                                ? "column"
+                                : "row",
+                          }}
+                        >
+                          {choice.choice_image_sm === "" ? null : (
+                            <Box
+                              component="img"
+                              src={choice.choice_image_sm}
+                              sx={{
+                                width: {
+                                  xs: "125px",
+                                  sm: "150px",
+                                  md: "175px",
+                                },
+                                my: 0.5,
+                              }}
+                            />
+                          )}
+                          {choice.choice_image_md === "" ? null : (
+                            <Box
+                              component="img"
+                              src={choice.choice_image_md}
+                              sx={{
+                                width: {
+                                  xs: "200px",
+                                  sm: "250px",
+                                  md: "300px",
+                                },
+                                my: 0.5,
+                              }}
+                            />
+                          )}
+                          {choice.choice_image_lg === "" ? null : (
+                            <Box
+                              component="img"
+                              src={choice.choice_image_lg}
+                              sx={{
+                                width: {
+                                  xs: "300px",
+                                  sm: "400px",
+                                  md: "500px",
+                                },
+                                my: 0.5,
+                              }}
+                            />
+                          )}
+                          <Typography
+                            sx={{
+                              color:
+                                choice.choicevalue === question.answer
+                                  ? "green"
+                                  : null,
+                            }}
+                          >
+                            {choice.choicetext}
+                          </Typography>
+                        </Box>
+                      }
+                    />
+                  )}
+                </Box>
+              ))}
+            </RadioGroup>
+          </Box>
+        );
+      })}
+    </Box>
+  );
+}
+
+export default AnswerContent;

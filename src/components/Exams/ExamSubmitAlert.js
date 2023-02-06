@@ -14,7 +14,7 @@ function ExamSubmitAlert({
   handleExamSubmit,
   examContent,
   answers,
-  handleGoToQuestion
+  handleGoToQuestion,
 }) {
   const handleClose = () => {
     setOpenSubmitDialog(false);
@@ -26,7 +26,12 @@ function ExamSubmitAlert({
   };
 
   return (
-    <Dialog open={openSubmitDialog} fullWidth={true} maxWidth={"md"} TransitionComponent={Transition}>
+    <Dialog
+      open={openSubmitDialog}
+      fullWidth={true}
+      maxWidth={"md"}
+      TransitionComponent={Transition}
+    >
       <DialogContent
         sx={{
           display: "flex",
@@ -49,12 +54,17 @@ function ExamSubmitAlert({
           {examContent.map((val, key) => {
             return (
               <>
-                {answers?.findIndex((answer) => answer.id === val.id && answer.choose === '') ? (
+                {answers?.findIndex(
+                  (answer) => answer.id === val.id && answer.choose === ""
+                ) === -1 ? null : (
                   <Button
                     variant="contained"
                     key={key}
                     color="warning"
-                    onClick={() => { handleGoToQuestion(val.id); setOpenSubmitDialog(false); }}
+                    onClick={() => {
+                      handleGoToQuestion(val.id);
+                      setOpenSubmitDialog(false);
+                    }}
                     sx={{
                       borderRadius: 3,
                       minWidth: "50px",
@@ -66,12 +76,9 @@ function ExamSubmitAlert({
                       {val.id}
                     </Typography>
                   </Button>
-                )
-                  :
-                  null
-                }
+                )}
               </>
-            )
+            );
           })}
         </Box>
 
