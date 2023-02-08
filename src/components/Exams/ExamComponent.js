@@ -7,7 +7,7 @@ import ExamSubmitAlert from "./ExamSubmitAlert";
 import Examination from "./Examination";
 import Axios from "axios";
 
-function ExamComponent({ exam, selectExam, user,productId }) {
+function ExamComponent({ exam, selectExam, user, productId }) {
   const examContent = JSON.parse(exam[selectExam].exam_content);
   const examInfo = JSON.parse(exam[selectExam].exam_info);
 
@@ -21,7 +21,8 @@ function ExamComponent({ exam, selectExam, user,productId }) {
       id: question.id,
       choose: "",
       point: 0,
-      category: "",
+      fullScore: question.point,
+      category: question.category
     }))
   );
   const [totalScore, setTotalScore] = useState(0);
@@ -76,8 +77,11 @@ function ExamComponent({ exam, selectExam, user,productId }) {
             .find((question) => question.id === answer.id)
             .choice.find((choice) => choice.choicevalue === event.target.value)
             .point,
+          fullScore: examContent.find((question) => question.id === answer.id)
+            .point,
           category: examContent.find((question) => question.id === answer.id)
             .category,
+
         };
       }
       return answer;
@@ -195,7 +199,7 @@ function ExamComponent({ exam, selectExam, user,productId }) {
                   variant="contained"
                   onClick={() =>
                     answers.filter((ans) => ans.choose !== "").length ===
-                    examContent.length
+                      examContent.length
                       ? handleExamSubmit()
                       : setOpenSubmitDialog(true)
                   }

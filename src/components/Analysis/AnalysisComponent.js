@@ -15,7 +15,7 @@ function AnalysisComponent({ exam, selectExam, user }) {
     });
   }, [user]);
 
-  return <AnalysisContent answered={answered} />;
+  return <AnalysisContent answered={answered} exam={exam} selectExam={selectExam} />;
 }
 
 export default AnalysisComponent;

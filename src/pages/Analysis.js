@@ -20,8 +20,6 @@ function Analysis() {
   const [selectExam, setSelectExam] = useState(0);
   const [openSelectDialog, setOpenSelectDialog] = useState(false);
 
-  console.log(exam);
-
   useEffect(() => {
     const ciphertext = JSON.parse(localStorage.getItem("users"));
     if (ciphertext) {

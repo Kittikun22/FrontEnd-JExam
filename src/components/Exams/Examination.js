@@ -25,7 +25,7 @@ function Examination({ currentQuestions, answers, handleAnswerChange }) {
               <Box component='img' src={question.question_image_md} width={{ xs: '250px', sm: '300px', md: '400px' }} ml={2} />
             }
             {question.question_image_lg === '' ? null :
-              <Box component='img' src={question.question_image_lg} width={{ xs: '300px', sm: '400px', md: '600px' }} ml={2} />
+              <Box component='img' src={question.question_image_lg} width={{ xs: '300px', sm: '500px', md: '650px' }} ml={2} />
             }
 
             <RadioGroup

@@ -166,7 +166,7 @@ export const englishexam = {
                     choicevalue:'a',choicetext: 'worse'},{
                     choicevalue:'b',choicetext: 'bad'},{
                     choicevalue:'c',choicetext: 'bader'},{
-                    choicevalue:'d',choicetext: 'the worst '}
+                    choicevalue:'d',choicetext: 'the worst'}
               ],
               Answer: 'd', 
               AnswerDescription:`<tab></tab> ●	ข้อเป็นเรื่อง Comparison

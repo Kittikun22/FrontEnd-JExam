@@ -8,14 +8,15 @@ import {
 } from "@mui/material";
 
 function AnswerContent({ examContent, answered }) {
-
+  console.log(examContent);
   console.log(answered);
-  
   return (
     <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
+
       {examContent.map((question, key) => {
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
+            {answered.find(ans => ans.id === question.id && ans.choose === question.answer) ? console.log(question.id + "ถูก") : console.log(question.id + "ผิด")}
             <Typography variant="h5">
               {question.id}. {question.question}
             </Typography>
@@ -45,7 +46,9 @@ function AnswerContent({ examContent, answered }) {
               />
             )}
 
-            <RadioGroup value={question.answer}>
+            <RadioGroup
+              value={question.answer}
+            >
               {question.choice.map((choice, key) => (
                 <Box key={key}>
                   {choice.choicetext === "" ? null : (
@@ -60,8 +63,8 @@ function AnswerContent({ examContent, answered }) {
                             alignItems: { xs: "start", md: "center" },
                             flexDirection:
                               choice.choice_image_sm !== "" ||
-                              choice.choice_image_md !== "" ||
-                              choice.choice_image_lg !== ""
+                                choice.choice_image_md !== "" ||
+                                choice.choice_image_lg !== ""
                                 ? "column"
                                 : "row",
                           }}
@@ -113,11 +116,12 @@ function AnswerContent({ examContent, answered }) {
                               color:
                                 choice.choicevalue === question.answer
                                   ? "green"
-                                  : null,
+                                  : "",
                             }}
                           >
                             {choice.choicetext}
                           </Typography>
+
                         </Box>
                       }
                     />

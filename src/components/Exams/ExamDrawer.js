@@ -33,10 +33,10 @@ function ExamDrawer({
         <Box
           sx={{
             width: 275,
-            height: "100%",
             background: "#0e3746",
             borderRight: 5,
             borderColor: "#a3cc53",
+            height: '100%'
           }}
           onClick={handleDrawerOpen}
           onKeyDown={handleDrawerClose}
@@ -81,7 +81,8 @@ function ExamDrawer({
                     borderRadius: 3,
                     minWidth: "50px",
                     minHeight: "50px",
-                    m: 1,
+                    mx: 1,
+                    my: 0.5
                   }}
                 >
                   <Typography sx={{ fontSize: "1rem", fontWeight: 700 }}>
@@ -92,7 +93,7 @@ function ExamDrawer({
             })}
           </Box>
 
-          <Box mt={5} sx={{ display: "flex", justifyContent: "center" }}>
+          <Box mt={2} sx={{ display: "flex", justifyContent: "center" }}>
             <Button
               variant="contained"
               color="error"
