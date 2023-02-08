@@ -16,7 +16,6 @@ function AnswerComponent({ exam, selectExam, user }) {
     });
   }, [user]);
 
-  console.log(answered);
 
   return <AnswerContent examContent={examContent} answered={answered} />;
 }

@@ -8,15 +8,14 @@ import {
 } from "@mui/material";
 
 function AnswerContent({ examContent, answered }) {
-  console.log(examContent);
-  console.log(answered);
+
   return (
     <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
 
       {examContent.map((question, key) => {
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
-            {answered.find(ans => ans.id === question.id && ans.choose === question.answer) ? console.log(question.id + "ถูก") : console.log(question.id + "ผิด")}
+            {/* {answered.find(ans => ans.id === question.id && ans.choose === question.answer) ? console.log(question.id + "ถูก") : console.log(question.id + "ผิด")} */}
             <Typography variant="h5">
               {question.id}. {question.question}
             </Typography>
@@ -111,17 +110,22 @@ function AnswerContent({ examContent, answered }) {
                               }}
                             />
                           )}
-                          <Typography
-                            sx={{
-                              color:
-                                choice.choicevalue === question.answer
-                                  ? "green"
-                                  : "",
-                            }}
-                          >
-                            {choice.choicetext}
-                          </Typography>
-
+                          {choice.choicevalue === question.answer ?
+                            <Typography
+                              sx={{
+                                color:
+                                  "green"
+                              }}
+                            >
+                              {choice.choicetext}
+                            </Typography>
+                            :
+                            <Typography
+                              sx={{ color: answered.find(ans => ans.id === question.id && ans.choose === choice.choicevalue) ? "red" : '' }}
+                            >
+                              {choice.choicetext}
+                            </Typography>
+                          }
                         </Box>
                       }
                     />
@@ -131,8 +135,9 @@ function AnswerContent({ examContent, answered }) {
             </RadioGroup>
           </Box>
         );
+
       })}
-    </Box>
+    </Box >
   );
 }
 
