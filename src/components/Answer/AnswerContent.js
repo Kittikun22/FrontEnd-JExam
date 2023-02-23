@@ -8,15 +8,14 @@ import {
 } from "@mui/material";
 
 function AnswerContent({ examContent, answered }) {
-
   return (
     <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
+
 
       {examContent.map((question, key) => {
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
-            {/* {answered.find(ans => ans.id === question.id && ans.choose === question.answer) ? console.log(question.id + "ถูก") : console.log(question.id + "ผิด")} */}
-            <Typography variant="h5">
+            <Typography variant="h5" paragraph>
               {question.id}. {question.question}
             </Typography>
 
@@ -44,6 +43,7 @@ function AnswerContent({ examContent, answered }) {
                 ml={2}
               />
             )}
+
 
             <RadioGroup
               value={question.answer}

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 
-function Examination({ currentQuestions, answers, handleAnswerChange }) {
+function ExamOperationOne({ currentQuestions, answers, handleAnswerChange }) {
   return (
     <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
       {currentQuestions.map((question, key) => {
@@ -37,7 +37,7 @@ function Examination({ currentQuestions, answers, handleAnswerChange }) {
               onChange={handleAnswerChange(question.id)}
             >
               {question.choice.map((choice, key) => (
-                <Box key={key}>
+                <Box key={key} mt={.5}>
                   {choice.choicetext === '' ? null
                     :
                     <FormControlLabel
@@ -73,4 +73,4 @@ function Examination({ currentQuestions, answers, handleAnswerChange }) {
   )
 }
 
-export default Examination
+export default ExamOperationOne

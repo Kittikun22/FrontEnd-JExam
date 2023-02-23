@@ -16,8 +16,13 @@ import {
   Filler,
   Tooltip,
   Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
 } from "chart.js";
-import { Radar } from "react-chartjs-2";
+
+import { Radar, Bar } from "react-chartjs-2";
 
 ChartJS.register(
   RadialLinearScale,
@@ -26,7 +31,10 @@ ChartJS.register(
   Filler,
   Tooltip,
   Legend,
-
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
 );
 
 
@@ -82,7 +90,7 @@ function AnalysisContent({ answered, exam, selectExam }) {
       {
         label: exam[selectExam].exam_name,
         data: pointByGroup.map(val => (val.point / val.fullScore) * 100),
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        backgroundColor: "#a3cc5370",
         borderColor: "black",
         borderWidth: 5,
         pointRadius: 7,
@@ -94,14 +102,14 @@ function AnalysisContent({ answered, exam, selectExam }) {
 
   return (
     <Box sx={{
-      display: 'flex', flexDirection: 'column', justifyContent: 'center'
+      display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'center'
     }}>
-      <Box my={2} sx={{ width: { xs: '250px', md: '500px' }, alignSelf: 'center' }}>
+      <Box my={2} sx={{ width: { xs: '300px', md: '500px' }, alignSelf: 'center' }}>
         <Radar data={data} options={options} />
       </Box>
 
-      <Box mb={10} sx={{ display: 'flex', justifyContent: 'center' }}>
-        <TableContainer component={Paper} sx={{ width: { xs: '90%', md: '80%' } }}>
+      <Box my={2} mx={2} sx={{ alignSelf: { xs: '', md: 'center' } }}>
+        <TableContainer component={Paper}>
           <Table >
             <TableHead>
               <TableRow sx={{ background: '#0e3746' }}>

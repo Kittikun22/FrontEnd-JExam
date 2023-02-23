@@ -111,7 +111,7 @@ export const mathematicsexam = {
                      choice :[{
                         choicevalue:'a',choiceimg:false,choicetext: '3,300 บาท'},{
                         choicevalue:'b',choiceimg:false,choicetext: '3,030 บาท'},{
-                        choicevalue:'c',choiceimg:false,choicetext: '3,900 บาท '},{
+                        choicevalue:'c',choiceimg:false,choicetext: '3,900 บาท'},{
                         choicevalue:'d',choiceimg:false,choicetext: '3,090 บาท'}
                       ],
                     Answer: 'd',

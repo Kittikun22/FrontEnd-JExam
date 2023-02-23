@@ -26,10 +26,6 @@ const EncryptSecret = 'Jknow2022'
 
 const pages = [
     {
-        pageName: 'ข้อสอบ',
-        url: '/exam'
-    },
-    {
         pageName: 'ข้อสอบทั้งหมด',
         url: '/exam-library'
     },
@@ -180,7 +176,6 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                                     display: { xs: 'flex', md: 'none' },
                                 }}
                             >
-
                                 {pages.map((page, key) => (
                                     <MenuItem
                                         component={Link}
@@ -200,7 +195,6 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                             component="a"
                             href="/"
                             sx={{
-
                                 display: { xs: 'flex', md: 'none' },
                                 flexGrow: 1,
                                 fontWeight: 700,

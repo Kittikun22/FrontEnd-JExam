@@ -4,12 +4,15 @@ import ExamScoreAlertDialog from "./ExamScoreAlertDialog";
 import ExamNavbar from "./ExamNavbar";
 import ExamStartDialog from "./ExamStartDialog";
 import ExamSubmitAlert from "./ExamSubmitAlert";
-import Examination from "./Examination";
+import ExamOperationOne from "./ExamOperationOne";
+import ExamOperationTwo from "./ExamOperationTwo";
 import Axios from "axios";
 
 function ExamComponent({ exam, selectExam, user, productId }) {
+
   const examContent = JSON.parse(exam[selectExam].exam_content);
   const examInfo = JSON.parse(exam[selectExam].exam_info);
+  const exam_operationId = exam[selectExam].exam_operation
 
   const [loading, setLoading] = useState(true);
   const [duration, setDuration] = useState(0);
@@ -25,6 +28,7 @@ function ExamComponent({ exam, selectExam, user, productId }) {
       category: question.category
     }))
   );
+
   const [totalScore, setTotalScore] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [openStartDialog, setOpenStartDialog] = useState(true);
@@ -111,6 +115,29 @@ function ExamComponent({ exam, selectExam, user, productId }) {
     });
   };
 
+
+  const currentQuestions = examContent.slice(step * 5, (step + 1) * 5);
+
+  function ExamOperation(exam_operationId) {
+    switch (exam_operationId) {
+      case 1:
+        return <ExamOperationOne
+          currentQuestions={currentQuestions}
+          answers={answers}
+          handleAnswerChange={handleAnswerChange}
+        />
+      case 2:
+        return <ExamOperationTwo
+          currentQuestions={currentQuestions}
+          answers={answers}
+          handleAnswerChange={handleAnswerChange}
+        />
+
+      default: return console.log('nothing');
+    }
+  }
+
+
   if (exam) {
     if (duration === 0) {
       setDuration(examInfo[0].Duration * 60);
@@ -125,7 +152,6 @@ function ExamComponent({ exam, selectExam, user, productId }) {
       return (examFullScore += val.point);
     });
 
-    const currentQuestions = examContent.slice(step * 5, (step + 1) * 5);
 
     return (
       <>
@@ -178,11 +204,7 @@ function ExamComponent({ exam, selectExam, user, productId }) {
 
         {loading ? null : (
           <Box>
-            <Examination
-              currentQuestions={currentQuestions}
-              answers={answers}
-              handleAnswerChange={handleAnswerChange}
-            />
+            {ExamOperation(exam_operationId)}
 
             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button

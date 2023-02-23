@@ -81,6 +81,8 @@ const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, dura
                             sx={{
                                 mr: 2,
                                 display: { xs: 'none', md: 'flex' },
+                                position: 'absolute',
+                                left: '45%'
                             }}
                         >
                             <Box component='img' src={logo} width="175px" />
