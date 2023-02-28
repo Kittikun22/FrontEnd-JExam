@@ -71,10 +71,12 @@ export default function DialogDreamFac({ open, setOpen }) {
     <>
       <Dialog open={open} fullWidth="true" maxWidth="sm">
         <DialogContent>
-          <Stack spacing={2}>
-            <Typography sx={{ fontSize: "1.5rem", textAlign: "center" }}>
-              เลือกคณะในฝัน
-            </Typography>
+
+          <Typography mb={2} sx={{ fontSize: "1.5rem", textAlign: "center" }}>
+            เลือกคณะในฝัน
+          </Typography>
+
+          <Stack spacing={2} sx={{ pl: 1, borderLeft: '5px solid #a3cc53' }}>
             <Autocomplete
               size="small"
               fullWidth
@@ -145,12 +147,13 @@ export default function DialogDreamFac({ open, setOpen }) {
               renderInput={(params) => <TextField {...params} label="สาขา" />}
             />
           </Stack>
+
         </DialogContent>
         <DialogActions
           sx={{ display: "flex", justifyContent: "space-between", mx: 2 }}
         >
           <Button onClick={handleClose}>ภายหลัง</Button>
-          <Button onClick={handleSubmit}>ยืนยัน</Button>
+          <Button variant="contained" color="success" onClick={handleSubmit}>ยืนยัน</Button>
         </DialogActions>
       </Dialog>
     </>

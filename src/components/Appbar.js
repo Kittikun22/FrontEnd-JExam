@@ -223,7 +223,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                             ))}
                         </Box>
 
-                        <Box sx={{ mr: { xs: 2, md: 5 } }}>
+                        {/* <Box sx={{ mr: { xs: 2, md: 5 } }}>
                             <Tooltip title="ค้นหา">
                                 <IconButton
                                     sx={{ p: 0 }}
@@ -232,7 +232,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                                     <SearchIcon sx={{ color: '#a3cc53', fontSize: "30px" }} />
                                 </IconButton>
                             </Tooltip>
-                        </Box>
+                        </Box> */}
 
 
                         <Box sx={{ mr: { xs: 2, md: 5 } }}>

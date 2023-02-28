@@ -6,6 +6,7 @@ import sidepic from '../../asset/sidepic.PNG'
 import sidepicMini from '../../asset/sidepic2.png'
 
 function HomeBanner() {
+
     return (
         <>
             <Box
@@ -51,7 +52,7 @@ function HomeBanner() {
                     <Typography color='white'
                         sx={{
                             marginTop: '-1rem',
-                            fontSize: { xs: "3.3rem", sm: "5rem",md:'5.5rem' },
+                            fontSize: { xs: "3.3rem", sm: "5rem", md: '5.5rem' },
                             fontWeight: 700,
                         }}
                     >
@@ -102,10 +103,11 @@ function HomeBanner() {
                         }}>
                         สมัครสอบ
                     </Button>
+
                 </Box>
 
                 <Box
-                mt={2}
+                    mt={2}
                 >
                     <HomeFlickity />
                 </Box>

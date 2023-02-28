@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Typography } from '@mui/material'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -108,7 +108,7 @@ function AnalysisContent({ answered, exam, selectExam }) {
         <Radar data={data} options={options} />
       </Box>
 
-      <Box my={2} mx={2} sx={{ alignSelf: { xs: '', md: 'center' } }}>
+      <Box mt={2} mb={{ xs: 10, md: 0 }} mx={2} sx={{ alignSelf: { xs: '', md: 'center' } }}>
         <TableContainer component={Paper}>
           <Table >
             <TableHead>
@@ -127,7 +127,7 @@ function AnalysisContent({ answered, exam, selectExam }) {
                 >
                   <TableCell component="th" scope="row" sx={{ display: 'flex' }}>
                     <CircleIcon sx={{ alignSelf: 'center', color: colorSet[key] }} />
-                    <Typography sx={{ fontSize: '1rem', color: colorSet[key] }} > {row.category}</Typography>
+                    <Typography pl={1} sx={{ fontSize: '1rem', color: colorSet[key] }}> {row.category}</Typography>
                   </TableCell>
                   <TableCell align="right">
                     <Typography sx={{ fontSize: '1rem' }}>{row.fullScore}</Typography>

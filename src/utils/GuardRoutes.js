@@ -29,7 +29,7 @@ const GuardRoutes = () => {
     if (AuthToken === true) {
         return <Outlet />
     }
-    else {
+    if (AuthToken === false) {
         return <Login openLogin={openLogin} setOpenLogin={setOpenLogin} />
     }
 }

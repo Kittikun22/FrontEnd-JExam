@@ -17,7 +17,7 @@ function Profile() {
     const { user } = useAuthState();
 
     const [activeContent, setActiveContent] = useState('profile-homepage')
-    const [facDream, setFacDream] = useState(localStorage.getItem('popup'))
+    const [facDream, setFacDream] = useState(false)
 
     useEffect(() => {
         setActiveContent(localStorage.getItem("ActiveContent"))
