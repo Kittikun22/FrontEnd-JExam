@@ -12,6 +12,8 @@ import {
   Button
 } from '@mui/material'
 import { Link } from '@mui/material';
+import { motion } from 'framer-motion'
+
 
 function ProfileHomepage({ user }) {
 
@@ -86,7 +88,11 @@ function ProfileHomepage({ user }) {
           {myExamList?.length <= 3 ?
             myExamList?.map((val, key) => {
               return (
-                <Box>
+                <Box component={motion.div}
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }} key={key}>
                     <CardActionArea href={`/introduction/${val.product_id}`}>
                       <CardMedia

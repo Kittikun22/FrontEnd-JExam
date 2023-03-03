@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import Axios from 'axios'
 import { Link } from '@mui/material';
+import { motion } from 'framer-motion'
 
 
 function ProfileHistory({ user }) {
@@ -51,7 +52,13 @@ function ProfileHistory({ user }) {
           </Typography>
         </Box>
 
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 1, md: 2 }, marginBottom: '80px', marginTop: 2 }}>
+        <Box
+          sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 1, md: 2 }, marginBottom: '80px', marginTop: 2 }}
+          component={motion.div}
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
 
           {myExamList?.map((val, key) => {
             return (
@@ -77,7 +84,7 @@ function ProfileHistory({ user }) {
                   </CardContent>
                 </CardActionArea>
                 <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                  <Button variant='contained' color='warning' sx={{ borderRadius: 3, fontSize:{xs:'.8rem' , md:''} }}>ดูประวัติการทำข้อสอบ</Button>
+                  <Button variant='contained' color='warning' sx={{ borderRadius: 3, fontSize: { xs: '.8rem', md: '' } }}>ดูประวัติการทำข้อสอบ</Button>
                 </CardActions>
               </Card>
             )

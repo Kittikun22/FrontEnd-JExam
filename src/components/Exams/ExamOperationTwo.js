@@ -6,9 +6,6 @@ import {
   FormControlLabel,
   RadioGroup,
 } from "@mui/material";
-import 'katex/dist/katex.min.css';
-import { InlineMath } from 'react-katex';
-import './KatexElement.css'
 import Parser from 'html-react-parser'
 
 function ExamOperationTwo({ currentQuestions, answers, handleAnswerChange }) {
@@ -22,7 +19,6 @@ function ExamOperationTwo({ currentQuestions, answers, handleAnswerChange }) {
           <Box key={key} m={2} id={`question-${question.id}`}>
             <Typography>
               {question.id}.
-              <InlineMath>{question.question}</InlineMath>
             </Typography>
             {Parser(question.test)}
 
@@ -67,7 +63,7 @@ function ExamOperationTwo({ currentQuestions, answers, handleAnswerChange }) {
                             <Box component='img' src={choice.choice_image_lg} sx={{ width: { xs: '300px', sm: '400px', md: '500px' }, my: 0.5 }} />
                           }
                           <Typography>
-                            <InlineMath math={choice.choicetext} />
+                            {choice.choicetext}
                           </Typography>
                         </Box>}
                     />}

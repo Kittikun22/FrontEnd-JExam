@@ -11,6 +11,7 @@ import {
   Box,
   Button,
 } from "@mui/material";
+import { motion } from 'framer-motion'
 
 function ProfileAnalysis({ user }) {
 
@@ -77,7 +78,11 @@ function ProfileAnalysis({ user }) {
         >
           {myExamList?.map((val, key) => {
             return (
-              <>
+              <Box
+                component={motion.div}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3 }}>
                 <Card
                   sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }}
                   key={key}
@@ -137,7 +142,7 @@ function ProfileAnalysis({ user }) {
                     </Stack>
                   </CardActions>
                 </Card>
-              </>
+              </Box>
             );
           })}
         </Box>

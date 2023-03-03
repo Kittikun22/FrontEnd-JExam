@@ -8,6 +8,7 @@ import Axios from 'axios'
 import ReuseDialog from '../ReuseDialog'
 import ProfilePictureList from './ProfilePictureList'
 import ChangePwd from './ChangePwd';
+import { motion } from 'framer-motion'
 
 const CryptoJS = require("crypto-js");
 const EncryptSecret = 'Jknow2022'
@@ -64,8 +65,13 @@ function ProfileSetting({ user }) {
                             แก้ไขโปรไฟล์
                         </Typography>
                     </Box>
-                    <Box p={2} m={2} sx={{ borderRadius: 6, bgcolor: 'white', boxShadow: 1 }}>
-                        <Grid container spacing={2} direction='column' >
+                    <Box p={2} m={2} sx={{ borderRadius: 6, bgcolor: 'white', boxShadow: 1 }}
+                    >
+                        <Grid container spacing={2} direction='column'
+                            component={motion.div}
+                            initial={{ y: 10, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.3 }}>
 
                             <Grid item >
                                 <Stack direction='row' alignItems='center' justifyContent='center' >

@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import Axios from 'axios';
 import { Link } from '@mui/material';
-
+import { motion } from 'framer-motion'
 
 function ProfileMyExam({ user }) {
 
@@ -58,7 +58,12 @@ function ProfileMyExam({ user }) {
           gap: { xs: 1, md: 2 },
           marginBottom: '80px',
           marginTop: 2,
-        }}>
+        }}
+          component={motion.div}
+          initial={{ y: 10, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
 
           {myExamList?.map((val, key) => {
             return (

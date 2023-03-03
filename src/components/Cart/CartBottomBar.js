@@ -5,6 +5,7 @@ import { Button, TextField, Typography } from "@mui/material";
 import Axios from "axios";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import InputAdornment from '@mui/material/InputAdornment';
+import { motion } from 'framer-motion'
 
 const CartBottomBar = ({
   selectedItem,
@@ -89,6 +90,10 @@ const CartBottomBar = ({
         bottom: { xs: 61, md: 0 },
         width: 1,
       }}
+      component={motion.div}
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
       <Box
         sx={{

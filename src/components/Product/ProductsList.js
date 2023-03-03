@@ -20,6 +20,7 @@ import SnackbarAlert from '../SnackbarAlert'
 import Login from '../Login-Dialog';
 import Axios from 'axios'
 import CheckIcon from '@mui/icons-material/Check';
+import { motion } from 'framer-motion'
 
 function ProductsList({ user, cartItem, setCartItem, allProduct }) {
 
@@ -192,13 +193,18 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
                         })}
                     </Box>
 
-                    <Box sx={{
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        gap: '15px',
-                        marginBottom: '80px',
-                        marginTop: 2,
-                    }}>
+                    <Box
+                        component={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        sx={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: '15px',
+                            marginBottom: '80px',
+                            marginTop: 2,
+                        }}>
                         {filterProduct?.length === 0 ?
                             <>
                                 {allProduct?.map((val, key) => {

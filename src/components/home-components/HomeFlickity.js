@@ -35,7 +35,7 @@ function HomeFlickity() {
             <Stack>
                 <Box>
                     <Typography color='white'
-                        sx={{ fontSize: '3rem', textAlign: 'center' }}>
+                        sx={{ fontSize: '2.5rem', textAlign: 'center' }}>
                         จำลองการสอบ พิชิต TCAS
                     </Typography>
                 </Box>

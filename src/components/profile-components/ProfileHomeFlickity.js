@@ -7,6 +7,7 @@ import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardMedia from '@mui/material/CardMedia'
 import Axios from 'axios'
+import { motion } from 'framer-motion'
 
 
 function ProfileHomeFlickity({ user }) {
@@ -33,7 +34,12 @@ function ProfileHomeFlickity({ user }) {
 
     return (
         <>
-            <Box sx={{ display: myExamList?.length >= 4 ? 'block' : 'none' }}>
+            <Box sx={{ display: myExamList?.length >= 4 ? 'block' : 'none' }}
+                component={motion.div}
+                initial={{ x: 10, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{duration:1}}
+            >
                 <Flickity
                     className={'carousel'} // default ''
                     elementType={'div'} // default 'div'

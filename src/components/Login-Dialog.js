@@ -80,7 +80,7 @@ export default function LoginDialog({ openLogin, setOpenLogin }) {
                             :
                             <Box sx={{ textAlign: 'center' }} component='form'>
                                 <Typography sx={{ fontSize: '35px', mb: '10px' }}>เข้าสู่ระบบ</Typography>
-                                <Box sx={{ mb: 2 }}>
+                                <Box sx={{ mb: 2 }} >
                                     <TextField type="text" size='small'
                                         label="เบอร์โทรศัพท์" variant="outlined" onChange={(e) => { setUserPhone(e.target.value) }} />
                                 </Box>

@@ -36,7 +36,7 @@ function ExamDrawer({
             background: "#0e3746",
             borderRight: 5,
             borderColor: "#a3cc53",
-            height: '100%'
+            minHeight: '100%'
           }}
           onClick={handleDrawerOpen}
           onKeyDown={handleDrawerClose}
@@ -93,7 +93,7 @@ function ExamDrawer({
             })}
           </Box>
 
-          <Box mt={2} sx={{ display: "flex", justifyContent: "center" }}>
+          <Box mt={2} pb={2} sx={{ display: "flex", justifyContent: "center" }}>
             <Button
               variant="contained"
               color="error"

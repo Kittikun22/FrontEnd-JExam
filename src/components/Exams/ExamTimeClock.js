@@ -18,21 +18,27 @@ function ExamTimeClock({ timeControl, setTimeControl, timeSpend, setTimeSpend, d
             return () => clearInterval(intervalId);
         }
     }, [timeSpend, duration, setOpenDialog, setTimeControl, setTimeSpend, timeControl]);
-    
+
 
 
     return (
         <>
-            <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
-                <Typography sx={{ fontSize: '1.5rem' }}>
-                    {timeSpending}
-                </Typography>
-            </Box>
-            <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-                <Typography sx={{ fontSize: '1.5rem' }}>
-                    เหลือเวลา {timeSpending} นาที
-                </Typography>
-            </Box>
+            {timeSpend === duration ? <Typography sx={{ fontSize: '1.5rem' }}>
+                หมดเวลา
+            </Typography> :
+                <>
+                    <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
+                        <Typography sx={{ fontSize: '1.5rem' }}>
+                            {timeSpending}
+                        </Typography>
+                    </Box>
+                    <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+                        <Typography sx={{ fontSize: '1.5rem' }}>
+                            เหลือเวลา {timeSpending} นาที
+                        </Typography>
+                    </Box>
+                </>
+            }
         </>
     )
 }
