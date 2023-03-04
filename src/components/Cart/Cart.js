@@ -122,7 +122,7 @@ export default function Cart({ rowsData, setRowsData }) {
               startIcon={<DeleteIcon />}
               sx={{
                 borderRadius: 10,
-                width: "75px",
+                width: "100px",
               }}
               onClick={() => handleDelete(selectedItem)}
             >

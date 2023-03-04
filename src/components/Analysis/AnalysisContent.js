@@ -113,10 +113,10 @@ function AnalysisContent({ answered, exam, selectExam }) {
           <Table >
             <TableHead>
               <TableRow sx={{ background: '#0e3746' }}>
-                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem' }}>หัวข้อ</TableCell>
-                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem', width: '100px' }} align="right">คะแนนเต็ม</TableCell>
-                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem', width: '100px' }} align="right">คะแนนที่ได้</TableCell>
-                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem', width: '100px' }} align="right">ร้อยละ(%)</TableCell>
+                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem' }} align="center">หัวข้อ</TableCell>
+                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem', width: '100px' }} align="center">คะแนนเต็ม</TableCell>
+                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem', width: '100px' }} align="center">คะแนนที่ได้</TableCell>
+                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem', width: '100px' }} align="center">ร้อยละ(%)</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -129,13 +129,13 @@ function AnalysisContent({ answered, exam, selectExam }) {
                     <CircleIcon sx={{ alignSelf: 'center', color: colorSet[key] }} />
                     <Typography pl={1} sx={{ fontSize: '1rem', color: colorSet[key] }}> {row.category}</Typography>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">
                     <Typography sx={{ fontSize: '1rem' }}>{row.fullScore}</Typography>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">
                     <Typography sx={{ fontSize: '1rem' }}>{row.point}</Typography>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="center">
                     <Typography sx={{ fontSize: '1rem' }}>{((row.point / row.fullScore) * 100).toFixed(2)}</Typography>
                   </TableCell>
                 </TableRow>

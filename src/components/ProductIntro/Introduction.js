@@ -6,7 +6,6 @@ import SnackbarAlert from "../SnackbarAlert";
 import Login from "../Login-Dialog";
 
 function Introduction({
-  subject,
   user,
   productDetail,
   myExamList,
@@ -142,12 +141,7 @@ function Introduction({
                     variant="contained"
                     color="warning"
                     sx={{ borderRadius: 5, width: "200px" }}
-                    // href={`/exam/${productDetail.product_id}`}
-                    href={
-                      subject
-                        ? `/takeanexam/netsat/${subject}`
-                        : `/exam/${productDetail.product_id}`
-                    }
+                    href={`/exam/${productDetail.product_id}`}
                   >
                     <Typography sx={{ fontSize: "1rem", fontWeight: 600 }}>
                       เริ่มทำข้อสอบ

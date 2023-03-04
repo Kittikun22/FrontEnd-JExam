@@ -7,7 +7,8 @@ import {
   CardActions,
   Typography,
   Box,
-  Button
+  Button,
+  Stack
 } from '@mui/material'
 import Axios from 'axios';
 import { Link } from '@mui/material';
@@ -89,14 +90,16 @@ function ProfileMyExam({ user }) {
                   </CardContent>
                 </CardActionArea>
                 <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                  <Button
-                    variant='contained'
-                    color='warning'
-                    sx={{ borderRadius: 3 }}
-                    href={`/introduction/${val.product_id}`}
-                  >
-                    ทำข้อสอบ
-                  </Button>
+                  <Stack>
+                    <Button
+                      variant='contained'
+                      color='warning'
+                      sx={{ borderRadius: 3 }}
+                      href={`/introduction/${val.product_id}`}
+                    >
+                      ทำข้อสอบ
+                    </Button>
+                  </Stack>
                 </CardActions>
               </Card>
             )

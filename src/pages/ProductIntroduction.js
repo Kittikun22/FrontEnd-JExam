@@ -10,8 +10,6 @@ function ProductIntroduction() {
     const { productID } = useParams();
     const { user } = useAuthState();
 
-    const [subject , setSubject] = useState() //*************** */
-
     const [productDetail, setProductDetail] = useState()
     const [myExamList, setMyExamList] = useState([])
 
@@ -38,28 +36,6 @@ function ProductIntroduction() {
                 updateCart: JSON.stringify(cartItem)
             })
         }
-
-        if(productID === "1"){
-            setSubject("thai")
-        }
-        if(productID === "2"){
-            setSubject("english")
-        }
-        if(productID === "3"){
-            setSubject("mathematics")
-        }
-        if(productID === "4"){
-            setSubject("scienceandtechnology")
-        }
-        if(productID === "5"){
-            setSubject("chemistry")
-        }
-        if(productID === "6"){
-            setSubject("biology")
-        }
-        if(productID === "7"){
-            setSubject("physics")
-        }
     }, [user, cartItem])
 
 
@@ -72,7 +48,7 @@ function ProductIntroduction() {
                     background: 'linear-gradient(0deg, rgba(239,245,245,1) 0%, rgba(214,228,229,1) 100%)',
                     minHeight: '100vh',
                 }}>
-                    <Introduction subject={subject} user={user} productDetail={productDetail} myExamList={myExamList} cartItem={cartItem} setCartItem={setCartItem} />
+                    <Introduction user={user} productDetail={productDetail} myExamList={myExamList} cartItem={cartItem} setCartItem={setCartItem} />
                 </Box>
             </>
 

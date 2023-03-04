@@ -68,6 +68,7 @@ function ProfileSetting({ user }) {
                     <Box p={2} m={2} sx={{ borderRadius: 6, bgcolor: 'white', boxShadow: 1 }}
                     >
                         <Grid container spacing={2} direction='column'
+                            mt={2}
                             component={motion.div}
                             initial={{ y: 10, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}

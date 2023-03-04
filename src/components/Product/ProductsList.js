@@ -202,8 +202,9 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
                             display: 'flex',
                             flexWrap: 'wrap',
                             gap: '15px',
-                            marginBottom: '80px',
+                            marginBottom: 15,
                             marginTop: 2,
+                            justifyContent: 'center'
                         }}>
                         {filterProduct?.length === 0 ?
                             <>

@@ -81,7 +81,6 @@ function HomeBanner() {
                             สนามสอบจำลอง
                         </Typography>
 
-
                         <Typography color='white'
                             sx={{
                                 marginTop: '-1rem',
