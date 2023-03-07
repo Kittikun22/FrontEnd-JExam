@@ -12,9 +12,9 @@ import {
   Button,
 } from "@mui/material";
 import { motion } from 'framer-motion'
+import AnalysisDialog from "./AnalysisDialog";
 
 function ProfileAnalysis({ user }) {
-
 
   const [myExamList, setMyExamList] = useState([]);
 
@@ -29,6 +29,9 @@ function ProfileAnalysis({ user }) {
 
   return (
     <>
+
+      <AnalysisDialog user_id={user?.user_id} />
+
       <Box m={2}>
         <Typography
           sx={{
@@ -73,7 +76,7 @@ function ProfileAnalysis({ user }) {
             flexWrap: "wrap",
             gap: { xs: 1, md: 2 },
             marginBottom: "80px",
-            marginTop: 2,
+            marginTop: 2
           }}
         >
           {myExamList?.map((val, key) => {

@@ -89,8 +89,8 @@ function ProfileMyExam({ user }) {
                     </Typography>
                   </CardContent>
                 </CardActionArea>
-                <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                  <Stack>
+                <CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Stack spacing={1}>
                     <Button
                       variant='contained'
                       color='warning'

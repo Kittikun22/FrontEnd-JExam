@@ -71,7 +71,7 @@ function ChangePwd({ user }) {
                 <DialogContent>
                     {isSuccess === false ?
                         <Box component='form' onSubmit={handleSubmit(ChangePassword)}>
-                            <Stack spacing={2} sx={{ mt: 2 }}>
+                            <Stack spacing={2}>
                                 <TextField
                                     id="password"
                                     type='password'
@@ -82,8 +82,6 @@ function ChangePwd({ user }) {
                                     onChange={(e) => { setOldPwd(e.target.value) }}
                                     onBlur={CheckPassword}
                                 />
-
-
                                 {oldPwdStatus === 'error' ?
                                     <Typography
                                         sx={{
@@ -98,18 +96,7 @@ function ChangePwd({ user }) {
                                         <WarningIcon fontSize='.5rem' />{oldPwdMessage}
                                     </Typography>
                                     :
-                                    <Typography
-                                        sx={{
-                                            fontSize: '.9rem',
-                                            color: '#a3cc53',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            flexWrap: 'wrap',
-                                            textAlign: 'center'
-                                        }}
-                                    >
-                                        {oldPwdMessage}
-                                    </Typography>
+                                    null
                                 }
 
                                 <TextField

@@ -24,7 +24,7 @@ function ProfileHomeFlickity({ user }) {
     }, [])
 
     const flickityOptions = {
-        initialIndex: 1,
+        initialIndex: 2,
         selectedAttraction: 0.01,
         friction: 0.15,
         contain: true,
@@ -36,9 +36,9 @@ function ProfileHomeFlickity({ user }) {
         <>
             <Box sx={{ display: myExamList?.length >= 4 ? 'block' : 'none' }}
                 component={motion.div}
-                initial={{ x: 10, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{duration:1}}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3 }}
             >
                 <Flickity
                     className={'carousel'} // default ''
@@ -51,7 +51,7 @@ function ProfileHomeFlickity({ user }) {
                     {myExamList?.map((val, key) => {
                         return (
                             <Box sx={{ mx: 2 }} key={key} className='myexams-cell'>
-                                <Card sx={{ width: 300, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-myexams-cell'>
+                                <Card sx={{ width: 300, borderRadius: 7, border: 5, borderColor: 'white' }} className='card-myexams-cell'>
                                     <CardActionArea href={`/introduction/${val.product_id}`}>
                                         <CardMedia
                                             component="img"

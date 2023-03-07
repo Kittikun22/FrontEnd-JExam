@@ -5,7 +5,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Divider from '@mui/material/Divider';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import AssessmentIcon from '@mui/icons-material/Assessment';
 import HistoryIcon from '@mui/icons-material/History';
@@ -41,16 +40,16 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
           <Divider sx={{ my: 1 }} />
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-homepage' ? '5px solid #a3cc53' : null }}
+            sx={{ borderLeft: activeContent === 'profile-homepage' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-homepage' ? '#a3cc5325' : null }}
             onClick={() => { handleSetActiveContent('profile-homepage') }}>
             <ListItemIcon>
-              <HomeIcon sx={{ color: activeContent === 'profile-homepage' ? '#a3cc53' : null }}/>
+              <HomeIcon sx={{ color: activeContent === 'profile-homepage' ? '#a3cc53' : null }} />
             </ListItemIcon>
             <ListItemText primary="หน้าแรก" />
           </ListItemButton>
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-myexam' ? '5px solid #a3cc53' : null }}
+            sx={{ borderLeft: activeContent === 'profile-myexam' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-myexam' ? '#a3cc5325' : null }}
             onClick={() => { handleSetActiveContent('profile-myexam') }}>
             <ListItemIcon>
               <AutoStoriesIcon sx={{ color: activeContent === 'profile-myexam' ? '#a3cc53' : null }} />
@@ -60,7 +59,7 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
 
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-analysis' ? '5px solid #a3cc53' : null }}
+            sx={{ borderLeft: activeContent === 'profile-analysis' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-analysis' ? '#a3cc5325' : null }}
             onClick={() => { handleSetActiveContent('profile-analysis') }}>
             <ListItemIcon>
               <AssessmentIcon sx={{ color: activeContent === 'profile-analysis' ? '#a3cc53' : null }} />
@@ -69,7 +68,7 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
           </ListItemButton>
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-history' ? '5px solid #a3cc53' : null }}
+            sx={{ borderLeft: activeContent === 'profile-history' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-history' ? '#a3cc5325' : null }}
             onClick={() => { handleSetActiveContent('profile-history') }}>
             <ListItemIcon>
               <HistoryIcon sx={{ color: activeContent === 'profile-history' ? '#a3cc53' : null }} />
@@ -80,7 +79,7 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
           <Divider sx={{ my: 1 }} />
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-payment' ? '5px solid #a3cc53' : null }}
+            sx={{ borderLeft: activeContent === 'profile-payment' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-payment' ? '#a3cc5325' : null }}
             onClick={() => { handleSetActiveContent('profile-payment') }}>
             <ListItemIcon>
               <CreditCardIcon sx={{ color: activeContent === 'profile-payment' ? '#a3cc53' : null }} />
@@ -89,7 +88,7 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
           </ListItemButton>
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-setting' ? '5px solid #a3cc53' : null }}
+            sx={{ borderLeft: activeContent === 'profile-setting' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-setting' ? '#a3cc5325' : null }}
             onClick={() => { handleSetActiveContent('profile-setting') }}>
             <ListItemIcon>
               <SettingsIcon sx={{ color: activeContent === 'profile-setting' ? '#a3cc53' : null }} />
