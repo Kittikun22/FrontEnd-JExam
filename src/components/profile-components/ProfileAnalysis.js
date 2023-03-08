@@ -16,6 +16,10 @@ import AnalysisDialog from "./AnalysisDialog";
 
 function ProfileAnalysis({ user }) {
 
+  const [openAnalysis, setOpenAnalysis] = useState(false)
+  const [examId, setExamId] = useState()
+  const [ProductName, setProductName] = useState()
+
   const [myExamList, setMyExamList] = useState([]);
 
   useEffect(() => {
@@ -26,11 +30,18 @@ function ProfileAnalysis({ user }) {
     });
   }, []);
 
+  const handleAnalysis = (exam_id, Product_Name) => {
+    setExamId(exam_id)
+    setProductName(Product_Name)
+    setOpenAnalysis(true)
+  }
+
+  console.log(myExamList);
 
   return (
     <>
 
-      <AnalysisDialog user_id={user?.user_id} />
+      <AnalysisDialog user_id={user.user_id} exam_id={examId} ProductName={ProductName} openAnalysis={openAnalysis} setOpenAnalysis={setOpenAnalysis} />
 
       <Box m={2}>
         <Typography
@@ -138,7 +149,8 @@ function ProfileAnalysis({ user }) {
                           borderRadius: 3,
                           fontSize: { xs: ".8rem", md: "" },
                         }}
-                        href={`/analysis/${val.product_id}`}
+                        // href={`/analysis/${val.product_id}`}
+                        onClick={() => handleAnalysis(val.exam_id, val.name)}
                       >
                         ดูผลการวิเคราะห์คะแนน
                       </Button>
