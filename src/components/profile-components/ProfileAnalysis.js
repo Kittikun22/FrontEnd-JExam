@@ -41,7 +41,7 @@ function ProfileAnalysis({ user }) {
   return (
     <>
 
-      <AnalysisDialog user_id={user.user_id} exam_id={examId} ProductName={ProductName} openAnalysis={openAnalysis} setOpenAnalysis={setOpenAnalysis} />
+      <AnalysisDialog user_id={user.user_id} exam_id={examId} ProductName={ProductName} setExamId={setExamId} openAnalysis={openAnalysis} setOpenAnalysis={setOpenAnalysis} />
 
       <Box m={2}>
         <Typography

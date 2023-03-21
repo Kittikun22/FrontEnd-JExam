@@ -5,6 +5,12 @@ import { Typography, Box, Button, Divider, Slide } from "@mui/material";
 import ScoreBadge from "../../asset/badge.png";
 import StarIcon from "@mui/icons-material/Star";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableRow from "@mui/material/TableRow";
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -50,7 +56,34 @@ function ExamScoreAlertDialog({
               alignSelf: "center",
             }}
           >
-            <Box mb={2}>
+
+            <TableContainer sx={{ borderRadius: 3 }}>
+              <Table>
+                <TableBody>
+                  <TableRow>
+                    <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
+                      ข้อสอบ
+                    </TableCell>
+                    <TableCell align="center" sx={{ background: '#E9E8E8' }}>{examName}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="center" sx={{ display: 'flex', alignItems: 'center', gap: .5, background: '#008306', color: '#fff' }}>
+                      <StarIcon sx={{ color: "#F2921D" }} />
+                      คะแนนที่ได้
+                    </TableCell>
+                    <TableCell align="center" sx={{ background: '#E9E8E8' }}>{totalScore} / {examFullScore} คะแนน</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="center" sx={{ display: 'flex', alignItems: 'center', gap: .5, background: '#008306', color: '#fff' }}>
+                      <AccessTimeFilledIcon sx={{ color: "#A2B5BB" }} />
+                      เวลาที่ใช้
+                    </TableCell>
+                    <TableCell align="center" sx={{ background: '#E9E8E8' }}>{timeSpending} นาที</TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </TableContainer>
+            {/* <Box mb={2}>
               <Typography
                 sx={{
                   display: "inline",
@@ -92,7 +125,9 @@ function ExamScoreAlertDialog({
               >
                 เวลาที่ใช้ : {timeSpending} นาที
               </Typography>
-            </Box>
+            </Box> */}
+
+
           </Box>
         </Box>
 

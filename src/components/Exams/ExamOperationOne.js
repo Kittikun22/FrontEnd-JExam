@@ -5,6 +5,7 @@ import {
   Radio,
   FormControlLabel,
   RadioGroup,
+  Divider
 } from "@mui/material";
 
 
@@ -14,18 +15,18 @@ function ExamOperationOne({ currentQuestions, answers, handleAnswerChange }) {
       {currentQuestions.map((question, key) => {
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
-            <Typography variant="h5">
+            <Typography variant="h6">
               {question.id}. {question.question}
             </Typography>
 
             {question.question_image_sm === '' ? null :
-              <Box component='img' src={question.question_image_sm} width={{ xs: '175px', sm: '175px', md: '175px' }} ml={2} />
+              <Box component='img' src={question.question_image_sm} width={{ xs: '40%', md: '35%' }} ml={1} />
             }
             {question.question_image_md === '' ? null :
-              <Box component='img' src={question.question_image_md} width={{ xs: '250px', sm: '300px', md: '400px' }} ml={2} />
+              <Box component='img' src={question.question_image_md} width={{ xs: '70%', md: '65%' }} ml={1} />
             }
             {question.question_image_lg === '' ? null :
-              <Box component='img' src={question.question_image_lg} width={{ xs: '300px', sm: '500px', md: '650px' }} ml={2} />
+              <Box component='img' src={question.question_image_lg} width={{ xs: '95%', md: '80%' }} ml={1} />
             }
 
             <RadioGroup
@@ -66,6 +67,7 @@ function ExamOperationOne({ currentQuestions, answers, handleAnswerChange }) {
                 </Box>
               ))}
             </RadioGroup>
+            <Divider sx={{ my: 2 }} />
           </Box>
         );
       })}

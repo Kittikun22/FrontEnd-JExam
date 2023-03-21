@@ -21,7 +21,7 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
     <>
       {user ?
         <List>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: '20px', width: '250px' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: '20px', width: '230px' }}>
 
             <Avatar
               sx={{

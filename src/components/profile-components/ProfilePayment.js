@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion'
 
 const Accordion = styled((props) => (
-  <MuiAccordion disableGutters elevation={0} square {...props} />
+  <MuiAccordion disableGutters elevation={1} {...props} />
 ))(({ theme }) => ({
   border: `1px solid ${theme.palette.divider}`,
   '&:not(:last-child)': {
@@ -73,7 +73,7 @@ function ProfilePayment({ user }) {
         </Typography>
       </Box>
 
-      <Box p={2} m={2} sx={{ borderRadius: 3, bgcolor: 'white', boxShadow: 1 }}>
+      <Box p={2} m={2} sx={{ borderRadius: 3, bgcolor: 'white', boxShadow: 1, minHeight: 300 }}>
         {paymentHistory?.length === 0 ? <Typography sx={{ textAlign: 'center', fontSize: '1.3rem' }}>ไม่พบประวัติการชำระเงิน</Typography> : null}
 
         <Box
@@ -99,12 +99,14 @@ function ProfilePayment({ user }) {
                   </Box>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography>รายการสินค้า : </Typography>
-                    {JSON.parse(val.products).map((val, key) => {
-                      return (
-                        <Typography noWrap key={key}>{key + 1}. {val}</Typography>
-                      )
-                    }
-                    )}
+                    <Box>
+                      {JSON.parse(val.products).map((val, key) => {
+                        return (
+                          <Typography noWrap key={key}>{key + 1}. {val}</Typography>
+                        )
+                      }
+                      )}
+                    </Box>
                   </Box>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography>

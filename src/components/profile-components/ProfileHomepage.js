@@ -81,7 +81,6 @@ function ProfileHomepage({ user }) {
           </Typography>
         </Box>
 
-
         <ProfileHomeFlickity user={user} />
 
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 1, md: 2 }, marginBottom: '30px', marginTop: 2 }}>

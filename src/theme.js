@@ -16,10 +16,13 @@ const theme = createTheme({
             main: '#f57c00'
         },
         greenNeon: {
-            main:'#a3cc53'
+            main: '#a3cc53'
         },
-        backButton:{
-            main:'#0081B4'
+        backButton: {
+            main: '#0081B4'
+        },
+        greyButton: {
+            main: '#D8D8D8'
         }
     },
 

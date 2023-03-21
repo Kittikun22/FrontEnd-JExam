@@ -44,8 +44,9 @@ function NETSATFlickity() {
             >
                 {NETSATList.map((val, key) => {
                     return (
-                        <Box sx={{ mx: 2 }} key={key} className='exams-cell'>
-                            <Card sx={{ width: 250, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-exams-cell'>
+                        <Box sx={{ mx: 2, position: 'relative' }} key={key} className='exams-cell'>
+
+                            <Card sx={{ width: 300, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-exams-cell'>
                                 <CardActionArea href={`/introduction/${val.product_id}`}>
                                     <CardMedia
                                         component="img"
@@ -54,21 +55,43 @@ function NETSATFlickity() {
                                         alt={val.name}
                                     />
                                     <Typography
-                                        className='card-typography'
+                                        className='on-card-typography'
                                         noWrap
+                                        variant='h6'
                                         sx={{
-                                            marginTop: "-6rem",
+                                            marginTop: "-5rem",
                                             textAlign: 'center',
                                             color: 'white',
-                                            fontSize: '1.25rem',
                                             fontWeight: 600,
-                                            marginLeft: 1.5
+                                            marginLeft: 1.5,
                                         }}
                                     >
                                         {val.name}
                                     </Typography>
                                 </CardActionArea>
                             </Card>
+
+
+                            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                <Typography
+                                    className='card-typography'
+                                    noWrap
+                                    variant='h6'
+                                    sx={{
+                                        display: 'none',
+                                        background: '#EAEAEA',
+                                        borderRadius: 7,
+                                        p: 1,
+                                        width: 250,
+                                        minHeight: 60,
+                                        color: '#000',
+                                        fontWeight: 600,
+                                        textAlign: 'center'
+                                    }}
+                                >
+                                    {val.name}
+                                </Typography>
+                            </Box>
                         </Box>
                     )
                 })}

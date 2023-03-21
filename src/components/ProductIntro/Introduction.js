@@ -173,17 +173,19 @@ function Introduction({
                   p: 2,
                 }}
               >
-                <Typography
-                  sx={{
-                    fontSize: "1.5rem",
-                    fontWeight: 600,
-                    color: "#019267",
-                    mb: 2,
-                  }}
-                >
-                  {productDetail.name}
-                </Typography>
-                <BluePrint bluePrint={bluePrint} />
+                <Box px={{ xs: 0, md: 2 }}>
+                  <Typography
+                    sx={{
+                      fontSize: "1.5rem",
+                      fontWeight: 600,
+                      color: "#019267",
+                      mb: 2,
+                    }}
+                  >
+                    {productDetail.name}
+                  </Typography>
+                  <BluePrint bluePrint={bluePrint} />
+                </Box>
               </Paper>
             </>
           ) : (

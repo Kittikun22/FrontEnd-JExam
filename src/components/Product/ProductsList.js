@@ -210,7 +210,7 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
                             <>
                                 {allProduct?.map((val, key) => {
                                     return (
-                                        <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7, }} elevation={3} key={key}>
+                                        <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 5, }} elevation={3} key={key}>
                                             <CardActionArea href={`/introduction/${val.product_id}`}>
                                                 <CardMedia
                                                     component="img"
@@ -271,7 +271,7 @@ function ProductsList({ user, cartItem, setCartItem, allProduct }) {
                             <>
                                 {filterProduct.map((val, key) => {
                                     return (
-                                        <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }} elevation={3} key={key}>
+                                        <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 5 }} elevation={3} key={key}>
                                             <CardActionArea href={`/introduction/${val.product_id}`}>
                                                 <CardMedia
                                                     component="img"

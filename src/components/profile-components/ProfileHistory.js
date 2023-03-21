@@ -12,11 +12,16 @@ import {
 import Axios from 'axios'
 import { Link } from '@mui/material';
 import { motion } from 'framer-motion'
+import HistoryDialog from './HistoryDialog';
 
 
 function ProfileHistory({ user }) {
 
   const [myExamList, setMyExamList] = useState([])
+
+  const [openHistory, setOpenHistory] = useState(false)
+  const [examId, setExamId] = useState()
+  const [ProductName, setProductName] = useState()
 
   useEffect(() => {
     Axios.post('http://localhost:8000/getuserproductandexams', {
@@ -26,9 +31,18 @@ function ProfileHistory({ user }) {
     })
   }, [])
 
+  const handleHistory = (exam_id, Product_Name) => {
+    setExamId(exam_id)
+    setProductName(Product_Name)
+    setOpenHistory(true)
+  }
+
 
   return (
     <>
+
+      <HistoryDialog user_id={user.user_id} exam_id={examId} ProductName={ProductName} setExamId={setExamId} openHistory={openHistory} setOpenHistory={setOpenHistory} />
+
       <Box m={2}>
         <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
           ประวัติการทำข้อสอบ
@@ -84,7 +98,14 @@ function ProfileHistory({ user }) {
                   </CardContent>
                 </CardActionArea>
                 <CardActions sx={{ display: 'flex', height: '35px', justifyContent: 'center' }}>
-                  <Button variant='contained' color='warning' sx={{ borderRadius: 3, fontSize: { xs: '.8rem', md: '' } }}>ดูประวัติการทำข้อสอบ</Button>
+                  <Button
+                    variant='contained'
+                    color='warning'
+                    sx={{ borderRadius: 3, fontSize: { xs: '.8rem', md: '' } }}
+                    onClick={() => handleHistory(val.exam_id, val.name)}
+                  >
+                    ดูประวัติการทำข้อสอบ
+                  </Button>
                 </CardActions>
               </Card>
             )

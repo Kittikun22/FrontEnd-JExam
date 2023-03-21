@@ -8,13 +8,17 @@ import {
   DialogActions,
   Slide
 } from "@mui/material";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableRow from "@mui/material/TableRow";
 import ExamTimerPic from '../../asset/timer-exam.png'
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-
 
 function ExamStartDialog({
   openStartDialog,
@@ -42,57 +46,34 @@ function ExamStartDialog({
         }}
       >
         <Box component="img" src={ExamTimerPic} width='200px' />
-        <Typography
-          sx={{
-            fontSize: "1.2rem",
-            fontWeight: 600,
-            width: "265px",
-            textAlign: "center",
-          }}
-        >
-          ข้อสอบ : {examName}
-        </Typography>
+
+        <TableContainer sx={{ borderRadius: 3, maxWidth: { xs: '90%', md: '60%' } }}>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>ข้อสอบ</TableCell>
+                <TableCell align="center" sx={{ background: '#E9E8E8' }}>{examName}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>มีข้อสอบ</TableCell>
+                <TableCell align="center" sx={{ background: '#E9E8E8' }}>{examContent.length} ข้อ</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>คะแนนเต็ม</TableCell>
+                <TableCell align="center" sx={{ background: '#E9E8E8' }}>{examFullScore} คะแนน</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>เวลา</TableCell>
+                <TableCell align="center" sx={{ background: '#E9E8E8' }}>{duration} นาที</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+
 
         <Typography
-          sx={{
-            fontSize: "1.2rem",
-            fontWeight: 600,
-            width: "265px",
-            textAlign: "center",
-          }}
-        >
-          มีข้อสอบ : {examContent.length} ข้อ
-        </Typography>
-
-        <Typography
-          sx={{
-            fontSize: "1.2rem",
-            fontWeight: 600,
-            width: "265px",
-            textAlign: "center",
-          }}
-        >
-          คะแนนเต็ม : {examFullScore} คะแนน
-        </Typography>
-
-        <Box mb={2}>
-          <Typography
-            sx={{
-              fontSize: "1.2rem",
-              fontWeight: 600,
-              width: "265px",
-              textAlign: "center",
-            }}
-          >
-            มีเวลาในการทำ : {duration} นาที
-          </Typography>
-        </Box>
-
-        <Typography
-          sx={{
-            fontSize: "1.2rem",
-            textAlign: "center",
-          }}
+          mt={2}
+          align="center"
         >
           เมื่อกดตกลงจะแสดงข้อสอบและเริ่มจับเวลาทันที
         </Typography>

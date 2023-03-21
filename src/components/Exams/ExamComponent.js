@@ -97,8 +97,9 @@ function ExamComponent({ exam, selectExam, user, productId }) {
     setTimeControl(false);
     console.log(answers);
     let score = 0;
+    let fullScore = 0;
     answers.map((val) => {
-      return (score += val.point);
+      return (score += val.point, fullScore += val.fullScore);
     });
 
     Axios.post("http://localhost:8000/submitExam", {
@@ -106,6 +107,7 @@ function ExamComponent({ exam, selectExam, user, productId }) {
       exam_id: exam[selectExam].exam_id,
       answer: JSON.stringify(answers),
       score: score,
+      fullScore: fullScore,
       timeSpend: timeSpend,
     }).then((res) => {
       if (res.data.message === "success") {
