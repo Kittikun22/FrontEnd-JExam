@@ -4,7 +4,7 @@ import ExamScoreAlertDialog from "./ExamScoreAlertDialog";
 import ExamNavbar from "./ExamNavbar";
 import ExamStartDialog from "./ExamStartDialog";
 import ExamSubmitAlert from "./ExamSubmitAlert";
-import ExamOperationOne from "./ExamOperationOne";
+import ExamOperation from "./ExamOperation";
 import ExamOperationTwo from "./ExamOperationTwo";
 import Axios from "axios";
 
@@ -12,7 +12,8 @@ function ExamComponent({ exam, selectExam, user, productId }) {
 
   const examContent = JSON.parse(exam[selectExam].exam_content);
   const examInfo = JSON.parse(exam[selectExam].exam_info);
-  const exam_operationId = exam[selectExam].exam_operation
+
+  console.log(examContent);
 
   const [loading, setLoading] = useState(true);
   const [duration, setDuration] = useState(0);
@@ -28,6 +29,13 @@ function ExamComponent({ exam, selectExam, user, productId }) {
       category: question.category
     }))
   );
+
+
+  // const [answers, setAnswers] = useState(
+  //   examContent.flatMap(({ categoryQuestion, category }) =>
+  //     categoryQuestion.map(({ id, point }) => ({ id, choose: "", point: 0, fullScore: point, category }))
+  //   )
+  // );
 
   const [totalScore, setTotalScore] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
@@ -117,28 +125,7 @@ function ExamComponent({ exam, selectExam, user, productId }) {
     });
   };
 
-
   const currentQuestions = examContent.slice(step * 5, (step + 1) * 5);
-
-  function ExamOperation(exam_operationId) {
-    switch (exam_operationId) {
-      case 1:
-        return <ExamOperationOne
-          currentQuestions={currentQuestions}
-          answers={answers}
-          handleAnswerChange={handleAnswerChange}
-        />
-      case 2:
-        return <ExamOperationTwo
-          currentQuestions={currentQuestions}
-          answers={answers}
-          handleAnswerChange={handleAnswerChange}
-        />
-
-      default: return console.log('nothing');
-    }
-  }
-
 
   if (exam) {
     if (duration === 0) {
@@ -150,10 +137,9 @@ function ExamComponent({ exam, selectExam, user, productId }) {
 
     let examFullScore = 0;
 
-    examContent.map((val) => {
-      return (examFullScore += val.point);
+    answers?.map((val) => {
+      return (examFullScore += val.fullScore);
     });
-
 
     return (
       <>
@@ -166,6 +152,7 @@ function ExamComponent({ exam, selectExam, user, productId }) {
           examContent={examContent}
           duration={examInfo[0].Duration}
           examFullScore={examFullScore}
+          answers={answers}
         />
 
         <ExamScoreAlertDialog
@@ -206,7 +193,12 @@ function ExamComponent({ exam, selectExam, user, productId }) {
 
         {loading ? null : (
           <Box>
-            {ExamOperation(exam_operationId)}
+
+            <ExamOperation
+              currentQuestions={currentQuestions}
+              answers={answers}
+              handleAnswerChange={handleAnswerChange}
+            />
 
             <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button

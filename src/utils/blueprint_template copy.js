@@ -146,7 +146,7 @@
 	},
 	{
 		"category": "Error Detection",
-		"categoryDetail": "",
+		"categoryDetail": "ข้อ 13-15 Error Detection.",
 		"categoryParagraph": "",
 		"categoryImgage": "",
 		"categoryQuestion": [

@@ -76,7 +76,7 @@ function TGATFlickity() {
                                     variant='h6'
                                     sx={{
                                         display: 'none',
-                                        background: '#EAEAEA',
+                                        background: '#fff',
                                         borderRadius: 7,
                                         p: 1,
                                         width: 250,

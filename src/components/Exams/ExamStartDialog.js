@@ -28,7 +28,8 @@ function ExamStartDialog({
   examName,
   examContent,
   duration,
-  examFullScore
+  examFullScore,
+  answers
 }) {
   const handleClose = () => {
     setTimeControl(true);
@@ -51,20 +52,36 @@ function ExamStartDialog({
           <Table>
             <TableBody>
               <TableRow>
-                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>ข้อสอบ</TableCell>
-                <TableCell align="center" sx={{ background: '#E9E8E8' }}>{examName}</TableCell>
+                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
+                  ข้อสอบ
+                </TableCell>
+                <TableCell align="center" sx={{ background: '#E9E8E8' }}>
+                  {examName}
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>มีข้อสอบ</TableCell>
-                <TableCell align="center" sx={{ background: '#E9E8E8' }}>{examContent.length} ข้อ</TableCell>
+                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
+                  มีข้อสอบ
+                </TableCell>
+                <TableCell align="center" sx={{ background: '#E9E8E8' }}>
+                  {answers.length} ข้อ
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>คะแนนเต็ม</TableCell>
-                <TableCell align="center" sx={{ background: '#E9E8E8' }}>{examFullScore} คะแนน</TableCell>
+                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
+                  คะแนนเต็ม
+                </TableCell>
+                <TableCell align="center" sx={{ background: '#E9E8E8' }}>
+                  {examFullScore} คะแนน
+                </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>เวลา</TableCell>
-                <TableCell align="center" sx={{ background: '#E9E8E8' }}>{duration} นาที</TableCell>
+                <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
+                  เวลา
+                </TableCell>
+                <TableCell align="center" sx={{ background: '#E9E8E8' }}>
+                  {duration} นาที
+                </TableCell>
               </TableRow>
             </TableBody>
           </Table>

@@ -6,9 +6,22 @@ import sidepic from '../../asset/sidepic.PNG'
 import sidepicMini from '../../asset/sidepic2.png'
 import prop from '../../asset/prop1.png'
 import { motion } from "framer-motion";
+import { makeStyles } from '@mui/styles';
 
+
+const useStyles = makeStyles((theme) => ({
+    textGradient: {
+        backgroundImage:
+            "linear-gradient(180deg, rgba(255,255,255,1) 8%, rgba(163,204,83,1) 45%)",
+        WebkitBackgroundClip: "text",
+        backgroundClip: "text",
+        color: "transparent"
+    }
+}));
 
 function HomeBanner() {
+
+    const classes = useStyles();
 
     return (
         <>
@@ -73,34 +86,38 @@ function HomeBanner() {
                             px: { xs: "5%", sm: "7%", lg: "15%" },
 
                         }}>
-                        <Typography color='white'
-                            sx={{
-                                fontSize: { xs: "1.2rem", sm: "1.5rem" },
-                            }}
-                        >
-                            สนามสอบจำลอง
-                        </Typography>
+                        <Typography className={classes.textGradient}>
+                            <Typography
+                                sx={{
+                                    fontSize: { xs: "1.2rem", sm: "1.75rem" },
+                                    fontWeight: 600,
+                                }}
+                            >
+                                สนามสอบจำลอง
+                            </Typography>
 
-                        <Typography color='white'
-                            sx={{
-                                marginTop: '-1rem',
-                                fontSize: { xs: "3.3rem", sm: "5rem", md: '5.5rem' },
-                                fontWeight: 700,
-                            }}
-                        >
-                            J TCAS
-                        </Typography>
+                            <Typography
+                                sx={{
+                                    marginTop: '-1rem',
+                                    fontSize: { xs: "3.3rem", sm: "5rem", md: '5.5rem' },
+                                    fontWeight: 700,
+                                }}
+                            >
+                                J TCAS
+                            </Typography>
 
-                        <Typography color='white'
-                            sx={{
-                                marginTop: { xs: '-1.5rem', sm: '-2.5rem' },
-                                color: '#a3cc53',
-                                fontSize: { xs: "3.3rem", sm: "5rem", md: '5.5rem' },
-                                fontWeight: 700
+                            <Typography
+                                sx={{
+                                    marginTop: { xs: '-1.5rem', sm: '-2.5rem' },
+                                    // color: '#a3cc53',
+                                    fontSize: { xs: "3.3rem", sm: "5rem", md: '5.5rem' },
+                                    fontWeight: 700
 
-                            }}
-                        >
-                            TEST 2023
+                                }}
+                            >
+                                TEST 2023
+                            </Typography>
+
                         </Typography>
 
                         <Typography color='white'
@@ -112,6 +129,7 @@ function HomeBanner() {
                             สนามจำลองการสอบ TCAS ออนไลน์ <br />
                             ที่ครบและรอบด้านที่สุดในประเทศไทย
                         </Typography>
+
                         <Typography color='white'
                             sx={{
                                 fontSize: { xs: "1rem", sm: "1.2rem" },

@@ -43,6 +43,7 @@
 	"answer": "a",
 	"point": 1,
 	"category": "Sentence Completion",
+	"categoryDetail": "Sentence Completion. ข้อ 1-12 เลือกคำตอบที่ถูกต้อง",
 	"answerDescription": "ข้อนี้เป็นเรื่อง Tense เราสามารถสังเกตได้ว่าประโยคนี้เป็นอดีตแน่นอนสังเกตได้จาก had been arrived ข้อนี้เป็น Tense คู่ระหว่าง Past Perfect (เหตุการณ์ที่เกิดขึ้นก่อนและจบลง) + Past Simple (เหตุการณ์ที่เกิดตามมา)"
 }, {
 	"id": 2,
@@ -169,7 +170,7 @@
 		"choice_image_sm": "",
 		"choice_image_md": "",
 		"choice_image_lg": "",
-		"point":0
+		"point": 0
 	}, {
 		"choicevalue": "e",
 		"choicetext": "",
@@ -562,7 +563,7 @@
 		"choice_image_sm": "",
 		"choice_image_md": "",
 		"choice_image_lg": "",
-		"point":0
+		"point": 0
 	}, {
 		"choicevalue": "b",
 		"choicetext": "(b.)",

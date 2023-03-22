@@ -8,13 +8,21 @@ import {
   Divider
 } from "@mui/material";
 
-
 function ExamOperationOne({ currentQuestions, answers, handleAnswerChange }) {
   return (
     <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
       {currentQuestions.map((question, key) => {
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
+            {question?.categoryDetail ?
+              <>
+                <Typography variant='h6' my={2}>
+                  {question.categoryDetail}
+                </Typography>
+              </>
+              :
+              null
+            }
             <Typography variant="h6">
               {question.id}. {question.question}
             </Typography>
