@@ -5,12 +5,20 @@ import {
   RadioGroup,
   Radio,
   FormControlLabel,
+  Paper
 } from "@mui/material";
 
 function AnswerContent({ examContent, answered }) {
   return (
-    <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
-
+    <Paper
+      elevation={2}
+      sx={{
+        py: 4,
+        px: 2,
+        mx: { xs: 2, sm: 10, md: 30, lg: 40 },
+        background: '#fff',
+      }}
+    >
 
       {examContent.map((question, key) => {
         return (
@@ -137,7 +145,7 @@ function AnswerContent({ examContent, answered }) {
         );
 
       })}
-    </Box >
+    </Paper >
   );
 }
 

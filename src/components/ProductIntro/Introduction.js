@@ -83,7 +83,7 @@ function Introduction({
                 <Typography
                   sx={{
                     display: "inline",
-                    borderBottom: "4px solid #a3cc53",
+                    borderBottom: "4px solid #a0d64b",
                     fontSize: "1.3rem",
                     fontWeight: 600,
                     textAlign: "center",
@@ -158,7 +158,7 @@ function Introduction({
                 <Typography
                   sx={{
                     display: "inline",
-                    borderBottom: "4px solid #a3cc53",
+                    borderBottom: "4px solid #a0d64b",
                     fontSize: "1.5rem",
                     fontWeight: 600,
                   }}
@@ -194,7 +194,7 @@ function Introduction({
                 <Typography
                   sx={{
                     display: "inline",
-                    borderBottom: "4px solid #a3cc53",
+                    borderBottom: "4px solid #a0d64b",
                     fontSize: "1.5rem",
                     fontWeight: 600,
                   }}

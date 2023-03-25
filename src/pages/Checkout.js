@@ -56,7 +56,7 @@ function Checkout() {
               fontSize: '2rem',
               display: 'inline-block',
               borderBottom: 5,
-              borderColor: '#a3cc53',
+              borderColor: '#a0d64b',
               mb:2,
               ml: 1
             }}

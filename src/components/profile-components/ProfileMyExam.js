@@ -29,7 +29,7 @@ function ProfileMyExam({ user }) {
   return (
     <>
       <Box m={2}>
-        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
+        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a0d64b', }}>
           ข้อสอบของฉัน
         </Typography>
       </Box>

@@ -86,9 +86,11 @@ const CartBottomBar = ({
         position: "fixed",
         background: "#E8F3D6",
         height: "150px",
-        borderTop: "5px solid #a3cc53",
+        borderTop: "5px solid #a0d64b",
+        borderTopRightRadius: 30,
+        borderTopLeftRadius: 30,
         bottom: { xs: 61, md: 0 },
-        width: 1,
+        width: { xs: '100%', md: '95%' },
       }}
       component={motion.div}
       initial={{ y: 10, opacity: 0 }}
@@ -138,12 +140,13 @@ const CartBottomBar = ({
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <CheckCircleIcon sx={{ display: checkCode === true ? 'flex' : 'none', color: '#a3cc53' }} />
+                  <CheckCircleIcon sx={{ display: checkCode === true ? 'flex' : 'none', color: '#a0d64b' }} />
                 </InputAdornment>
               ),
             }}
             size="small"
             label="กรอกโค้ดส่วนลด..."
+            autoComplete='off'
             value={code}
             onChange={(event) => handleChangeCode(event, codeList)}
             sx={{ width: { xs: "175px", md: "250px" } }}
@@ -225,7 +228,8 @@ const CartBottomBar = ({
               sx={{
                 fontSize: "1.2rem",
                 width: { xs: "125px", md: "250px" },
-                height: { xs: "", md: "65px" },
+                p: 1,
+                // height: { xs: "", md: "65px" },
                 borderRadius: 5,
               }}
             >

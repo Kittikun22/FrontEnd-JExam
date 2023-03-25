@@ -32,7 +32,7 @@ const AccordionSummary = styled((props) => (
         {...props}
     />
 ))(({ theme }) => ({
-    backgroundColor: '#a3cc5325',
+    backgroundColor: '#a0d64b25',
     flexDirection: 'row-reverse',
     '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
         transform: 'rotate(90deg)',
@@ -131,7 +131,7 @@ function HistoryDialog({ openHistory, setOpenHistory, exam_id, setExamId, user_i
 
 
                 <Box mb={10}>
-                    <Box mb={2} sx={{ borderLeft: '5px solid #a3cc53' }}>
+                    <Box mb={2} sx={{ borderLeft: '5px solid #a0d64b' }}>
                         <Typography variant='h5' ml={1}>{ProductName}</Typography>
                     </Box>
                     {allRecord?.length === 0 ? <Typography sx={{ ml: 5 }}>ยังไม่มีประวัติการทำข้อสอบ</Typography> :

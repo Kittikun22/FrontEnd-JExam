@@ -90,7 +90,7 @@ function AnalysisContent({ answered, exam, selectExam }) {
       {
         label: exam[selectExam].exam_name,
         data: pointByGroup.map(val => (val.point / val.fullScore) * 100),
-        backgroundColor: "#a3cc5370",
+        backgroundColor: "#a0d64b70",
         borderColor: "black",
         borderWidth: 5,
         pointRadius: 7,
@@ -113,10 +113,10 @@ function AnalysisContent({ answered, exam, selectExam }) {
           <Table >
             <TableHead>
               <TableRow sx={{ background: '#0e3746' }}>
-                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem' }} align="center">หัวข้อ</TableCell>
-                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem', width: '100px' }} align="center">คะแนนเต็ม</TableCell>
-                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem', width: '100px' }} align="center">คะแนนที่ได้</TableCell>
-                <TableCell sx={{ color: '#a3cc53', fontSize: '1.2rem', width: '100px' }} align="center">ร้อยละ(%)</TableCell>
+                <TableCell sx={{ color: '#a0d64b', fontSize: '1.2rem' }} align="center">หัวข้อ</TableCell>
+                <TableCell sx={{ color: '#a0d64b', fontSize: '1.2rem', width: '100px' }} align="center">คะแนนเต็ม</TableCell>
+                <TableCell sx={{ color: '#a0d64b', fontSize: '1.2rem', width: '100px' }} align="center">คะแนนที่ได้</TableCell>
+                <TableCell sx={{ color: '#a0d64b', fontSize: '1.2rem', width: '100px' }} align="center">ร้อยละ(%)</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

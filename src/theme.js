@@ -16,7 +16,7 @@ const theme = createTheme({
             main: '#f57c00'
         },
         greenNeon: {
-            main: '#a3cc53'
+            main: '#a0d64b'
         },
         backButton: {
             main: '#0081B4'

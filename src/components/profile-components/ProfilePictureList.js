@@ -73,7 +73,7 @@ export default function ProfilePictureList({ setNewPic, newPic }) {
                       />
                       <CheckCircleIcon
                         sx={{
-                          color: "#a3cc53",
+                          color: "#a0d64b",
                           display:
                             newPic === val.picture_path
                               ? "flex"

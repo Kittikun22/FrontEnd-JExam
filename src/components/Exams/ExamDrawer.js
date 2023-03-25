@@ -32,10 +32,10 @@ function ExamDrawer({
       <Drawer anchor={"left"} open={openDrawer} onClose={handleDrawerClose}>
         <Box
           sx={{
-            width: 275,
+            width: 300,
             background: "#0e3746",
             borderRight: 5,
-            borderColor: "#a3cc53",
+            borderColor: "#a0d64b",
             minHeight: '100%'
           }}
           onClick={handleDrawerOpen}
@@ -65,7 +65,13 @@ function ExamDrawer({
             </Box>
           </Box>
 
-          <Box my={2}>
+          <Box my={2}
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 1,
+              mx: .5
+            }}>
             {examContent?.map((val, key) => {
               return (
                 <Button
@@ -79,10 +85,10 @@ function ExamDrawer({
                   }
                   sx={{
                     borderRadius: 3,
+                    // minWidth: "50px",
+                    // minHeight: "50px",
                     minWidth: "50px",
-                    minHeight: "50px",
-                    mx: 1,
-                    my: 0.5
+                    minHeight: "50px"
                   }}
                 >
                   <Typography sx={{ fontSize: "1rem", fontWeight: 700 }}>

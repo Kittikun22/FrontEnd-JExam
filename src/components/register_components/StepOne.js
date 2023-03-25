@@ -107,7 +107,7 @@ const StepOne = ({ setActiveButton }) => {
         />
         <Button
           sx={{ ml: 1, width: '125px' }}
-          variant="outlined"
+          variant="contained"
           disabled={availableStatus === 'ok' ? false : true}
           onClick={() => { ReqOtp(phoneNumber) }}
         >
@@ -131,7 +131,7 @@ const StepOne = ({ setActiveButton }) => {
         <Typography
           sx={{
             fontSize: '.9rem',
-            color: '#a3cc53',
+            color: '#a0d64b',
             display: 'flex',
             alignItems: 'center',
             flexWrap: 'wrap',
@@ -188,7 +188,7 @@ const StepOne = ({ setActiveButton }) => {
             height: '40px',
             borderRadius: '10px',
             border: '0px',
-            background: otpSuccess === true ? '#a3cc5380' : '#dddddd',
+            background: otpSuccess === true ? '#a0d64b80' : '#dddddd',
             fontSize: '1.5rem',
           }}
         />

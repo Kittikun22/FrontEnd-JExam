@@ -131,6 +131,7 @@ https://flickity.metafizzy.co
 .exams-cell.is-selected .card-exams-cell {
     border-color: #fff;
     height: 250px;
+    outline: 7px double #a0d64b;
 }
 
 .exams-cell.is-selected .card-typography {

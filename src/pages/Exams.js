@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuthState, useAuthDispatch } from "../context/AuthContext";
 import { useParams } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import ExamComponent from "../components/Exams/ExamComponent";
 import Axios from "axios";
 import ExamAlertDialog from "../components/Exams/ExamAlertDialog";
@@ -83,11 +83,10 @@ function Exams() {
         sx={{
           background: "#f9fbe7",
           minHeight: "100vh",
-          pb: 10,
         }}
       >
         {loading === true ? (
-          <ExamComponent exam={exam} selectExam={selectExam} user={user} productId={productId}/>
+          <ExamComponent exam={exam} selectExam={selectExam} user={user} productId={productId} />
         ) : null}
       </Box>
     </>

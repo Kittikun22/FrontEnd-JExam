@@ -7,10 +7,12 @@ import {
   RadioGroup,
   Divider
 } from "@mui/material";
+import Parser from 'html-react-parser'
+import ReactQuill from 'react-quill'
 
-function ExamOperationOne({ currentQuestions, answers, handleAnswerChange }) {
+function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
   return (
-    <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
+    <Box>
       {currentQuestions.map((question, key) => {
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
@@ -23,6 +25,15 @@ function ExamOperationOne({ currentQuestions, answers, handleAnswerChange }) {
               :
               null
             }
+
+            {question?.paragraph ?
+              <Box m={{ xs: 0, sm: 2 }} p={2} sx={{ background: '#EEEEEE' }}>
+                <Typography variant='body1'>
+                  {Parser(question.paragraph)}
+                  {/* {question.paragraph} */}
+                </Typography>
+              </Box> : null}
+
             <Typography variant="h6">
               {question.id}. {question.question}
             </Typography>
@@ -46,7 +57,7 @@ function ExamOperationOne({ currentQuestions, answers, handleAnswerChange }) {
               onChange={handleAnswerChange(question.id)}
             >
               {question.choice.map((choice, key) => (
-                <Box key={key} mt={.5}>
+                <Box key={key} mt={.5} ml={{ xs: 1, sm: 2 }}>
                   {choice.choicetext === '' ? null
                     :
                     <FormControlLabel
@@ -67,7 +78,7 @@ function ExamOperationOne({ currentQuestions, answers, handleAnswerChange }) {
                             :
                             <Box component='img' src={choice.choice_image_lg} sx={{ width: { xs: '300px', sm: '400px', md: '500px' }, my: 0.5 }} />
                           }
-                          <Typography>
+                          <Typography variant='body1'>
                             {choice.choicetext}
                           </Typography>
                         </Box>}
@@ -83,4 +94,4 @@ function ExamOperationOne({ currentQuestions, answers, handleAnswerChange }) {
   )
 }
 
-export default ExamOperationOne
+export default ExamOperation

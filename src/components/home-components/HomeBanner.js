@@ -12,7 +12,7 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles((theme) => ({
     textGradient: {
         backgroundImage:
-            "linear-gradient(180deg, rgba(255,255,255,1) 8%, rgba(163,204,83,1) 45%)",
+            "linear-gradient(180deg, rgba(255,255,255,1) 8%, rgba(160,214,75,1) 45%)",
         WebkitBackgroundClip: "text",
         backgroundClip: "text",
         color: "transparent"
@@ -109,7 +109,7 @@ function HomeBanner() {
                             <Typography
                                 sx={{
                                     marginTop: { xs: '-1.5rem', sm: '-2.5rem' },
-                                    // color: '#a3cc53',
+                                    // color: '#a0d64b',
                                     fontSize: { xs: "3.3rem", sm: "5rem", md: '5.5rem' },
                                     fontWeight: 700
 
@@ -120,9 +120,8 @@ function HomeBanner() {
 
                         </Typography>
 
-                        <Typography color='white'
+                        <Typography color='#fff'
                             sx={{
-
                                 fontSize: { xs: "1.3rem", sm: "2rem" },
                             }}
                         >
@@ -130,7 +129,7 @@ function HomeBanner() {
                             ที่ครบและรอบด้านที่สุดในประเทศไทย
                         </Typography>
 
-                        <Typography color='white'
+                        <Typography color='#fff'
                             sx={{
                                 fontSize: { xs: "1rem", sm: "1.2rem" },
                             }}
@@ -146,7 +145,8 @@ function HomeBanner() {
                                 mt: '10px',
                                 borderRadius: 5,
                                 fontSize: '1.4rem',
-                                maxWidth: { xs: "350px", sm: "500px", lg: "500px" },
+                                // maxWidth: { xs: "350px", sm: "500px", lg: "500px" },\
+                                width: { xs: '100%', sm: '50%' },
                                 "&:hover": {
                                     transition: "transform .3s",
                                     transform: "scale(1.06)"

@@ -51,7 +51,7 @@ const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, dura
                                 onClick={handleDrawerOpen}
                                 color="black"
                             >
-                                <MenuIcon sx={{ color: '#a3cc53' }} />
+                                <MenuIcon sx={{ color: '#a0d64b' }} />
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
@@ -108,12 +108,13 @@ const ExamNavbar = ({ timeControl, setTimeControl, timeSpend, setTimeSpend, dura
                                 setTimeSpend={setTimeSpend}
                                 duration={duration}
                                 setOpenDialog={setOpenDialog}
+                                handleExamSubmit={handleExamSubmit}
                             />
                         </Box>
 
                     </Toolbar>
                 </Container>
-                <Box sx={{ height: '5px', bgcolor: '#a3cc53' }} />
+                <Box sx={{ height: '5px', bgcolor: '#a0d64b' }} />
             </AppBar >
         </>
     );

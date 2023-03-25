@@ -55,7 +55,7 @@ function ExamStartDialog({
                 <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
                   ข้อสอบ
                 </TableCell>
-                <TableCell align="center" sx={{ background: '#E9E8E8' }}>
+                <TableCell align="center" sx={{ background: '#EEEEEE' }}>
                   {examName}
                 </TableCell>
               </TableRow>
@@ -63,7 +63,7 @@ function ExamStartDialog({
                 <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
                   มีข้อสอบ
                 </TableCell>
-                <TableCell align="center" sx={{ background: '#E9E8E8' }}>
+                <TableCell align="center" sx={{ background: '#EEEEEE' }}>
                   {answers.length} ข้อ
                 </TableCell>
               </TableRow>
@@ -71,7 +71,7 @@ function ExamStartDialog({
                 <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
                   คะแนนเต็ม
                 </TableCell>
-                <TableCell align="center" sx={{ background: '#E9E8E8' }}>
+                <TableCell align="center" sx={{ background: '#EEEEEE' }}>
                   {examFullScore} คะแนน
                 </TableCell>
               </TableRow>
@@ -79,7 +79,7 @@ function ExamStartDialog({
                 <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
                   เวลา
                 </TableCell>
-                <TableCell align="center" sx={{ background: '#E9E8E8' }}>
+                <TableCell align="center" sx={{ background: '#EEEEEE' }}>
                   {duration} นาที
                 </TableCell>
               </TableRow>

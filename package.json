@@ -31,6 +31,7 @@
     "react-katex": "^3.0.1",
     "react-load-script": "0.0.6",
     "react-otp-input": "^2.4.0",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",

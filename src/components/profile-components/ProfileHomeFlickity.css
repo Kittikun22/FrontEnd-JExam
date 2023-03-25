@@ -126,6 +126,10 @@ https://flickity.metafizzy.co
     opacity: 1;
 }
 
+.myexams-cell.is-selected .card-myexams-cell {
+    outline: 7px double #a0d64b;
+}
+
 .myexams-cell.is-selected .card-typography {
     display: flex;
     justify-content: center;

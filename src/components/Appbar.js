@@ -156,7 +156,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                                 onClick={handleOpenNavMenu}
                                 color="black"
                             >
-                                <MenuIcon sx={{ color: '#a3cc53' }} />
+                                <MenuIcon sx={{ color: '#a0d64b' }} />
                             </IconButton>
                             <Menu
                                 id="menu-appbar"
@@ -199,7 +199,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                                 flexGrow: 1,
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
-                                color: '#a3cc53',
+                                color: '#a0d64b',
                                 textDecoration: 'none',
                             }}
                         >
@@ -215,7 +215,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                                     key={key}
                                     // onClick={handleClickAlert}
                                     sx={{
-                                        my: 1, color: '#a3cc53', display: 'block', fontSize: '1rem'
+                                        my: 1, color: '#a0d64b', display: 'block', fontSize: '1rem'
                                     }}
                                 >
                                     {page.pageName}
@@ -229,7 +229,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                                     sx={{ p: 0 }}
                                     onClick={handleClickAlert}
                                 >
-                                    <SearchIcon sx={{ color: '#a3cc53', fontSize: "30px" }} />
+                                    <SearchIcon sx={{ color: '#a0d64b', fontSize: "30px" }} />
                                 </IconButton>
                             </Tooltip>
                         </Box> */}
@@ -244,7 +244,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                                 // onClick={handleClickAlert}
                                 >
                                     <Badge badgeContent={itemInCart} color="error">
-                                        <ShoppingCartIcon sx={{ color: '#a3cc53', fontSize: "30px" }} />
+                                        <ShoppingCartIcon sx={{ color: '#a0d64b', fontSize: "30px" }} />
                                     </Badge>
                                 </IconButton>
                             </Tooltip>
@@ -260,7 +260,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                         </Box>
                     </Toolbar>
                 </Container>
-                <Box sx={{ height: '5px', bgcolor: '#a3cc53' }} />
+                <Box sx={{ height: '5px', bgcolor: '#a0d64b' }} />
             </AppBar >
 
             <ProfileDrawer user={user} setActiveContent={setActiveContent} openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} handleOpenLogin={handleOpenLogin} />

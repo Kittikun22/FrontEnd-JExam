@@ -44,7 +44,7 @@ function ProfileHistory({ user }) {
       <HistoryDialog user_id={user.user_id} exam_id={examId} ProductName={ProductName} setExamId={setExamId} openHistory={openHistory} setOpenHistory={setOpenHistory} />
 
       <Box m={2}>
-        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
+        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a0d64b', }}>
           ประวัติการทำข้อสอบ
         </Typography>
       </Box>

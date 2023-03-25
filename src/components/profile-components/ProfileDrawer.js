@@ -42,7 +42,7 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
             onClose={handleDrawerClose}
         >
             <Box
-                sx={{ width: 250, height: '100%', background: '#0e3746', borderLeft: 5, borderColor: '#a3cc53' }}
+                sx={{ width: 250, height: '100%', background: '#0e3746', borderLeft: 5, borderColor: '#a0d64b' }}
                 onClick={handleDrawerOpen}
                 onKeyDown={handleDrawerClose}
 
@@ -62,12 +62,12 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                                 sx={{
                                     width: "125px", height: "125px",
                                     borderRadius: 50, border: 4,
-                                    borderColor: '#a3cc53', mb: 2
+                                    borderColor: '#a0d64b', mb: 2
                                 }}
                                 src={user.user_pic}
                             />
 
-                            <Typography mx={2} sx={{ fontSize: '1.3rem', color: '#a3cc53' }}>
+                            <Typography mx={2} sx={{ fontSize: '1.3rem', color: '#a0d64b' }}>
                                 {user.fname} {user.lname}
                             </Typography>
                         </Box>
@@ -79,9 +79,9 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                             href='/'
                         >
                             <ListItemIcon>
-                                <HomeIcon sx={{ color: '#a3cc53' }} />
+                                <HomeIcon sx={{ color: '#a0d64b' }} />
                             </ListItemIcon>
-                            <ListItemText primary="หน้าแรก" sx={{ color: '#a3cc53' }} />
+                            <ListItemText primary="หน้าแรก" sx={{ color: '#a0d64b' }} />
                         </ListItemButton>
 
                         <Divider />
@@ -92,9 +92,9 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                             href='/profile'
                         >
                             <ListItemIcon>
-                                <AccountCircleIcon sx={{ color: '#a3cc53' }} />
+                                <AccountCircleIcon sx={{ color: '#a0d64b' }} />
                             </ListItemIcon>
-                            <ListItemText primary="โปรไฟล์ของฉัน" sx={{ color: '#a3cc53' }} />
+                            <ListItemText primary="โปรไฟล์ของฉัน" sx={{ color: '#a0d64b' }} />
                         </ListItemButton>
 
                         <ListItemButton
@@ -103,9 +103,9 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                             href='/profile'
                         >
                             <ListItemIcon>
-                                <AutoStoriesIcon sx={{ color: '#a3cc53' }} />
+                                <AutoStoriesIcon sx={{ color: '#a0d64b' }} />
                             </ListItemIcon>
-                            <ListItemText primary="ข้อสอบของฉัน" sx={{ color: '#a3cc53' }} />
+                            <ListItemText primary="ข้อสอบของฉัน" sx={{ color: '#a0d64b' }} />
                         </ListItemButton>
 
                         <ListItemButton
@@ -114,9 +114,9 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                             href='/profile'
                         >
                             <ListItemIcon>
-                                <AssessmentIcon sx={{ color: '#a3cc53' }} />
+                                <AssessmentIcon sx={{ color: '#a0d64b' }} />
                             </ListItemIcon>
-                            <ListItemText primary="วิเคราะห์คะแนน" sx={{ color: '#a3cc53' }} />
+                            <ListItemText primary="วิเคราะห์คะแนน" sx={{ color: '#a0d64b' }} />
                         </ListItemButton>
 
                         <ListItemButton
@@ -125,9 +125,9 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                             href='/profile'
                         >
                             <ListItemIcon>
-                                <HistoryIcon sx={{ color: '#a3cc53' }} />
+                                <HistoryIcon sx={{ color: '#a0d64b' }} />
                             </ListItemIcon>
-                            <ListItemText primary="ประวัติการทำข้อสอบ" sx={{ color: '#a3cc53' }} />
+                            <ListItemText primary="ประวัติการทำข้อสอบ" sx={{ color: '#a0d64b' }} />
                         </ListItemButton>
 
                         <Divider />
@@ -138,9 +138,9 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                             href='/profile'
                         >
                             <ListItemIcon>
-                                <CreditCardIcon sx={{ color: '#a3cc53' }} />
+                                <CreditCardIcon sx={{ color: '#a0d64b' }} />
                             </ListItemIcon>
-                            <ListItemText primary="การชำระเงิน" sx={{ color: '#a3cc53' }} />
+                            <ListItemText primary="การชำระเงิน" sx={{ color: '#a0d64b' }} />
                         </ListItemButton>
 
                         <ListItemButton
@@ -149,9 +149,9 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                             href='/profile'
                         >
                             <ListItemIcon>
-                                <SettingsIcon sx={{ color: '#a3cc53' }} />
+                                <SettingsIcon sx={{ color: '#a0d64b' }} />
                             </ListItemIcon>
-                            <ListItemText primary="แก้ไขโปรไฟล์" sx={{ color: '#a3cc53' }} />
+                            <ListItemText primary="แก้ไขโปรไฟล์" sx={{ color: '#a0d64b' }} />
                         </ListItemButton>
 
                         <Divider />
@@ -183,9 +183,9 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
 
                         <ListItemButton onClick={handleOpenLogin}>
                             <ListItemIcon>
-                                <LoginIcon sx={{ color: '#a3cc53' }} />
+                                <LoginIcon sx={{ color: '#a0d64b' }} />
                             </ListItemIcon>
-                            <ListItemText primary="เข้าสู่ระบบ" sx={{ color: '#a3cc53' }} />
+                            <ListItemText primary="เข้าสู่ระบบ" sx={{ color: '#a0d64b' }} />
                         </ListItemButton>
 
                         <ListItemButton
@@ -193,9 +193,9 @@ export default function ProfileDrawer({ user, setActiveContent, openDrawer, setO
                             href='/register'
                         >
                             <ListItemIcon>
-                                <AppRegistrationIcon sx={{ color: '#a3cc53' }} />
+                                <AppRegistrationIcon sx={{ color: '#a0d64b' }} />
                             </ListItemIcon>
-                            <ListItemText primary="สมัครสมาชิก" sx={{ color: '#a3cc53' }} />
+                            <ListItemText primary="สมัครสมาชิก" sx={{ color: '#a0d64b' }} />
                         </ListItemButton>
 
                     </List>

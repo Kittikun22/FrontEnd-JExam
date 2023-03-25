@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Typography, Box, } from '@mui/material'
 
-function ExamTimeClock({ timeControl, setTimeControl, timeSpend, setTimeSpend, duration, setOpenDialog }) {
+function ExamTimeClock({ timeControl, setTimeControl, timeSpend, setTimeSpend, duration, setOpenDialog, handleExamSubmit }) {
 
     const timeSpending = new Date((duration - timeSpend) * 1000).toISOString().substring(14, 19)
 
@@ -13,13 +13,12 @@ function ExamTimeClock({ timeControl, setTimeControl, timeSpend, setTimeSpend, d
 
             if (timeSpend === duration) {
                 setTimeControl(false);
+                handleExamSubmit()
                 setOpenDialog(true);
             }
             return () => clearInterval(intervalId);
         }
     }, [timeSpend, duration, setOpenDialog, setTimeControl, setTimeSpend, timeControl]);
-
-
 
     return (
         <>

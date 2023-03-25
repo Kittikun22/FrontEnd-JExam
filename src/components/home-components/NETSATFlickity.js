@@ -86,7 +86,7 @@ function NETSATFlickity() {
                                         minHeight: 60,
                                         color: '#000',
                                         fontWeight: 600,
-                                        textAlign: 'center'
+                                        textAlign: 'center',
                                     }}
                                 >
                                     {val.name}

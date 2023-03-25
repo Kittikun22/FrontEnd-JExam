@@ -158,7 +158,7 @@ function ForgotPassword() {
                                         height: '40px',
                                         borderRadius: '10px',
                                         border: '0px',
-                                        background: otpSuccess === true ? '#a3cc5380' : '#dddddd',
+                                        background: otpSuccess === true ? '#a0d64b80' : '#dddddd',
                                         fontSize: '1.5rem',
                                     }}
                                 />

@@ -22,7 +22,7 @@ export default function BottomNavbar({ handleClickAlert }) {
             >
                 <Paper
                     sx={{
-                        borderTop: '5px solid #a3cc53',
+                        borderTop: '5px solid #a0d64b',
                         zIndex: 10,
                         position: 'fixed',
                         bottom: -1, width: 1,
@@ -36,30 +36,30 @@ export default function BottomNavbar({ handleClickAlert }) {
                         <BottomNavigationAction
                             component={Link}
                             href="/"
-                            sx={{ color: '#a3cc53' }}
+                            sx={{ color: '#a0d64b' }}
                             label="หน้าแรก" icon={<HomeIcon />}
                         />
                         <BottomNavigationAction
                             component={Link}
                             href="/exam-library"
-                            sx={{ color: '#a3cc53' }}
+                            sx={{ color: '#a0d64b' }}
                             label="ข้อสอบ" icon={<MenuBookIcon />}
                         />
                         <BottomNavigationAction
                             component={Link}
                             href="/profile"
-                            sx={{ color: '#a3cc53' }}
+                            sx={{ color: '#a0d64b' }}
                             label="โปรไฟล์" icon={<AccountCircleIcon />}
                         />
                         <BottomNavigationAction
                             component={Link}
                             href="/cart"
-                            sx={{ color: '#a3cc53', }}
+                            sx={{ color: '#a0d64b', }}
                             label="รถเข็น" icon={<ShoppingCartIcon />}
                         />
                         <BottomNavigationAction
                             onClick={handleClickAlert}
-                            sx={{ color: '#a3cc53', }}
+                            sx={{ color: '#a0d64b', }}
                             label="แจ้งเตือน" icon={<NotificationsIcon />}
                         />
 

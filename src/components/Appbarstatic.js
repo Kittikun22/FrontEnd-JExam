@@ -32,7 +32,7 @@ const ResponsiveAppBarStatic = () => {
             </Typography>
           </Toolbar>
         </Container>
-        <Box sx={{ height: "5px", bgcolor: "#a3cc53" }} />
+        <Box sx={{ height: "5px", bgcolor: "#a0d64b" }} />
       </AppBar>
     </>
   );

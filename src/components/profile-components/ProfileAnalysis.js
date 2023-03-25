@@ -48,7 +48,7 @@ function ProfileAnalysis({ user }) {
           sx={{
             display: "inline",
             fontSize: "2rem",
-            borderBottom: "4px solid #a3cc53",
+            borderBottom: "4px solid #a0d64b",
           }}
         >
           วิเคราะห์คะแนน

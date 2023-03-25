@@ -77,7 +77,7 @@ export default function DialogDreamFac({ open, setOpen }) {
             เลือกคณะในฝัน
           </Typography>
 
-          <Stack spacing={2} sx={{ pl: 1, borderLeft: '5px solid #a3cc53' }}>
+          <Stack spacing={2} sx={{ pl: 1, borderLeft: '5px solid #a0d64b' }}>
             <Autocomplete
               size="small"
               fullWidth

@@ -27,7 +27,7 @@ const AccordionSummary = styled((props) => (
     {...props}
   />
 ))(({ theme }) => ({
-  backgroundColor: '#a3cc5325',
+  backgroundColor: '#a0d64b25',
   flexDirection: 'row-reverse',
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
     transform: 'rotate(90deg)',
@@ -68,7 +68,7 @@ function ProfilePayment({ user }) {
   return (
     <>
       <Box m={2}>
-        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a3cc53', }}>
+        <Typography sx={{ display: 'inline', fontSize: '2rem', borderBottom: '4px solid #a0d64b', }}>
           การชำระเงิน
         </Typography>
       </Box>

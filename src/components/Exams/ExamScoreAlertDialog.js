@@ -64,21 +64,21 @@ function ExamScoreAlertDialog({
                     <TableCell align="center" sx={{ background: '#008306', color: '#fff' }}>
                       ข้อสอบ
                     </TableCell>
-                    <TableCell align="center" sx={{ background: '#E9E8E8' }}>{examName}</TableCell>
+                    <TableCell align="center" sx={{ background: '#EEEEEE' }}>{examName}</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell align="center" sx={{ display: 'flex', alignItems: 'center', gap: .5, background: '#008306', color: '#fff' }}>
                       <StarIcon sx={{ color: "#F2921D" }} />
                       คะแนนที่ได้
                     </TableCell>
-                    <TableCell align="center" sx={{ background: '#E9E8E8' }}>{totalScore} / {examFullScore} คะแนน</TableCell>
+                    <TableCell align="center" sx={{ background: '#EEEEEE' }}>{totalScore} / {examFullScore} คะแนน</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell align="center" sx={{ display: 'flex', alignItems: 'center', gap: .5, background: '#008306', color: '#fff' }}>
                       <AccessTimeFilledIcon sx={{ color: "#A2B5BB" }} />
                       เวลาที่ใช้
                     </TableCell>
-                    <TableCell align="center" sx={{ background: '#E9E8E8' }}>{timeSpending} นาที</TableCell>
+                    <TableCell align="center" sx={{ background: '#EEEEEE' }}>{timeSpending} นาที</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -87,7 +87,7 @@ function ExamScoreAlertDialog({
               <Typography
                 sx={{
                   display: "inline",
-                  borderBottom: "4px solid #a3cc53",
+                  borderBottom: "4px solid #a0d64b",
                   fontSize: "1.2rem",
                   fontWeight: 600,
                   textAlign: "center",

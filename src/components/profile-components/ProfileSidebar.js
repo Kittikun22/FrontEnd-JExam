@@ -27,7 +27,7 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
               sx={{
                 width: "125px", height: "125px",
                 borderRadius: 50, border: 4,
-                borderColor: '#a3cc53', mb: 2
+                borderColor: '#a0d64b', mb: 2
               }}
               src={user.user_pic}
             />
@@ -40,38 +40,38 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
           <Divider sx={{ my: 1 }} />
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-homepage' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-homepage' ? '#a3cc5325' : null }}
+            sx={{ borderLeft: activeContent === 'profile-homepage' ? '5px solid #a0d64b' : null, background: activeContent === 'profile-homepage' ? '#a0d64b25' : null }}
             onClick={() => { handleSetActiveContent('profile-homepage') }}>
             <ListItemIcon>
-              <HomeIcon sx={{ color: activeContent === 'profile-homepage' ? '#a3cc53' : null }} />
+              <HomeIcon sx={{ color: activeContent === 'profile-homepage' ? '#a0d64b' : null }} />
             </ListItemIcon>
             <ListItemText primary="หน้าแรก" />
           </ListItemButton>
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-myexam' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-myexam' ? '#a3cc5325' : null }}
+            sx={{ borderLeft: activeContent === 'profile-myexam' ? '5px solid #a0d64b' : null, background: activeContent === 'profile-myexam' ? '#a0d64b25' : null }}
             onClick={() => { handleSetActiveContent('profile-myexam') }}>
             <ListItemIcon>
-              <AutoStoriesIcon sx={{ color: activeContent === 'profile-myexam' ? '#a3cc53' : null }} />
+              <AutoStoriesIcon sx={{ color: activeContent === 'profile-myexam' ? '#a0d64b' : null }} />
             </ListItemIcon>
             <ListItemText primary="ข้อสอบของฉัน" />
           </ListItemButton>
 
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-analysis' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-analysis' ? '#a3cc5325' : null }}
+            sx={{ borderLeft: activeContent === 'profile-analysis' ? '5px solid #a0d64b' : null, background: activeContent === 'profile-analysis' ? '#a0d64b25' : null }}
             onClick={() => { handleSetActiveContent('profile-analysis') }}>
             <ListItemIcon>
-              <AssessmentIcon sx={{ color: activeContent === 'profile-analysis' ? '#a3cc53' : null }} />
+              <AssessmentIcon sx={{ color: activeContent === 'profile-analysis' ? '#a0d64b' : null }} />
             </ListItemIcon>
             <ListItemText primary="วิเคราะห์คะแนน" />
           </ListItemButton>
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-history' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-history' ? '#a3cc5325' : null }}
+            sx={{ borderLeft: activeContent === 'profile-history' ? '5px solid #a0d64b' : null, background: activeContent === 'profile-history' ? '#a0d64b25' : null }}
             onClick={() => { handleSetActiveContent('profile-history') }}>
             <ListItemIcon>
-              <HistoryIcon sx={{ color: activeContent === 'profile-history' ? '#a3cc53' : null }} />
+              <HistoryIcon sx={{ color: activeContent === 'profile-history' ? '#a0d64b' : null }} />
             </ListItemIcon>
             <ListItemText primary="ประวัติการทำข้อสอบ" />
           </ListItemButton>
@@ -79,19 +79,19 @@ function ProfileSidebar({ user, activeContent, setActiveContent }) {
           <Divider sx={{ my: 1 }} />
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-payment' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-payment' ? '#a3cc5325' : null }}
+            sx={{ borderLeft: activeContent === 'profile-payment' ? '5px solid #a0d64b' : null, background: activeContent === 'profile-payment' ? '#a0d64b25' : null }}
             onClick={() => { handleSetActiveContent('profile-payment') }}>
             <ListItemIcon>
-              <CreditCardIcon sx={{ color: activeContent === 'profile-payment' ? '#a3cc53' : null }} />
+              <CreditCardIcon sx={{ color: activeContent === 'profile-payment' ? '#a0d64b' : null }} />
             </ListItemIcon>
             <ListItemText primary="การชำระเงิน" />
           </ListItemButton>
 
           <ListItemButton
-            sx={{ borderLeft: activeContent === 'profile-setting' ? '5px solid #a3cc53' : null, background: activeContent === 'profile-setting' ? '#a3cc5325' : null }}
+            sx={{ borderLeft: activeContent === 'profile-setting' ? '5px solid #a0d64b' : null, background: activeContent === 'profile-setting' ? '#a0d64b25' : null }}
             onClick={() => { handleSetActiveContent('profile-setting') }}>
             <ListItemIcon>
-              <SettingsIcon sx={{ color: activeContent === 'profile-setting' ? '#a3cc53' : null }} />
+              <SettingsIcon sx={{ color: activeContent === 'profile-setting' ? '#a0d64b' : null }} />
             </ListItemIcon>
             <ListItemText primary="แก้ไขโปรไฟล์" />
           </ListItemButton>

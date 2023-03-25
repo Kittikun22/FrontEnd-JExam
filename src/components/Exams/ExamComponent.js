@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Paper } from "@mui/material";
 import ExamScoreAlertDialog from "./ExamScoreAlertDialog";
 import ExamNavbar from "./ExamNavbar";
 import ExamStartDialog from "./ExamStartDialog";
 import ExamSubmitAlert from "./ExamSubmitAlert";
 import ExamOperation from "./ExamOperation";
-import ExamOperationTwo from "./ExamOperationTwo";
 import Axios from "axios";
 
 function ExamComponent({ exam, selectExam, user, productId }) {
@@ -192,7 +191,15 @@ function ExamComponent({ exam, selectExam, user, productId }) {
         />
 
         {loading ? null : (
-          <Box>
+          <Paper
+            elevation={2}
+            sx={{
+              py: 4,
+              px: { xs: 0, sm: 2 },
+              mx: { xs: 2, sm: 10, md: 30, lg: 40 },
+              background: '#fff',
+            }}
+          >
 
             <ExamOperation
               currentQuestions={currentQuestions}
@@ -200,7 +207,7 @@ function ExamComponent({ exam, selectExam, user, productId }) {
               handleAnswerChange={handleAnswerChange}
             />
 
-            <Box sx={{ display: "flex", justifyContent: "space-evenly" }}>
+            <Box p={2} sx={{ display: "flex", justifyContent: "space-evenly" }}>
               <Button
                 variant="contained"
                 disabled={step === 0 ? true : false}
@@ -235,7 +242,7 @@ function ExamComponent({ exam, selectExam, user, productId }) {
                 </Button>
               )}
             </Box>
-          </Box>
+          </Paper>
         )}
       </>
     );

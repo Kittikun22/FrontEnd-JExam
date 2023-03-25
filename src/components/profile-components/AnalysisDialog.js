@@ -131,7 +131,7 @@ function AnalysisDialog({ openAnalysis, setOpenAnalysis, exam_id, setExamId, use
         datasets: [
             {
                 data: pointByGroup?.map(val => (val.point / val.fullScore) * 100),
-                backgroundColor: "#a3cc5370",
+                backgroundColor: "#a0d64b70",
                 borderColor: "black",
                 borderWidth: 5,
                 pointRadius: 7,
@@ -161,7 +161,7 @@ function AnalysisDialog({ openAnalysis, setOpenAnalysis, exam_id, setExamId, use
             <DialogContent sx={{ minHeight: '30vh' }}>
                 {allRecord?.length === 0 ?
                     <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
-                        <Box mb={2} sx={{ borderLeft: '5px solid #a3cc53' }}>
+                        <Box mb={2} sx={{ borderLeft: '5px solid #a0d64b' }}>
                             <Typography variant='h5' ml={1}>{ProductName}</Typography>
                         </Box>
                         <Typography ml={5}>
@@ -179,7 +179,7 @@ function AnalysisDialog({ openAnalysis, setOpenAnalysis, exam_id, setExamId, use
                         </Box>
 
                         <Box mt={2} mb={10}>
-                            <Box mb={2} sx={{ borderLeft: '5px solid #a3cc53' }}>
+                            <Box mb={2} sx={{ borderLeft: '5px solid #a0d64b' }}>
                                 <Typography variant='h5' ml={1}>{ProductName}</Typography>
                             </Box>
                             <Box my={2}>
@@ -204,10 +204,10 @@ function AnalysisDialog({ openAnalysis, setOpenAnalysis, exam_id, setExamId, use
                                 <Table >
                                     <TableHead>
                                         <TableRow sx={{ background: '#0e3746' }}>
-                                            <TableCell sx={{ color: '#a3cc53', fontSize: '1.1rem' }} align="center">หัวข้อ</TableCell>
-                                            <TableCell sx={{ color: '#a3cc53', fontSize: '1.1rem', width: '100px' }} align="center">คะแนนเต็ม</TableCell>
-                                            <TableCell sx={{ color: '#a3cc53', fontSize: '1.1rem', width: '100px' }} align="center">คะแนนที่ได้</TableCell>
-                                            <TableCell sx={{ color: '#a3cc53', fontSize: '1.1rem', width: '100px' }} align="center">ร้อยละ(%)</TableCell>
+                                            <TableCell sx={{ color: '#a0d64b', fontSize: '1.1rem' }} align="center">หัวข้อ</TableCell>
+                                            <TableCell sx={{ color: '#a0d64b', fontSize: '1.1rem', width: '100px' }} align="center">คะแนนเต็ม</TableCell>
+                                            <TableCell sx={{ color: '#a0d64b', fontSize: '1.1rem', width: '100px' }} align="center">คะแนนที่ได้</TableCell>
+                                            <TableCell sx={{ color: '#a0d64b', fontSize: '1.1rem', width: '100px' }} align="center">ร้อยละ(%)</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>

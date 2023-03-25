@@ -110,7 +110,7 @@ export default function Cart({ rowsData, setRowsData }) {
                 fontSize: "2rem",
                 display: "inline",
                 borderBottom: 5,
-                borderColor: "#a3cc53",
+                borderColor: "#a0d64b",
                 mb: 2,
               }}
             >
@@ -143,14 +143,17 @@ export default function Cart({ rowsData, setRowsData }) {
           />
         </Box>
 
-        <CartBottomBar
-          selectedItem={selectedItem}
-          selectedAmount={selectedAmount}
-          promoDiscount={promoDiscount}
-          user_id={user.user_id}
-          promotion={promotion}
-          codeList={codeList}
-        />
+
+        <Box mx={{ xs: 0, md: 2 }} sx={{ display: 'flex', justifyContent: 'center' }}>
+          <CartBottomBar
+            selectedItem={selectedItem}
+            selectedAmount={selectedAmount}
+            promoDiscount={promoDiscount}
+            user_id={user.user_id}
+            promotion={promotion}
+            codeList={codeList}
+          />
+        </Box>
       </>
     );
   } else {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Appbar from "../components/Appbar";
+import { Box } from "@mui/material";
 import AnswerComponent from "../components/Answer/AnswerComponent";
 import Axios from "axios";
 import { useAuthState, useAuthDispatch } from "../context/AuthContext";
@@ -71,10 +72,16 @@ function Answer() {
       />
 
       <Appbar />
-
-      {loading === true ? (
-        <AnswerComponent exam={exam} selectExam={selectExam} user={user} />
-      ) : null}
+      <Box
+        sx={{
+          background: "#f9fbe7",
+          minHeight: "100vh",
+        }}
+      >
+        {loading === true ? (
+          <AnswerComponent exam={exam} selectExam={selectExam} user={user} />
+        ) : null}
+      </Box>
     </>
   );
 }
