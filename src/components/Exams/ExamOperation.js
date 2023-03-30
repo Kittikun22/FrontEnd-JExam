@@ -27,7 +27,7 @@ function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
             }
 
             {question?.paragraph ?
-              <Box m={{ xs: 0, sm: 2 }} p={2} sx={{ background: '#EEEEEE' }}>
+              <Box m={{ xs: 0, sm: 2 }} p={2} sx={{ background: '#EEEEEE', borderRadius: 3 }}>
                 <Typography variant='body1'>
                   {Parser(question.paragraph)}
                   {/* {question.paragraph} */}

@@ -10,6 +10,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -42,11 +43,37 @@ function ExamScoreAlertDialog({
           sx={{
             display: "flex",
             justifyContent: "center",
+            gap: 2,
             flexDirection: { xs: "column", md: "row" },
           }}
         >
           <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <Box component="img" src={ScoreBadge} sx={{ width: "200px" }} />
+            {/* <Box component="img" src={ScoreBadge} sx={{ width: "200px" }} /> */}
+            <Box sx={{ position: "relative", display: "inline-flex" }}>
+              <CircularProgress
+                size={200}
+                thickness={5}
+                variant="determinate"
+                value={(totalScore * 100) / examFullScore}
+              />
+              <Box
+                sx={{
+                  top: 0,
+                  left: 0,
+                  bottom: 0,
+                  right: 0,
+                  position: "absolute",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: ""
+                }}
+              >
+                <Typography variant="h4" component="div">
+                  {totalScore}
+                </Typography>
+              </Box>
+            </Box>
           </Box>
 
           <Box
@@ -83,50 +110,6 @@ function ExamScoreAlertDialog({
                 </TableBody>
               </Table>
             </TableContainer>
-            {/* <Box mb={2}>
-              <Typography
-                sx={{
-                  display: "inline",
-                  borderBottom: "4px solid #a0d64b",
-                  fontSize: "1.2rem",
-                  fontWeight: 600,
-                  textAlign: "center",
-                }}
-              >
-                {examName}
-              </Typography>
-            </Box>
-
-            <Box sx={{ display: "flex", gap: 1 }}>
-              <StarIcon sx={{ alignSelf: "center", color: "#F2921D" }} />
-              <Typography
-                sx={{
-                  fontSize: "1.2rem",
-                  fontWeight: 600,
-                  textAlign: "center",
-                }}
-              >
-                คะแนนที่ได้ : {totalScore} / {examFullScore} คะแนน
-              </Typography>
-            </Box>
-
-            <Divider />
-
-            <Box sx={{ display: "flex", gap: 1 }}>
-              <AccessTimeFilledIcon
-                sx={{ alignSelf: "center", color: "#A2B5BB" }}
-              />
-              <Typography
-                sx={{
-                  fontSize: "1.2rem",
-                  fontWeight: 600,
-                  textAlign: "center",
-                }}
-              >
-                เวลาที่ใช้ : {timeSpending} นาที
-              </Typography>
-            </Box> */}
-
 
           </Box>
         </Box>
@@ -140,6 +123,17 @@ function ExamScoreAlertDialog({
             gap: 1,
           }}
         >
+
+          <Button
+            variant="contained"
+            onClick={() => {
+              localStorage.setItem("ActiveContent", "profile-homepage");
+              window.location = "/profile";
+            }}
+            sx={{ borderRadius: 3 }}
+          >
+            <Typography>กลับหน้าโปรไฟล์</Typography>
+          </Button>
           <Button
             variant="contained"
             color="success"
@@ -163,16 +157,7 @@ function ExamScoreAlertDialog({
               ดูผลการวิเคราะห์คะแนน
             </Typography>
           </Button>
-          <Button
-            variant="contained"
-            onClick={() => {
-              localStorage.setItem("ActiveContent", "profile-homepage");
-              window.location = "/profile";
-            }}
-            sx={{ borderRadius: 3 }}
-          >
-            <Typography>กลับหน้าโปรไฟล์</Typography>
-          </Button>
+
         </Box>
       </DialogContent>
     </Dialog>

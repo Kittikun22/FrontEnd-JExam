@@ -41,7 +41,9 @@ export default function Cart({ rowsData, setRowsData }) {
 
     localStorage.setItem("selectItem", JSON.stringify([]));
     localStorage.setItem("discount", JSON.stringify([]));
+
   }, []);
+
 
   const [pageSize, setPageSize] = useState(itemInCart?.length <= 5 ? 5 : 10);
   const [selectedItem, setSelectedItem] = useState([]);

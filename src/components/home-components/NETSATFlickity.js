@@ -53,6 +53,13 @@ function NETSATFlickity() {
                                         height="250"
                                         image={val.pic}
                                         alt={val.name}
+                                        sx={{
+
+                                            // "&:hover": {
+                                            //     transition: "transform .3s",
+                                            //     transform: "scale(1.05)",
+                                            // }
+                                        }}
                                     />
                                     <Typography
                                         className='on-card-typography'
@@ -64,10 +71,12 @@ function NETSATFlickity() {
                                             color: 'white',
                                             fontWeight: 600,
                                             marginLeft: 1.5,
+                                            zIndex: 1
                                         }}
                                     >
                                         {val.name}
                                     </Typography>
+
                                 </CardActionArea>
                             </Card>
 

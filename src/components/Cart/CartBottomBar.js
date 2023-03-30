@@ -87,8 +87,9 @@ const CartBottomBar = ({
         background: "#E8F3D6",
         height: "150px",
         borderTop: "5px solid #a0d64b",
-        borderTopRightRadius: 30,
-        borderTopLeftRadius: 30,
+        outline: '2px solid #a0d64b',
+        borderTopRightRadius: 15,
+        borderTopLeftRadius: 15,
         bottom: { xs: 61, md: 0 },
         width: { xs: '100%', md: '95%' },
       }}
