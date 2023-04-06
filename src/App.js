@@ -11,15 +11,12 @@ import Checkout from "./pages/Checkout";
 import Message from "./pages/Message";
 import ForgotPassword from "./pages/ForgotPassword";
 import CartPage from "./pages/CartPage";
-import Products from "./pages/Products";
+import ExamLibrary from "./pages/ExamLibrary";
 import { AuthProvider } from "./context/AuthContext";
 import TestPage from "./pages/testPage";
-import ProductIntroduction from "./pages/ProductIntroduction";
 import Exams from "./pages/Exams";
 import ExamIntroduction from "./pages/ExamIntroduction";
-import Takeanexam from "./pages/Takeanexam";
-import Answer from "./pages/Answer";
-import Analysis from "./pages/Analysis";
+import Answer from "./pages/Answer.js";
 
 function App() {
   useEffect(() => {
@@ -37,24 +34,15 @@ function App() {
             <Route path="/profile" element={<Profile />} exact />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route
-              path="/exam-introduction/:productId"
-              element={<ExamIntroduction />}
-            />
-            <Route path="/exam/:productId" element={<Exams />} />
-            <Route
-              path="/takeanexam/netsat/:subject"
-              element={<Takeanexam />}
-            />
-            <Route path="/answer/:productId" element={<Answer />} />
-            <Route path="/analysis/:productId" element={<Analysis />} />
+            <Route path="/exam/:exam_id" element={<Exams />} />
+            <Route path="/answer/:exam_id" element={<Answer />} />
           </Route>
 
           <Route path="/" element={<Home />} />
-          <Route path="/exam-library" element={<Products />} />
+          <Route path="/exam-library" element={<ExamLibrary />} />
           <Route
-            path="/introduction/:productID"
-            element={<ProductIntroduction />}
+            path="/introduction/:exam_id"
+            element={<ExamIntroduction />}
           />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/Register" element={<Register />} />

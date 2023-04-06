@@ -22,11 +22,11 @@ export default function Cart({ rowsData, setRowsData }) {
   useEffect(() => {
     const arr_id = [];
     rowsData.map((val) => {
-      return arr_id.push(val.product_id);
+      return arr_id.push(val.exam_id);
     });
 
-    Axios.post("http://localhost:8000/getProductInCart", {
-      product_id: arr_id,
+    Axios.post("http://localhost:8000/getExamInCart", {
+      exam_id: arr_id,
     }).then((res) => {
       setItemInCart(res.data);
     });
@@ -50,9 +50,9 @@ export default function Cart({ rowsData, setRowsData }) {
   const [selectedAmount, setSelectedAmount] = useState(0);
   const [promoDiscount, setPromoDiscount] = useState(0);
 
-  const onRowsSelectionHandler = (product_ids) => {
-    const selectedRowsData = product_ids.map((product_id) =>
-      itemInCart.find((row) => row.product_id === product_id)
+  const onRowsSelectionHandler = (exam_ids) => {
+    const selectedRowsData = exam_ids.map((exam_id) =>
+      itemInCart.find((row) => row.exam_id === exam_id)
     );
     setSelectedItem(selectedRowsData);
     onSelectedAmount(selectedRowsData);
@@ -134,7 +134,7 @@ export default function Cart({ rowsData, setRowsData }) {
 
           <DataGrid
             rows={itemInCart}
-            getRowId={(row) => row.product_id}
+            getRowId={(row) => row.exam_id}
             columns={columns}
             pageSize={pageSize}
             onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}

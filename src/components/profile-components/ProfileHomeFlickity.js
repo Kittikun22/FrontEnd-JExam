@@ -16,7 +16,7 @@ function ProfileHomeFlickity({ user }) {
     const [myExamList, setMyExamList] = useState([])
 
     useEffect(() => {
-        Axios.post('http://localhost:8000/getuserproductandexams', {
+        Axios.post('http://localhost:8000/getUserExams', {
             user_id: user.user_id
         }).then((res) => {
             setMyExamList(res.data)
@@ -53,7 +53,7 @@ function ProfileHomeFlickity({ user }) {
                         return (
                             <Box sx={{ mx: 2 }} key={key} className='myexams-cell'>
                                 <Card sx={{ width: 300, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-myexams-cell'>
-                                    <CardActionArea href={`/introduction/${val.product_id}`}>
+                                    <CardActionArea href={`/introduction/${val.exam_id}`}>
                                         <CardMedia
                                             component="img"
                                             height="250"
@@ -91,7 +91,8 @@ function ProfileHomeFlickity({ user }) {
                                             minHeight: 60,
                                             color: '#000',
                                             fontWeight: 600,
-                                            textAlign: 'center'
+                                            textAlign: 'center',
+                                            boxShadow: 1
                                         }}
                                     >
                                         {val.name}

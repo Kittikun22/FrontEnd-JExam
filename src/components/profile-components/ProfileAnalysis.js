@@ -17,13 +17,13 @@ import AnalysisDialog from "./AnalysisDialog";
 function ProfileAnalysis({ user }) {
 
   const [openAnalysis, setOpenAnalysis] = useState(false)
-  const [examId, setExamId] = useState()
+  const [selectExamId, setSelectExamId] = useState()
   const [ProductName, setProductName] = useState()
 
   const [myExamList, setMyExamList] = useState([]);
 
   useEffect(() => {
-    Axios.post("http://localhost:8000/getuserproductandexams", {
+    Axios.post("http://localhost:8000/getUserExams", {
       user_id: user.user_id,
     }).then((res) => {
       setMyExamList(res.data);
@@ -31,7 +31,7 @@ function ProfileAnalysis({ user }) {
   }, []);
 
   const handleAnalysis = (exam_id, Product_Name) => {
-    setExamId(exam_id)
+    setSelectExamId(exam_id)
     setProductName(Product_Name)
     setOpenAnalysis(true)
   }
@@ -41,7 +41,7 @@ function ProfileAnalysis({ user }) {
   return (
     <>
 
-      <AnalysisDialog user_id={user.user_id} exam_id={examId} ProductName={ProductName} setExamId={setExamId} openAnalysis={openAnalysis} setOpenAnalysis={setOpenAnalysis} />
+      <AnalysisDialog user_id={user.user_id} exam_id={selectExamId} ProductName={ProductName} setSelectExamId={setSelectExamId} openAnalysis={openAnalysis} setOpenAnalysis={setOpenAnalysis} />
 
       <Box m={2}>
         <Typography
@@ -101,7 +101,7 @@ function ProfileAnalysis({ user }) {
                   sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }}
                   key={key}
                 >
-                  <CardActionArea href={`/introduction/${val.product_id}`}>
+                  <CardActionArea href={`/introduction/${val.exam_id}`}>
                     <CardMedia
                       component="img"
                       height="150px"
@@ -133,7 +133,7 @@ function ProfileAnalysis({ user }) {
                       <Button
                         variant="contained"
                         color="success"
-                        href={`/answer/${val.product_id}`}
+                        href={`/answer/${val.exam_id}`}
                         sx={{
                           borderRadius: 3,
                           fontSize: { xs: ".8rem", md: "" },
@@ -149,7 +149,6 @@ function ProfileAnalysis({ user }) {
                           borderRadius: 3,
                           fontSize: { xs: ".8rem", md: "" },
                         }}
-                        // href={`/analysis/${val.product_id}`}
                         onClick={() => handleAnalysis(val.exam_id, val.name)}
                       >
                         ดูผลการวิเคราะห์คะแนน

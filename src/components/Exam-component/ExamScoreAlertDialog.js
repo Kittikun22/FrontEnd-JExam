@@ -25,7 +25,6 @@ function ExamScoreAlertDialog({
   totalScore,
   timeSpend,
   examFullScore,
-  productId
 }) {
   const timeSpending = new Date(timeSpend * 1000)
     .toISOString()
@@ -139,7 +138,7 @@ function ExamScoreAlertDialog({
             color="success"
             sx={{ borderRadius: 3 }}
             onClick={() => {
-              window.location = `/answer/${productId}`;
+              window.location = `/answer/${exam_id}`;
             }}
           >
             <Typography sx={{ color: "#fff" }}>ดูเฉลย</Typography>

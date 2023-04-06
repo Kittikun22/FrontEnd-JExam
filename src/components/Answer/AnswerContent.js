@@ -14,9 +14,11 @@ function AnswerContent({ examContent, answered }) {
       elevation={2}
       sx={{
         py: 4,
+        pb: 5,
         px: 2,
         mx: { xs: 2, sm: 10, md: 30, lg: 40 },
         background: '#fff',
+
       }}
     >
 

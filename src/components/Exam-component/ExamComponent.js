@@ -7,10 +7,10 @@ import ExamSubmitAlert from "./ExamSubmitAlert";
 import ExamOperation from "./ExamOperation";
 import Axios from "axios";
 
-function ExamComponent({ exam, selectExam, user, productId }) {
+function ExamComponent({ exam, user, exam_id }) {
 
-  const examContent = JSON.parse(exam[selectExam].exam_content);
-  const examInfo = JSON.parse(exam[selectExam].exam_info);
+  const examContent = JSON.parse(exam[0].exam_content);
+  const examInfo = JSON.parse(exam[0].exam_info);
 
   console.log(examContent);
 
@@ -28,13 +28,6 @@ function ExamComponent({ exam, selectExam, user, productId }) {
       category: question.category
     }))
   );
-
-
-  // const [answers, setAnswers] = useState(
-  //   examContent.flatMap(({ categoryQuestion, category }) =>
-  //     categoryQuestion.map(({ id, point }) => ({ id, choose: "", point: 0, fullScore: point, category }))
-  //   )
-  // );
 
   const [totalScore, setTotalScore] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
@@ -111,7 +104,7 @@ function ExamComponent({ exam, selectExam, user, productId }) {
 
     Axios.post("http://localhost:8000/submitExam", {
       user_id: user.user_id,
-      exam_id: exam[selectExam].exam_id,
+      exam_id: exam_id,
       answer: JSON.stringify(answers),
       score: score,
       fullScore: fullScore,
@@ -130,9 +123,7 @@ function ExamComponent({ exam, selectExam, user, productId }) {
     if (duration === 0) {
       setDuration(examInfo[0].Duration * 60);
     }
-    const examName = exam[selectExam].exam_name;
-
-    const exam_id = exam[selectExam].exam_id;
+    const examName = exam[0].name;
 
     let examFullScore = 0;
 
@@ -162,7 +153,6 @@ function ExamComponent({ exam, selectExam, user, productId }) {
           totalScore={totalScore}
           timeSpend={timeSpend}
           examFullScore={examFullScore}
-          productId={productId}
         />
 
         <ExamNavbar
@@ -177,7 +167,6 @@ function ExamComponent({ exam, selectExam, user, productId }) {
           examName={examName}
           handleExamSubmit={handleExamSubmit}
           setOpenSubmitDialog={setOpenSubmitDialog}
-          setStep={setStep}
           handleGoToQuestion={handleGoToQuestion}
         />
 

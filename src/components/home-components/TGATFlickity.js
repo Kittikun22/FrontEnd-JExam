@@ -44,7 +44,7 @@ function TGATFlickity() {
                         <Box sx={{ mx: 2, position: 'relative' }} key={key} className='exams-cell'>
 
                             <Card sx={{ width: 300, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-exams-cell'>
-                                <CardActionArea href={`/introduction/${val.product_id}`}>
+                                <CardActionArea href={`/introduction/${val.exam_id}`}>
                                     <CardMedia
                                         component="img"
                                         height="250"

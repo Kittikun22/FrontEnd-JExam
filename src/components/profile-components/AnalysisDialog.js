@@ -76,12 +76,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
-function AnalysisDialog({ openAnalysis, setOpenAnalysis, exam_id, setExamId, user_id, ProductName }) {
+function AnalysisDialog({ openAnalysis, setOpenAnalysis, exam_id, setSelectExamId, user_id, ProductName }) {
 
     const [allRecord, setAllRecord] = useState([])
     const [answered, setAnswered] = useState([])
     const [select, setSelect] = useState(0)
-
 
     const handleChange = (event) => {
         setSelect(event.target.value);
@@ -98,9 +97,8 @@ function AnalysisDialog({ openAnalysis, setOpenAnalysis, exam_id, setExamId, use
 
     }, [user_id, exam_id, select])
 
-
     const handleCloseAnalysis = () => {
-        setExamId()
+        setSelectExamId()
         setAnswered([])
         setAllRecord([])
         setOpenAnalysis(false)

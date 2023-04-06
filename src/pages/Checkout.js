@@ -23,10 +23,10 @@ function Checkout() {
 
     const arr_id = []
     selectedItem.map((val) => {
-      return arr_id.push(val.product_id);
+      return arr_id.push(val.exam_id);
     })
-    Axios.post('http://localhost:8000/getProductInCart', {
-      product_id: arr_id
+    Axios.post('http://localhost:8000/getExamInCart', {
+      exam_id: arr_id
     }).then((res) => {
       setCheckOutItem(res.data);
     })
@@ -48,7 +48,7 @@ function Checkout() {
           p={2}
           sx={{
             background: 'linear-gradient(0deg, rgba(239,245,245,1) 0%, rgba(214,228,229,1) 100%)',
-            minHeight:'100vh',
+            minHeight: '100vh',
             pb: 15
           }}>
           <Typography
@@ -57,7 +57,7 @@ function Checkout() {
               display: 'inline-block',
               borderBottom: 5,
               borderColor: '#a0d64b',
-              mb:2,
+              mb: 2,
               ml: 1
             }}
           >

@@ -2,26 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useAuthState, useAuthDispatch } from "../context/AuthContext";
 import { useParams } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
-import ExamComponent from "../components/Exams/ExamComponent";
+import ExamComponent from "../components/Exam-component/ExamComponent";
 import Axios from "axios";
-import ExamAlertDialog from "../components/Exams/ExamAlertDialog";
-import SelectDialog from "../components/Exams/SelectDialog";
+import ExamAlertDialog from "../components/Exam-component/ExamAlertDialog";
 
 const CryptoJS = require("crypto-js");
 const EncryptSecret = "Jknow2022";
 
 function Exams() {
-  const { productId } = useParams();
+  const { exam_id } = useParams();
   const { user } = useAuthState();
   const dispatch = useAuthDispatch();
 
   const [exam, setExam] = useState();
-  const [selectExam, setSelectExam] = useState(0);
 
   const [openDialog, setOpenDialog] = useState(false);
   const [message, setMessage] = useState("");
-
-  const [openSelectDialog, setOpenSelectDialog] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -40,18 +36,13 @@ function Exams() {
 
   useEffect(() => {
     if (user) {
-      Axios.post("http://localhost:8000/UserProduct", {
+      Axios.post("http://localhost:8000/UserExam", {
         user_id: user.user_id,
-        product_id: productId,
+        exam_id: exam_id,
       }).then((res) => {
         if (res.data.message === "ok") {
-          if (res.data.result?.length > 1) {
-            setExam(res.data.result);
-            setOpenSelectDialog(true);
-          } else {
-            setLoading(true);
-            setExam(res.data.result);
-          }
+          setLoading(true);
+          setExam(res.data.result);
         } else {
           setOpenDialog(true);
           setMessage(
@@ -62,21 +53,15 @@ function Exams() {
     }
   }, [user]);
 
+  console.log(exam);
+
   return (
     <>
       <ExamAlertDialog
         openDialog={openDialog}
         setOpenDialog={setOpenDialog}
         message={message}
-        productId={productId}
-      />
-
-      <SelectDialog
-        openSelectDialog={openSelectDialog}
-        setOpenSelectDialog={setOpenSelectDialog}
-        exam={exam}
-        setSelectExam={setSelectExam}
-        setLoading={setLoading}
+        exam_id={exam_id}
       />
 
       <Box
@@ -86,7 +71,7 @@ function Exams() {
         }}
       >
         {loading === true ? (
-          <ExamComponent exam={exam} selectExam={selectExam} user={user} productId={productId} />
+          <ExamComponent exam={exam} user={user} exam_id={exam_id} />
         ) : null}
       </Box>
     </>

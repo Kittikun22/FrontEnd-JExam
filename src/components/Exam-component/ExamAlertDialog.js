@@ -17,7 +17,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 
-function ExamAlertDialog({ openDialog, setOpenDialog, message, productId }) {
+function ExamAlertDialog({ openDialog, setOpenDialog, message, exam_id }) {
 
     useEffect(() => {
         if (openDialog === true) {
@@ -30,7 +30,7 @@ function ExamAlertDialog({ openDialog, setOpenDialog, message, productId }) {
 
     const handleClose = () => {
         setOpenDialog(false);
-        window.location = `/introduction/${productId}`
+        window.location = `/introduction/${exam_id}`
     };
 
     return (

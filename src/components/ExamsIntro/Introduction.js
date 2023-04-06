@@ -1,44 +1,90 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Box, Typography, Button, Paper, Stack } from "@mui/material";
 import BluePrint from "./BluePrint";
 import SnackbarAlert from "../SnackbarAlert";
 import Login from "../Login-Dialog";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import Axios from 'axios'
 
 function Introduction({
   user,
-  productDetail,
+  examDetail,
   myExamList,
   cartItem,
   setCartItem,
 }) {
-  const bluePrint = JSON.parse(productDetail.blueprint);
+
+  const [myFavExam, setMyFavExam] = useState([])
+  const bluePrint = JSON.parse(examDetail.blueprint);
 
   const [openLogin, setOpenLogin] = useState(false);
   const [openSnackBar, setOpenSnackBar] = useState(false);
   const [message, setMessage] = useState("");
   const [snackBarColor, setSnackBarColor] = useState();
 
-  const onAddToCart = (product) => {
+  const onAddToCart = (exam) => {
     if (!user) {
       setOpenLogin(true);
     } else {
       const check_index = cartItem.findIndex(
-        (item) => item.product_id === product.product_id
+        (item) => item.exam_id === exam.exam_id
       );
       if (check_index !== -1) {
-        setMessage(product.name + " มีในตะกร้าอยู่แล้ว");
+        setMessage(exam.name + " มีในตะกร้าอยู่แล้ว");
         setSnackBarColor("error");
         setOpenSnackBar(true);
       } else {
         setCartItem(JSON.parse(localStorage.getItem("cart")));
-        setCartItem((cartItem) => [...cartItem, product]);
-        setMessage(product.name + " ถูกเพิ่มเข้าตะกร้าแล้ว");
+        setCartItem((cartItem) => [...cartItem, exam]);
+        setMessage(exam.name + " ถูกเพิ่มเข้าตะกร้าแล้ว");
         setSnackBarColor("success");
         setOpenSnackBar(true);
       }
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      Axios.post("http://localhost:8000/getFavExams", {
+        user_id: user.user_id
+      }).then((res) => {
+        if (res.data[0].fav_exam === null) {
+          //
+        } else {
+          setMyFavExam(JSON.parse(res.data[0].fav_exam))
+        }
+      })
+    }
+  }, [user])
+
+  useEffect(() => {
+    if (user) {
+      Axios.put("http://localhost:8000/updateFavExams", {
+        user_id: user.user_id,
+        myFavExam: JSON.stringify(myFavExam)
+      })
+    }
+  }, [myFavExam])
+
+  const onClickFavExam = (exam_id) => {
+    const check_index = myFavExam.findIndex(item => item.exam_id === exam_id);
+    if (check_index !== -1) {
+      //
+    } else {
+      setMyFavExam(myFavExam => [...myFavExam, { exam_id: exam_id }])
+      Axios.put("http://localhost:8000/increaseFavExams", {
+        exam_id: exam_id,
+      })
+    }
+  }
+
+  const onUnFavExam = (exam_id) => {
+    setMyFavExam((favExams) => favExams.filter((favExam) => favExam.exam_id !== exam_id));
+  };
+
 
   return (
     <>
@@ -71,7 +117,7 @@ function Introduction({
           >
             <Box
               component="img"
-              src={`/${productDetail.pic}`}
+              src={`/${examDetail.pic}`}
               sx={{
                 width: "225px",
                 borderRadius: 3,
@@ -89,28 +135,53 @@ function Introduction({
                     textAlign: "center",
                   }}
                 >
-                  {productDetail.name}
+                  {examDetail.name}
                 </Typography>
               </Box>
 
-              <Typography sx={{ fontSize: "1.1rem" }}>
-                ชื่อวิชา : {productDetail.name}
-                <br />
-                วิชา : {productDetail.subject_name}
-                <br />
-                สนามสอบ : {productDetail.category_name}
-                <br />
-                รายละเอียด : {productDetail.detail}
-                <br />
-                {myExamList?.findIndex(
-                  (item) => item.product_id === productDetail.product_id
-                ) === -1
-                  ? `ราคา : ${productDetail.amount} บาท`
-                  : null}
-              </Typography>
+              <Box>
+                <Typography sx={{ fontSize: "1.1rem" }}>
+                  ชื่อวิชา : {examDetail.name}
+                  <br />
+                  วิชา : {examDetail.subject_name}
+                  <br />
+                  สนามสอบ : {examDetail.category_name}
+                  <br />
+                  รายละเอียด : {examDetail.detail}
+                  <br />
+                  {myExamList?.findIndex(
+                    (item) => item.exam_id === examDetail.exam_id
+                  ) === -1
+                    ? `ราคา : ${examDetail.amount} บาท`
+                    : null}
+                </Typography>
+                <Box sx={{ display: 'flex', justifyContent: { xs: "center", md: "flex-start" } }}>
+                  {myFavExam?.findIndex(fav => fav.exam_id === examDetail.exam_id) === -1 ?
+                    <Tooltip title="ชื่นชอบ">
+                      <IconButton onClick={() => onClickFavExam(examDetail.exam_id)}>
+                        <FavoriteIcon sx={{
+                          color: myFavExam?.findIndex(fav => fav.exam_id === examDetail.exam_id) === -1 ? 'grey' : '#E90064'
+                        }} />
+                      </IconButton>
+                    </Tooltip>
+                    :
+                    <Tooltip title="ยกเลิกการชื่นชอบ">
+                      <IconButton onClick={() => onUnFavExam(examDetail.exam_id)}>
+                        <FavoriteIcon sx={{
+                          color: myFavExam?.findIndex(fav => fav.exam_id === examDetail.exam_id) === -1 ? 'grey' : '#E90064'
+                        }} />
+                      </IconButton>
+                    </Tooltip>
+                  }
+
+                  <Tooltip title="จำนวนคนชื่นชอบ">
+                    <Typography alignSelf="center" variant='body2'>{examDetail.favorite} ครั้ง</Typography>
+                  </Tooltip>
+                </Box>
+              </Box>
 
               {myExamList?.findIndex(
-                (item) => item.product_id === productDetail.product_id
+                (item) => item.exam_id === examDetail.exam_id
               ) === -1 ? (
                 <Box
                   sx={{
@@ -123,7 +194,7 @@ function Introduction({
                     color="secondary"
                     startIcon={<AddShoppingCartIcon />}
                     sx={{ borderRadius: 5, width: "200px" }}
-                    onClick={() => onAddToCart(productDetail)}
+                    onClick={() => onAddToCart(examDetail)}
                   >
                     <Typography sx={{ fontSize: "1.1rem", fontWeight: 600 }}>
                       เพิ่มลงรถเข็น
@@ -141,7 +212,7 @@ function Introduction({
                     variant="contained"
                     color="warning"
                     sx={{ borderRadius: 5, width: "200px" }}
-                    href={`/exam/${productDetail.product_id}`}
+                    href={`/exam/${examDetail.exam_id}`}
                   >
                     <Typography sx={{ fontSize: "1rem", fontWeight: 600 }}>
                       เริ่มทำข้อสอบ
@@ -182,7 +253,7 @@ function Introduction({
                       mb: 2,
                     }}
                   >
-                    {productDetail.name}
+                    {examDetail.name}
                   </Typography>
                   <BluePrint bluePrint={bluePrint} />
                 </Box>

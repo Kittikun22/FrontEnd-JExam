@@ -24,7 +24,7 @@ function ProfileHistory({ user }) {
   const [ProductName, setProductName] = useState()
 
   useEffect(() => {
-    Axios.post('http://localhost:8000/getuserproductandexams', {
+    Axios.post('http://localhost:8000/getUserExams', {
       user_id: user.user_id
     }).then((res) => {
       setMyExamList(res.data)
@@ -77,7 +77,7 @@ function ProfileHistory({ user }) {
           {myExamList?.map((val, key) => {
             return (
               <Card sx={{ width: { xs: 175, md: 225 }, borderRadius: 7 }} key={key}>
-                <CardActionArea href={`/introduction/${val.product_id}`}>
+                <CardActionArea href={`/introduction/${val.exam_id}`}>
                   <CardMedia
                     component="img"
                     height="150px"

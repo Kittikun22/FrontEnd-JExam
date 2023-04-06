@@ -32,7 +32,7 @@ function FakePayment({ selectedItems, user, amount, netAmount }) {
     };
 
     const handleDelete = (itemToDelete) => {
-        const updateItemInCart = JSON.parse(localStorage.getItem("cart")).filter((item) => !itemToDelete.find(i => i.product_id === item.product_id));
+        const updateItemInCart = JSON.parse(localStorage.getItem("cart")).filter((item) => !itemToDelete.find(i => i.exam_id === item.exam_id));
         localStorage.setItem('cart', JSON.stringify(updateItemInCart))
 
         Axios.put('http://localhost:8000/updateCart', {
@@ -44,9 +44,9 @@ function FakePayment({ selectedItems, user, amount, netAmount }) {
     };
 
     const handleOnSuccess = () => {
-        const products_arr = []
+        const exams_arr = []
         selectedItems.map((val) => {
-            return products_arr.push({ id: val.product_id });
+            return exams_arr.push({ id: val.exam_id });
         })
         const randomNumber = Math.floor(Math.random() * (99999999 - 10000000 + 1)) + 10000000;
         let randomString = '';
@@ -64,7 +64,7 @@ function FakePayment({ selectedItems, user, amount, netAmount }) {
             amount: amount,
             net_amount: netAmount,
             payment_method: 'card',
-            products: selectedItems,
+            exams: selectedItems,
         }).then((res) => {
             if (res.data.message === 'success') {
                 handleDelete(selectedItems)

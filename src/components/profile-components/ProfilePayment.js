@@ -100,7 +100,7 @@ function ProfilePayment({ user }) {
                   <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography>รายการสินค้า : </Typography>
                     <Box>
-                      {JSON.parse(val.products).map((val, key) => {
+                      {JSON.parse(val.exams).map((val, key) => {
                         return (
                           <Typography noWrap key={key}>{key + 1}. {val}</Typography>
                         )

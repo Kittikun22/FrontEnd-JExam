@@ -7,16 +7,18 @@ import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardMedia from '@mui/material/CardMedia'
 import Axios from 'axios'
-
+import CircleLoading from '../CircleLoading';
 
 
 function NETSATFlickity() {
 
+    const [loading, setLoading] = useState(true)
     const [NETSATList, setNETSATList] = useState([])
     useEffect(() => {
 
         Axios.get('http://localhost:8000/getNETSAT').then((res) => {
             setNETSATList(res.data)
+            setLoading(false)
         })
 
     }, [])
@@ -34,78 +36,75 @@ function NETSATFlickity() {
     return (
 
         <Box sx={{ width: { xs: '100%', md: '100%' }, mx: 'auto' }}>
+            {loading === true ?
+                <CircleLoading />
+                :
+                <Flickity
+                    className={'carousel'} // default ''
+                    elementType={'div'} // default 'div'
+                    options={flickityOptions} // takes flickity options {}
+                    reloadOnUpdate // default false
+                    static // default false
+                >
+                    {NETSATList.map((val, key) => {
+                        return (
+                            <Box sx={{ mx: 2, position: 'relative' }} key={key} className='exams-cell'>
 
-            <Flickity
-                className={'carousel'} // default ''
-                elementType={'div'} // default 'div'
-                options={flickityOptions} // takes flickity options {}
-                reloadOnUpdate // default false
-                static // default false
-            >
-                {NETSATList.map((val, key) => {
-                    return (
-                        <Box sx={{ mx: 2, position: 'relative' }} key={key} className='exams-cell'>
+                                <Card sx={{ width: 300, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-exams-cell'>
+                                    <CardActionArea href={`/introduction/${val.exam_id}`}>
+                                        <CardMedia
+                                            component="img"
+                                            height="250"
+                                            image={val.pic}
+                                            alt={val.name}
+                                        />
+                                        <Typography
+                                            className='on-card-typography'
+                                            noWrap
+                                            variant='h6'
+                                            sx={{
+                                                marginTop: "-5rem",
+                                                textAlign: 'center',
+                                                color: 'white',
+                                                fontWeight: 600,
+                                                marginLeft: 1.5,
+                                                zIndex: 1
+                                            }}
+                                        >
+                                            {val.name}
+                                        </Typography>
 
-                            <Card sx={{ width: 300, borderRadius: 10, border: 5, borderColor: 'white' }} className='card-exams-cell'>
-                                <CardActionArea href={`/introduction/${val.product_id}`}>
-                                    <CardMedia
-                                        component="img"
-                                        height="250"
-                                        image={val.pic}
-                                        alt={val.name}
-                                        sx={{
+                                    </CardActionArea>
+                                </Card>
 
-                                            // "&:hover": {
-                                            //     transition: "transform .3s",
-                                            //     transform: "scale(1.05)",
-                                            // }
-                                        }}
-                                    />
+
+                                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                     <Typography
-                                        className='on-card-typography'
+                                        className='card-typography'
                                         noWrap
                                         variant='h6'
                                         sx={{
-                                            marginTop: "-5rem",
-                                            textAlign: 'center',
-                                            color: 'white',
+                                            display: 'none',
+                                            background: '#fff',
+                                            borderRadius: 7,
+                                            p: 1,
+                                            width: 250,
+                                            minHeight: 60,
+                                            color: '#000',
                                             fontWeight: 600,
-                                            marginLeft: 1.5,
-                                            zIndex: 1
+                                            textAlign: 'center',
+                                            boxShadow: 1
                                         }}
                                     >
                                         {val.name}
                                     </Typography>
-
-                                </CardActionArea>
-                            </Card>
-
-
-                            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                                <Typography
-                                    className='card-typography'
-                                    noWrap
-                                    variant='h6'
-                                    sx={{
-                                        display: 'none',
-                                        background: '#fff',
-                                        borderRadius: 7,
-                                        p: 1,
-                                        width: 250,
-                                        minHeight: 60,
-                                        color: '#000',
-                                        fontWeight: 600,
-                                        textAlign: 'center',
-                                    }}
-                                >
-                                    {val.name}
-                                </Typography>
+                                </Box>
                             </Box>
-                        </Box>
-                    )
-                })}
+                        )
+                    })}
 
-            </Flickity>
+                </Flickity>
+            }
         </Box>
     )
 }

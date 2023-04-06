@@ -26,7 +26,7 @@ const EncryptSecret = 'Jknow2022'
 
 const pages = [
     {
-        pageName: 'ข้อสอบทั้งหมด',
+        pageName: 'ข้อสอบ',
         url: '/exam-library'
     },
     {

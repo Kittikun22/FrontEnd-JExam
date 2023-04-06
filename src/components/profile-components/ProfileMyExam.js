@@ -19,7 +19,7 @@ function ProfileMyExam({ user }) {
   const [myExamList, setMyExamList] = useState([])
 
   useEffect(() => {
-    Axios.post('http://localhost:8000/getuserproductandexams', {
+    Axios.post('http://localhost:8000/getUserExams', {
       user_id: user.user_id
     }).then((res) => {
       setMyExamList(res.data)
@@ -65,14 +65,13 @@ function ProfileMyExam({ user }) {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
-
           {myExamList?.map((val, key) => {
             return (
               <Card sx={{
                 width: { xs: 175, md: 225, },
                 borderRadius: 7
               }} key={key}>
-                <CardActionArea href={`/introduction/${val.product_id}`}>
+                <CardActionArea href={`/introduction/${val.exam_id}`}>
                   <CardMedia
                     component="img"
                     height="150px"
@@ -98,7 +97,7 @@ function ProfileMyExam({ user }) {
                       variant='contained'
                       color='warning'
                       sx={{ borderRadius: 3 }}
-                      href={`/introduction/${val.product_id}`}
+                      href={`/introduction/${val.exam_id}`}
                     >
                       ทำข้อสอบ
                     </Button>
@@ -107,7 +106,6 @@ function ProfileMyExam({ user }) {
               </Card>
             )
           })}
-
         </Box>
       </Box>
     </>
