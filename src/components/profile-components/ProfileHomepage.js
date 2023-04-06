@@ -27,8 +27,6 @@ function ProfileHomepage({ user }) {
     })
   }, [])
 
-  console.log(myExamList);
-
   return (
     <Box sx={{ mb: '100px' }}>
 

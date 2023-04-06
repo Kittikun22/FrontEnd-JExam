@@ -12,7 +12,6 @@ function ExamComponent({ exam, user, exam_id }) {
   const examContent = JSON.parse(exam[0].exam_content);
   const examInfo = JSON.parse(exam[0].exam_info);
 
-  console.log(examContent);
 
   const [loading, setLoading] = useState(true);
   const [duration, setDuration] = useState(0);
@@ -33,8 +32,6 @@ function ExamComponent({ exam, user, exam_id }) {
   const [openDialog, setOpenDialog] = useState(false);
   const [openStartDialog, setOpenStartDialog] = useState(true);
   const [openSubmitDialog, setOpenSubmitDialog] = useState(false);
-
-  console.log(answers);
 
   const [step, setStep] = useState(0);
 
@@ -95,7 +92,6 @@ function ExamComponent({ exam, user, exam_id }) {
 
   const handleExamSubmit = () => {
     setTimeControl(false);
-    console.log(answers);
     let score = 0;
     let fullScore = 0;
     answers.map((val) => {

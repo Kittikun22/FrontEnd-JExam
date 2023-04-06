@@ -13,8 +13,6 @@ function ExamOperationTwo({ currentQuestions, answers, handleAnswerChange }) {
   return (
     <Box sx={{ py: 4, mx: { xs: 2, sm: 10, md: 30, lg: 40 } }}>
       {currentQuestions.map((question, key) => {
-        // let check = ((question.question.indexOf("<InlineMath",)) === -1) ? question.id + 'ไม่เจอ' : question.id + 'เจอ'
-        // console.log(check);
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
             <Typography>

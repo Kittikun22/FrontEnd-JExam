@@ -75,8 +75,6 @@ function HistoryDialog({ openHistory, setOpenHistory, exam_id, setExamId, user_i
 
     }, [user_id, exam_id, select])
 
-    console.log(allRecord);
-
     const [expanded, setExpanded] = React.useState('');
 
     const handleChange = (panel) => (event, newExpanded) => {

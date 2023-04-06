@@ -7,6 +7,9 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import InputAdornment from '@mui/material/InputAdornment';
 import { motion } from 'framer-motion'
 
+const CryptoJS = require("crypto-js");
+const EncryptSecret = 'Jknow2022'
+
 const CartBottomBar = ({
   selectedItem,
   selectedAmount,
@@ -56,18 +59,19 @@ const CartBottomBar = ({
     promoDiscount,
     discount
   ) => {
+
+    const ciphertext_discount = CryptoJS.AES.encrypt(JSON.stringify([
+      {
+        code: code,
+        codeDis: codeDis,
+        promoDiscount: promoDiscount,
+        discount: discount,
+      },
+    ]), EncryptSecret).toString();
+
+
     localStorage.setItem("selectItem", JSON.stringify(selectedItem));
-    localStorage.setItem(
-      "discount",
-      JSON.stringify([
-        {
-          code: code,
-          codeDis: codeDis,
-          promoDiscount: promoDiscount,
-          discount: discount,
-        },
-      ])
-    );
+    localStorage.setItem('discount', ciphertext_discount)
 
     Axios.put("http://localhost:8000/updateSelectItem", {
       user_id: user_id,

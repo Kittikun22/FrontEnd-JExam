@@ -67,7 +67,6 @@ function Exam() {
     alert(`Your score is ${score}`);
   };
 
-  console.log(answers);
 
   return (
     <>

@@ -53,8 +53,6 @@ function Exams() {
     }
   }, [user]);
 
-  console.log(exam);
-
   return (
     <>
       <ExamAlertDialog

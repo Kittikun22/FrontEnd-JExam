@@ -21,8 +21,6 @@ export default function ProfilePictureList({ setNewPic, newPic }) {
     });
   }, []);
 
-  console.log(pictureList);
-
   const handleClose = () => {
     setOpen(false);
   };

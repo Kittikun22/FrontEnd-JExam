@@ -46,7 +46,6 @@ export default function CreditCard({ user, amount }) {
                     }
                 }).then((res) => {
                     console.log(res.data);
-
                 })
             },
             onFormClosed: () => {

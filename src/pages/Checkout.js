@@ -7,6 +7,8 @@ import Axios from 'axios'
 import { Typography } from '@mui/material'
 import { useAuthState } from '../context/AuthContext'
 
+const CryptoJS = require("crypto-js");
+const EncryptSecret = 'Jknow2022'
 
 function Checkout() {
 
@@ -17,7 +19,8 @@ function Checkout() {
   const [selectedItems, setSelectedItems] = useState()
 
   useEffect(() => {
-    setAllDiscount(JSON.parse(localStorage.getItem('discount')))
+
+    setAllDiscount(JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('discount'), EncryptSecret).toString(CryptoJS.enc.Utf8)))
     const selectedItem = JSON.parse(localStorage.getItem('selectItem'))
     setSelectedItems(selectedItem)
 

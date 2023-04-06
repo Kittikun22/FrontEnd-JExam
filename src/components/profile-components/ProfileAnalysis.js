@@ -36,7 +36,6 @@ function ProfileAnalysis({ user }) {
     setOpenAnalysis(true)
   }
 
-  console.log(myExamList);
 
   return (
     <>
