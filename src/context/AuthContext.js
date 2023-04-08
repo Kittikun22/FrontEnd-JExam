@@ -51,10 +51,11 @@ function Signin(userPhone, userPwd) {
             password: userPwd,
         }).then((res) => {
             if (res.data.status === 'ok') {
+                const ciphertext_cart = CryptoJS.AES.encrypt(res.data.cart, EncryptSecret).toString();
                 const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(res.data.message[0]), EncryptSecret).toString();
                 localStorage.setItem('users', JSON.stringify(ciphertext))
                 localStorage.setItem('accessToken', res.data.token)
-                localStorage.setItem('cart', res.data.cart)
+                localStorage.setItem('cart', ciphertext_cart)
                 if (res.data.message[0].dream1 !== null) {
                     localStorage.setItem('popup', false)
                 } else {

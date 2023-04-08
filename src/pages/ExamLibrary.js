@@ -5,11 +5,14 @@ import Box from '@mui/material/Box'
 import { useAuthState } from '../context/AuthContext'
 import Axios from 'axios'
 
+const CryptoJS = require("crypto-js");
+const EncryptSecret = "Jknow2022";
+
 function ExamLibrary() {
 
     const { user } = useAuthState();
 
-    const [cartItem, setCartItem] = useState(JSON.parse(localStorage.getItem('cart')));
+    const [cartItem, setCartItem] = useState(JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('cart'), EncryptSecret).toString(CryptoJS.enc.Utf8)));
 
     const [allExams, setAllExams] = useState([])
     const [mostFav, setMostFav] = useState([])
@@ -30,7 +33,8 @@ function ExamLibrary() {
         })
 
         if (user) {
-            localStorage.setItem('cart', JSON.stringify(cartItem))
+            const ciphertext_cart = CryptoJS.AES.encrypt(JSON.stringify(cartItem), EncryptSecret).toString();
+            localStorage.setItem('cart', ciphertext_cart)
             Axios.put('http://localhost:8000/updateCart', {
                 user_id: user.user_id,
                 updateCart: JSON.stringify(cartItem)

@@ -69,8 +69,9 @@ const CartBottomBar = ({
       },
     ]), EncryptSecret).toString();
 
+    const ciphertext_selectItem = CryptoJS.AES.encrypt(JSON.stringify(selectedItem), EncryptSecret).toString();
 
-    localStorage.setItem("selectItem", JSON.stringify(selectedItem));
+    localStorage.setItem("selectItem", ciphertext_selectItem);
     localStorage.setItem('discount', ciphertext_discount)
 
     Axios.put("http://localhost:8000/updateSelectItem", {
@@ -234,7 +235,6 @@ const CartBottomBar = ({
                 fontSize: "1.2rem",
                 width: { xs: "125px", md: "250px" },
                 p: 1,
-                // height: { xs: "", md: "65px" },
                 borderRadius: 5,
               }}
             >

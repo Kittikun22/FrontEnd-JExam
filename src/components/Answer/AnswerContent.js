@@ -5,10 +5,52 @@ import {
   RadioGroup,
   Radio,
   FormControlLabel,
-  Paper
+  Paper,
+  Divider
 } from "@mui/material";
+import Parser from 'html-react-parser'
+import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
+import MuiAccordion from '@mui/material/Accordion';
+import MuiAccordionSummary from '@mui/material/AccordionSummary';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
+import { styled } from '@mui/material/styles';
+
+const Accordion = styled((props) => (
+  <MuiAccordion disableGutters elevation={0} {...props} />
+))(({ theme }) => ({
+  border: `1px solid ${theme.palette.divider}`
+}));
+
+const AccordionSummary = styled((props) => (
+  <MuiAccordionSummary
+    expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
+    {...props}
+  />
+))(({ theme }) => ({
+  backgroundColor: '#a0d64b20',
+  flexDirection: 'row-reverse',
+  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+    transform: 'rotate(90deg)',
+  },
+  '& .MuiAccordionSummary-content': {
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+  padding: theme.spacing(2),
+  borderTop: '1px solid rgba(0, 0, 0, .125)',
+}));
+
 
 function AnswerContent({ examContent, answered }) {
+
+  const [expanded, setExpanded] = React.useState('');
+
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
+
   return (
     <Paper
       elevation={2}
@@ -18,14 +60,22 @@ function AnswerContent({ examContent, answered }) {
         px: 2,
         mx: { xs: 2, sm: 10, md: 30, lg: 40 },
         background: '#fff',
-
       }}
     >
 
       {examContent.map((question, key) => {
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
-            <Typography variant="h5" paragraph>
+
+            {question?.paragraph ?
+              <Box m={{ xs: 0, sm: 2 }} p={2} sx={{ background: '#EEEEEE', borderRadius: 3 }}>
+                <Typography variant='body1'>
+                  {Parser(question.paragraph)}
+                </Typography>
+              </Box> : null
+            }
+
+            <Typography variant="h6" paragraph>
               {question.id}. {question.question}
             </Typography>
 
@@ -143,6 +193,19 @@ function AnswerContent({ examContent, answered }) {
                 </Box>
               ))}
             </RadioGroup>
+
+            <Accordion expanded={expanded === `panel${key}`} onChange={handleChange(`panel${key}`)} >
+              <AccordionSummary>
+                <Typography>ดูคำอธิบาย</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
+                  {question?.answerDescription}
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+
+            <Divider sx={{ my: 2 }} />
           </Box>
         );
 

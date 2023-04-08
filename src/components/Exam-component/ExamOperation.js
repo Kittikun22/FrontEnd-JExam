@@ -8,7 +8,6 @@ import {
   Divider
 } from "@mui/material";
 import Parser from 'html-react-parser'
-import ReactQuill from 'react-quill'
 
 function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
   return (
@@ -30,7 +29,6 @@ function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
               <Box m={{ xs: 0, sm: 2 }} p={2} sx={{ background: '#EEEEEE', borderRadius: 3 }}>
                 <Typography variant='body1'>
                   {Parser(question.paragraph)}
-                  {/* {question.paragraph} */}
                 </Typography>
               </Box> : null}
 

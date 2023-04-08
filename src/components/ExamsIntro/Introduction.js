@@ -9,6 +9,11 @@ import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';
 import Axios from 'axios'
 
+
+const CryptoJS = require("crypto-js");
+const EncryptSecret = "Jknow2022";
+
+
 function Introduction({
   user,
   examDetail,
@@ -37,7 +42,7 @@ function Introduction({
         setSnackBarColor("error");
         setOpenSnackBar(true);
       } else {
-        setCartItem(JSON.parse(localStorage.getItem("cart")));
+        setCartItem(JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('cart'), EncryptSecret).toString(CryptoJS.enc.Utf8)));
         setCartItem((cartItem) => [...cartItem, exam]);
         setMessage(exam.name + " ถูกเพิ่มเข้าตะกร้าแล้ว");
         setSnackBarColor("success");

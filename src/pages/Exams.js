@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuthState, useAuthDispatch } from "../context/AuthContext";
 import { useParams } from "react-router-dom";
-import { Box, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 import ExamComponent from "../components/Exam-component/ExamComponent";
 import Axios from "axios";
 import ExamAlertDialog from "../components/Exam-component/ExamAlertDialog";

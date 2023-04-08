@@ -140,7 +140,7 @@ function HistoryDialog({ openHistory, setOpenHistory, exam_id, setExamId, user_i
                                         <AccordionSummary>
                                             <Typography>{formatDate(val.submit_at)}</Typography>
                                         </AccordionSummary>
-                                        <AccordionDetails sx={{ display: 'flex' }}>
+                                        <AccordionDetails sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
 
                                             <Box component='img' src={Badge} width={200} />
 

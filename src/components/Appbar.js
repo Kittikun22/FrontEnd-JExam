@@ -33,7 +33,6 @@ const pages = [
         pageName: 'คู่มือการใช้งาน',
         url: '/manual'
     },
-
     {
         pageName: 'คำถามพี่พบบ่อย',
         url: '#'
@@ -45,13 +44,17 @@ const Appbar = ({ setActiveContent, cartItem }) => {
     const dispatch = useAuthDispatch();
 
     const [profilePic, setProfilePic] = useState(null);
-    const [itemInCart, setItemInCart] = useState(JSON.parse(localStorage.getItem('cart'))?.length)
+    const [itemInCart, setItemInCart] = useState()
+    // const [itemInCart, setItemInCart] = useState(JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('cart'), EncryptSecret).toString(CryptoJS.enc.Utf8))?.length)
 
     useEffect(() => {
         if (cartItem) {
             setItemInCart(cartItem?.length)
         } else {
-            setItemInCart(JSON.parse(localStorage.getItem('cart'))?.length)
+            const encryptCart = localStorage.getItem('cart')
+            if (encryptCart) {
+                setItemInCart(JSON.parse(CryptoJS.AES.decrypt(encryptCart, EncryptSecret).toString(CryptoJS.enc.Utf8)).length)
+            }
         }
 
         const ciphertext = JSON.parse(localStorage.getItem("users"))
@@ -61,12 +64,12 @@ const Appbar = ({ setActiveContent, cartItem }) => {
             dispatch({
                 status: "loggedIn",
                 user: decryptedData,
-                cart: JSON.parse(localStorage.getItem('cart')),
+                cart: JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('cart'), EncryptSecret).toString(CryptoJS.enc.Utf8)),
                 error: null
             })
             setProfilePic(decryptedData.user_pic)
         }
-    }, [cartItem])
+    }, [cartItem, itemInCart])
 
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);

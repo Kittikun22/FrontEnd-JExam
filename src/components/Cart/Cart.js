@@ -7,6 +7,9 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { useAuthState } from "../../context/AuthContext";
 import Axios from "axios";
 
+const CryptoJS = require("crypto-js");
+const EncryptSecret = 'Jknow2022'
+
 const columns = [
   { field: "name", headerName: "รายการ", minWidth: 150, flex: 1 },
   { field: "amount", headerName: "ราคา (บาท)", minWidth: 125, flex: 0 },
@@ -18,6 +21,8 @@ export default function Cart({ rowsData, setRowsData }) {
   const [itemInCart, setItemInCart] = useState();
   const [codeList, setCodeList] = useState();
   const [promotion, setPromotion] = useState();
+
+  console.log("Item in cart : ", itemInCart);
 
   useEffect(() => {
     const arr_id = [];
@@ -45,7 +50,7 @@ export default function Cart({ rowsData, setRowsData }) {
   }, []);
 
 
-  const [pageSize, setPageSize] = useState(itemInCart?.length <= 5 ? 5 : 10);
+  const [pageSize, setPageSize] = useState(itemInCart?.length < 6 ? 5 : 10);
   const [selectedItem, setSelectedItem] = useState([]);
   const [selectedAmount, setSelectedAmount] = useState(0);
   const [promoDiscount, setPromoDiscount] = useState(0);
@@ -83,7 +88,8 @@ export default function Cart({ rowsData, setRowsData }) {
       (row) => !itemToDelete.includes(row)
     );
 
-    localStorage.setItem("cart", JSON.stringify(updateItemInCart));
+    const ciphertext_cart = CryptoJS.AES.encrypt(JSON.stringify(updateItemInCart), EncryptSecret).toString();
+    localStorage.setItem("cart", ciphertext_cart)
     setItemInCart(updateItemInCart);
 
     Axios.put("http://localhost:8000/updateCart", {

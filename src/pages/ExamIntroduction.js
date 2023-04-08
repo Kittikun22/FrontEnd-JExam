@@ -6,6 +6,9 @@ import Introduction from '../components/ExamsIntro/Introduction';
 import { Box } from '@mui/material'
 import { useAuthState } from '../context/AuthContext'
 
+const CryptoJS = require("crypto-js");
+const EncryptSecret = "Jknow2022";
+
 
 function ExamIntroduction() {
 
@@ -15,7 +18,7 @@ function ExamIntroduction() {
   const [examDetail, setExamDetail] = useState()
   const [myExamList, setMyExamList] = useState([])
 
-  const [cartItem, setCartItem] = useState(JSON.parse(localStorage.getItem('cart')));
+  const [cartItem, setCartItem] = useState(JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('cart'), EncryptSecret).toString(CryptoJS.enc.Utf8)));
 
   useEffect(() => {
 
@@ -32,7 +35,8 @@ function ExamIntroduction() {
       })
     }
     if (user) {
-      localStorage.setItem('cart', JSON.stringify(cartItem))
+      const ciphertext_cart = CryptoJS.AES.encrypt(JSON.stringify(cartItem), EncryptSecret).toString();
+      localStorage.setItem("cart", ciphertext_cart)
       Axios.put('http://localhost:8000/updateCart', {
         user_id: user.user_id,
         updateCart: JSON.stringify(cartItem)

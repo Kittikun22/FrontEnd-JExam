@@ -29,6 +29,8 @@ import ExamFavList from './ExamFavList';
 import { motion } from 'framer-motion'
 import ExamNewList from './ExamNewList';
 
+const CryptoJS = require("crypto-js");
+const EncryptSecret = "Jknow2022";
 
 function ExamsList({ user, cartItem, setCartItem, allExams, mostFav, newestExam }) {
 
@@ -93,7 +95,6 @@ function ExamsList({ user, cartItem, setCartItem, allExams, mostFav, newestExam 
                 myFavExam: JSON.stringify(myFavExam)
             })
         }
-
     }, [myFavExam])
 
 
@@ -134,7 +135,7 @@ function ExamsList({ user, cartItem, setCartItem, allExams, mostFav, newestExam 
                 setSnackBarColor('error')
                 setOpenSnackBar(true)
             } else {
-                setCartItem(JSON.parse(localStorage.getItem('cart')))
+                setCartItem(JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('cart'), EncryptSecret).toString(CryptoJS.enc.Utf8)))
                 setCartItem(cartItem => [...cartItem, exam]);
                 setMessage(exam.name + ' ถูกเพิ่มเข้าตะกร้าแล้ว')
                 setSnackBarColor('success')

@@ -21,7 +21,7 @@ function Checkout() {
   useEffect(() => {
 
     setAllDiscount(JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('discount'), EncryptSecret).toString(CryptoJS.enc.Utf8)))
-    const selectedItem = JSON.parse(localStorage.getItem('selectItem'))
+    const selectedItem = JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('selectItem'), EncryptSecret).toString(CryptoJS.enc.Utf8))
     setSelectedItems(selectedItem)
 
     const arr_id = []

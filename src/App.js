@@ -18,13 +18,18 @@ import Exams from "./pages/Exams";
 import ExamIntroduction from "./pages/ExamIntroduction";
 import Answer from "./pages/Answer.js";
 
+const CryptoJS = require("crypto-js");
+const EncryptSecret = 'Jknow2022'
+
 function App() {
   useEffect(() => {
     const cart = localStorage.getItem("cart");
     if (!cart) {
-      localStorage.setItem("cart", JSON.stringify([]));
+      const ciphertext_cart = CryptoJS.AES.encrypt(JSON.stringify([]), EncryptSecret).toString();
+      localStorage.setItem("cart", ciphertext_cart);
     }
   }, []);
+
 
   return (
     <AuthProvider>
