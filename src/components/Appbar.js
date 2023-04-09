@@ -238,7 +238,7 @@ const Appbar = ({ setActiveContent, cartItem }) => {
                         </Box> */}
 
 
-                        <Box sx={{ mr: { xs: 2, md: 5 } }}>
+                        <Box sx={{ mr: { xs: 2, md: 4 } }}>
                             <Tooltip title="เปิดรถเข็นสินค้า">
                                 <IconButton
                                     sx={{ p: 0 }}

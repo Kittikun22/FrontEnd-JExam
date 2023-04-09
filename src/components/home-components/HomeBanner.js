@@ -12,7 +12,7 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles((theme) => ({
     textGradient: {
         backgroundImage:
-            "linear-gradient(180deg, rgba(255,255,255,1) 8%, rgba(160,214,75,1) 45%)",
+            "linear-gradient(180deg, rgba(255,255,255,1) 8%, rgba(160,214,75,1) 50%)",
         WebkitBackgroundClip: "text",
         backgroundClip: "text",
         color: "transparent"

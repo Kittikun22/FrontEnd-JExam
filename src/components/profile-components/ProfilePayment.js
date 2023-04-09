@@ -8,6 +8,8 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion'
+import Divider from '@mui/material/Divider';
+
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={1} {...props} />
@@ -65,6 +67,7 @@ function ProfilePayment({ user }) {
     setExpanded(newExpanded ? panel : false);
   };
 
+
   return (
     <>
       <Box m={2}>
@@ -89,41 +92,48 @@ function ProfilePayment({ user }) {
                   <Typography>{formatDate(val.paid_at)}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Typography>
-                      Transaction :
+                  <Box sx={{ display: { xs: 'block', md: 'flex' }, justifyContent: 'space-between' }}>
+                    <Typography align='center' >
+                      รหัสอ้างอิง
                     </Typography>
-                    <Typography>
+                    <Typography align='center'>
                       {val.transaction}
                     </Typography>
                   </Box>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Typography>รายการสินค้า : </Typography>
+
+                  <Divider variant="middle" sx={{ my: 1, mx: 5, display: { md: 'none' } }} />
+
+                  <Box sx={{ display: { xs: 'block', md: 'flex' }, justifyContent: 'space-between' }}>
+                    <Typography align='center'>รายการสินค้า</Typography>
                     <Box>
                       {JSON.parse(val.exams).map((val, key) => {
                         return (
-                          <Typography noWrap key={key}>{key + 1}. {val}</Typography>
+                          <Typography key={key}>{key + 1}. {val}</Typography>
                         )
                       }
                       )}
                     </Box>
                   </Box>
+
+                  <Divider variant="middle" sx={{ my: 1, mx: 5, display: { md: 'none' } }} />
+
                   <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography>
-                      ราคา :
-                    </Typography>
-                    <Typography>
-                      {val.net_amount} บาท
-                    </Typography>
-                  </Box>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Typography>
-                      ช่องทางการชำระ :
+                      ช่องทางการชำระ
                     </Typography>
                     <Typography>
                       {val.payment_method}
                     </Typography>
                   </Box>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Typography>
+                      ราคา
+                    </Typography>
+                    <Typography>
+                      {val.net_amount} บาท
+                    </Typography>
+                  </Box>
+
 
                   <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button>ใบกำกับภาษี</Button>
