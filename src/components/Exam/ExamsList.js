@@ -158,6 +158,9 @@ function ExamsList({ user, cartItem, setCartItem, allExams, mostFav, newestExam 
 
     const onUnFavExam = (exam_id) => {
         setMyFavExam((favExams) => favExams.filter((favExam) => favExam.exam_id !== exam_id));
+        Axios.put("http://localhost:8000/decreaseFavExams", {
+            exam_id: exam_id,
+        })
     };
 
     if (allExams) {

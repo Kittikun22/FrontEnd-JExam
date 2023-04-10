@@ -115,7 +115,7 @@ function HomeBanner() {
 
                                 }}
                             >
-                                TEST 2023
+                                TEST {new Date().getFullYear()}
                             </Typography>
 
                         </Typography>
