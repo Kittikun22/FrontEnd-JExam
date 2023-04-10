@@ -8,6 +8,10 @@ import {
   Divider
 } from "@mui/material";
 import Parser from 'html-react-parser'
+// import ReactQuill from "react-quill";
+// import 'react-quill/dist/quill.snow.css';
+import WbIncandescentIcon from '@mui/icons-material/WbIncandescent';
+
 
 function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
   return (
@@ -16,11 +20,9 @@ function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
             {question?.categoryDetail ?
-              <>
-                <Typography variant='h6' my={2}>
-                  {question.categoryDetail}
-                </Typography>
-              </>
+              <Typography variant='h6' my={2}>
+                <WbIncandescentIcon sx={{ transform: 'rotate(215deg)', color: '#FFD93D' }} /> {question.categoryDetail}
+              </Typography>
               :
               null
             }
@@ -30,7 +32,13 @@ function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
                 <Typography variant='body1'>
                   {Parser(question.paragraph)}
                 </Typography>
+                {/* <ReactQuill
+                    readOnly={true}
+                    theme={"bubble"}
+                    value={question.paragraph}
+                  /> */}
               </Box> : null}
+
 
             <Typography variant="h6">
               {question.id}. {question.question}

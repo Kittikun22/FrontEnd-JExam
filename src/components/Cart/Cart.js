@@ -22,8 +22,6 @@ export default function Cart({ rowsData, setRowsData }) {
   const [codeList, setCodeList] = useState();
   const [promotion, setPromotion] = useState();
 
-  console.log("Item in cart : ", itemInCart);
-
   useEffect(() => {
     const arr_id = [];
     rowsData.map((val) => {
