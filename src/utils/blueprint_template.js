@@ -1,6 +1,6 @@
 [{
 	"id": 1,
-	"question": "Professor had been arrived before we ________ her homework.",
+	"question": "Professor had been arrived before we ________ her homework.  ",
 	"question_image_sm": "",
 	"question_image_md": "",
 	"question_image_lg": "",
@@ -39,12 +39,20 @@
 		"choice_image_md": "",
 		"choice_image_lg": "",
 		"point": 0
+	}, {
+		"choicevalue": "e",
+		"choicetext": "",
+		"choice_image_sm": "",
+		"choice_image_md": "",
+		"choice_image_lg": "",
+		"point": 0
 	}],
 	"answer": "a",
 	"point": 1,
 	"category": "Sentence Completion",
 	"categoryDetail": "Sentence Completion. ข้อ 1-12 เลือกคำตอบที่ถูกต้อง",
-	"answerDescription": "ข้อนี้เป็นเรื่อง Tense เราสามารถสังเกตได้ว่าประโยคนี้เป็นอดีตแน่นอนสังเกตได้จาก had been arrived ข้อนี้เป็น Tense คู่ระหว่าง Past Perfect (เหตุการณ์ที่เกิดขึ้นก่อนและจบลง) + Past Simple (เหตุการณ์ที่เกิดตามมา)"
+	"answerDescription": "ข้อนี้เป็นเรื่อง Tense เราสามารถสังเกตได้ว่าประโยคนี้เป็นอดีตแน่นอนสังเกตได้จาก had been arrived ข้อนี้เป็น Tense คู่ระหว่าง Past Perfect (เหตุการณ์ที่เกิดขึ้นก่อนและจบลง) + Past Simple (เหตุการณ์ที่เกิดตามมา)",
+	"answerImage": "https://adminapi.jkorpor.com/public/uploads/images/1677134491914_BANNER-04.webp"
 }, {
 	"id": 2,
 	"question": "May I have ________ kind to support me with your device. Due to ________ device is broken yesterday and those are not ________.",
@@ -1060,7 +1068,7 @@
 	"answerDescription": ""
 }, {
 	"id": 24,
-	"paragraph": "Dear Ms.Maximoff ,I am writing up as a follow-up to our previous phone conversation on September 5 1971, Friday, informing you about your selection in the current year's 'Outstanding' student of the year list. All the faculties of the department made a list. We congratulate you on this achievement! For this award, eligibility is judged on the following criteria: -3.5+ GPA for combine summer program and winter course for ASIAN languagescourse - Strong performance in Chinese Additionally, the selected student must also demonstrate a passion for Chinese language studies, exemplify a commitment to the same profession, and show a positive attitude towards program instructors and peers.. You have successfully met these criteria and demonstrated the outstanding qualities that we look for the student recipients of this award. We invite you and your guests to Student Recognition Event, sponsored by CBAT University, on December 20, 8 AM to 10 AM in Center BAT Room. Please contact me if you have any more questions. Congratulations again Ms. Maximoff, we are looking forward to welcoming you and celebrate with you at the awards event on December 20. Best Tony Strank Chancellor CBAT University.",
+	"paragraph": "Dear Ms.Maximoff ,I am writing up as a follow-up to our previous phone conversation on September 5 1971, Friday, informing you about your selection in the current year's 'Outstanding' student of the year list. All the faculties of the department made a list. We congratulate you on this achievement! For this award, eligibility is judged on the following criteria: -3.5+ GPA for combine summer program and winter course for ASIAN languagescourse - Strong performance in Chinese Additionally, the selected student must also demonstrate a passion for Chinese language studies, exemplify a commitment to the same profession, and show a positive attitude towards program instructors and peers.. You have successfully met these criteria and demonstrated the outstanding qualities that we look for the student recipients of this award. We invite you and your guests to Student Recognition Event, sponsored by CBAT University, on December 20, 8 AM to 10 AM in Center BAT Room. Please contact me if you have any more questions. Congratulations again Ms. Maximoff, we are looking forward to welcoming you and celebrate with you at the awards event on December 20.<br> <div style='text-align: end'>Best<br> Tony Strank <br>Chancellor CBAT University.</div>",
 	"question": "What is the type of the above letter? ",
 	"question_image_sm": "",
 	"question_image_md": "",

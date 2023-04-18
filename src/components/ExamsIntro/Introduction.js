@@ -198,17 +198,34 @@ function Introduction({
                     justifyContent: { xs: "center", md: "flex-start" },
                   }}
                 >
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    startIcon={<AddShoppingCartIcon />}
-                    sx={{ borderRadius: 5, width: "200px" }}
-                    onClick={() => onAddToCart(examDetail)}
-                  >
-                    <Typography sx={{ fontSize: "1.1rem", fontWeight: 600 }}>
-                      เพิ่มลงรถเข็น
-                    </Typography>
-                  </Button>
+                  {examDetail?.exam_content === null ?
+                    <Tooltip title="ข้อสอบจะเปิดเร็วๆนี้">
+                      <Button
+                        variant='contained'
+                        color="secondary"
+                        startIcon={<AddShoppingCartIcon fontSize='large' />}
+                        sx={{ borderRadius: 5, width: { xs: '150px', md: '200px' } }}
+                      >
+                        <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                          เร็วๆนี้
+                        </Typography>
+                      </Button>
+                    </Tooltip>
+                    :
+                    <Tooltip title="เพิ่มลงรถเข็น">
+                      <Button
+                        variant='contained'
+                        color="secondary"
+                        startIcon={<AddShoppingCartIcon fontSize='large' />}
+                        sx={{ borderRadius: 5, width: { xs: '150px', md: '200px' } }}
+                        onClick={() => onAddToCart(examDetail)}
+                      >
+                        <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                          {examDetail.amount} บาท
+                        </Typography>
+                      </Button>
+                    </Tooltip>
+                  }
                 </Box>
               ) : (
                 <Box

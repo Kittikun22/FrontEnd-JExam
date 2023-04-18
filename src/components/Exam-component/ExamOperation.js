@@ -41,7 +41,7 @@ function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
 
 
             <Typography variant="h6">
-              {question.id}. {question.question}
+              {question.id}. {Parser(question.question)}
             </Typography>
 
             {question.question_image_sm === '' ? null :
@@ -85,7 +85,7 @@ function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
                             <Box component='img' src={choice.choice_image_lg} sx={{ width: { xs: '300px', sm: '400px', md: '500px' }, my: 0.5 }} />
                           }
                           <Typography variant='body1'>
-                            {choice.choicetext}
+                            {Parser(choice.choicetext)}
                           </Typography>
                         </Box>}
                     />}

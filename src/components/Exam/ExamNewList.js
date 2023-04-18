@@ -133,19 +133,37 @@ function ExamNewList({ newestExam, myFavExam, onClickFavExam, onUnFavExam, myExa
                                         </Box>
 
                                         {myExamList?.findIndex(item => item.exam_id === val.exam_id) === -1 ?
-                                            <Tooltip title="เพิ่มลงรถเข็น">
-                                                <Button
-                                                    variant='contained'
-                                                    color="secondary"
-                                                    startIcon={<AddShoppingCartIcon fontSize='large' />}
-                                                    sx={{ borderRadius: 5, width: { xs: '150px', md: '200px' } }}
-                                                    onClick={() => onAddToCart(val)}
-                                                >
-                                                    <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
-                                                        {val.amount} บาท
-                                                    </Typography>
-                                                </Button>
-                                            </Tooltip>
+                                            <>
+                                            {val.exam_content === null ?
+                                                <Tooltip title="ข้อสอบจะเปิดเร็วๆนี้">
+                                                    <Button
+                                                        variant='contained'
+                                                        color="secondary"
+                                                        startIcon={<AddShoppingCartIcon fontSize='large' />}
+                                                        sx={{ borderRadius: 5, width: { xs: '150px', md: '200px' } }}
+                                                    >
+                                                        <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                                                            เร็วๆนี้
+                                                        </Typography>
+                                                    </Button>
+                                                </Tooltip>
+                                                :
+                                                <Tooltip title="เพิ่มลงรถเข็น">
+                                                    <Button
+                                                        variant='contained'
+                                                        color="secondary"
+                                                        startIcon={<AddShoppingCartIcon fontSize='large' />}
+                                                        sx={{ borderRadius: 5, width: { xs: '150px', md: '200px' } }}
+                                                        onClick={() => onAddToCart(val)}
+                                                    >
+                                                        <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                                                            {val.amount} บาท
+                                                        </Typography>
+                                                    </Button>
+                                                </Tooltip>
+                                            }
+    
+                                        </>
                                             :
                                             <Button
                                                 variant='contained'

@@ -6,17 +6,38 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Typography } from '@mui/material';
+import { Typography, Box } from '@mui/material';
+import QRCode from "qrcode.react";
+import GuidelineDialog from './GuidelineDialog';
+
+
+const generatePayload = require("promptpay-qr");
 
 
 function CheckoutCart({ checkOutItem, allDiscount, amount, netAmount }) {
 
+    const [openGuideline, setOpenGuideline] = useState(true)
+
+    const [qrCode, setqrCode] = useState(null);
+    const promptpayNumber = "6797089077"
+
     const amountFormat = new Intl.NumberFormat('th').format(amount)
     const netAmountFormat = new Intl.NumberFormat('th').format(netAmount);
+
+    function handleQR() {
+        setqrCode(generatePayload(promptpayNumber, { amount: 1.5 }));
+    }
+
+    useEffect(() => {
+        handleQR()
+    }, [checkOutItem, allDiscount, amount, netAmount])
+
 
     if (checkOutItem && allDiscount) {
         return (
             <>
+                <GuidelineDialog openGuideline={openGuideline} setOpenGuideline={setOpenGuideline} />
+
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 325 }} aria-label="spanning table">
                         <TableHead>
@@ -49,7 +70,20 @@ function CheckoutCart({ checkOutItem, allDiscount, amount, netAmount }) {
                             ))}
 
                             <TableRow>
-                                <TableCell rowSpan={4} sx={{ width: { xxs: '', md: '50%' } }} />
+                                <TableCell rowSpan={4} sx={{ width: { xxs: '', md: '50%' } }} >
+                                    <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
+                                        <QRCode
+                                            value={qrCode}
+                                            size={240}
+                                            imageSettings={{
+                                                src: "logo-on-qrcode.jpeg",
+                                                height: 50,
+                                                width: 64,
+                                                excavate: true,
+                                            }}
+                                        />
+                                    </Box>
+                                </TableCell>
                                 <TableCell sx={{ fontSize: '1.1rem' }} >
                                     ราคารวม
                                 </TableCell>

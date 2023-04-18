@@ -199,6 +199,19 @@ function AnswerContent({ examContent, answered }) {
                 <Typography>ดูคำอธิบาย</Typography>
               </AccordionSummary>
               <AccordionDetails>
+                {question?.answerImage === "" ? null :
+                  <Box
+                    component="img"
+                    src={question?.answerImage}
+                    sx={{
+                      width: {
+                        xs: "260px",
+                        sm: "60%",
+                        md: "100%",
+                      }
+                    }}
+                  />
+                }
                 <Typography>
                   {question?.answerDescription}
                 </Typography>
