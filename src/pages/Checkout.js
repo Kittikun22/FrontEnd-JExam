@@ -6,6 +6,7 @@ import PaymentOption from '../components/PaySolution/PaymentOption'
 import Axios from 'axios'
 import { Typography } from '@mui/material'
 import { useAuthState } from '../context/AuthContext'
+import UploadSlip from '../components/Checkout/UploadSlip'
 
 const CryptoJS = require("crypto-js");
 const EncryptSecret = 'Jknow2022'
@@ -69,9 +70,11 @@ function Checkout() {
 
           <CheckoutCart checkOutItem={checkOutItem} allDiscount={allDiscount} amount={amount} netAmount={netAmount} />
 
-          <Box sx={{ mt: 2 }}>
+          <UploadSlip selectedItems={selectedItems} user={user} amount={amount} netAmount={netAmount} />
+
+          {/* <Box sx={{ mt: 2 }}>
             <PaymentOption selectedItems={selectedItems} user={user} amount={amount} netAmount={netAmount} />
-          </Box>
+          </Box> */}
         </Box>
 
       </>
