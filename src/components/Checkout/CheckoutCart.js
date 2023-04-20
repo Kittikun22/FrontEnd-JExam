@@ -10,22 +10,20 @@ import { Typography, Box } from '@mui/material';
 import QRCode from "qrcode.react";
 import GuidelineDialog from './GuidelineDialog';
 
-
 const generatePayload = require("promptpay-qr");
-
 
 function CheckoutCart({ checkOutItem, allDiscount, amount, netAmount }) {
 
     const [openGuideline, setOpenGuideline] = useState(true)
 
     const [qrCode, setqrCode] = useState(null);
-    const promptpayNumber = "6797089077"
+    const promptpayNumber = "0405558000721"
 
     const amountFormat = new Intl.NumberFormat('th').format(amount)
     const netAmountFormat = new Intl.NumberFormat('th').format(netAmount);
 
     function handleQR() {
-        setqrCode(generatePayload(promptpayNumber, { amount: 1.5 }));
+        setqrCode(generatePayload(promptpayNumber, { amount: netAmount }));
     }
 
     useEffect(() => {
@@ -141,6 +139,26 @@ function CheckoutCart({ checkOutItem, allDiscount, amount, netAmount }) {
 
                     </Table>
                 </TableContainer >
+
+                <Box
+                    sx={{
+                        display: { xxs: 'flex', md: 'none' },
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Paper align="center" sx={{ background: '#fff', p: 2, mt: 2 }}>
+                        <QRCode
+                            value={qrCode}
+                            size={240}
+                            imageSettings={{
+                                src: "logo-on-qrcode.jpeg",
+                                height: 50,
+                                width: 64,
+                                excavate: true,
+                            }}
+                        />
+                    </Paper>
+                </Box>
             </>
         )
     }

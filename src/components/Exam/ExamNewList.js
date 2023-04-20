@@ -172,7 +172,7 @@ function ExamNewList({ newestExam, myFavExam, onClickFavExam, onUnFavExam, myExa
                                                 startIcon={<CheckIcon fontSize='large' />}
                                                 sx={{ borderRadius: 5, width: { xs: '150px', md: '200px' } }}
                                             >
-                                                <Typography sx={{ fontSize: '1rem', fontWeight: 600 }}>
+                                                <Typography sx={{ fontSize: { xs: '.8rem', md: '1rem' }, fontWeight: 600 }}>
                                                     มีข้อสอบแล้ว
                                                 </Typography>
                                             </Button>

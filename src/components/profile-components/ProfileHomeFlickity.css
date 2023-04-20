@@ -127,7 +127,7 @@ https://flickity.metafizzy.co
 }
 
 .myexams-cell.is-selected .card-myexams-cell {
-    outline: 7px double #a0d64b;
+    border-color: #a0d64b;
 }
 
 .myexams-cell.is-selected .card-typography {

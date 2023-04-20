@@ -42,7 +42,7 @@ function GuidelineDialog({ openGuideline, setOpenGuideline }) {
             <DialogContent sx={{ minHeight: '30vh' }}>
                 <Typography variant='h5' align='center' mb={1}>วิธีการชำระเงิน</Typography>
 
-                <Box sx={{ display: 'flex', justifyContent: 'space-evenly', flexDirection: { xs: 'column', md: 'row' } }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'space-evenly' }, flexDirection: { xs: 'column', md: 'row' } }}>
                     <Box sx={{ width: '300px' }}>
                         <Box sx={{ borderLeft: '5px solid #a0d64b', my: 1 }}>
                             <Typography alignSelf='center' ml={1}>1. สแกน QRCode ชำระเงิน</Typography>
