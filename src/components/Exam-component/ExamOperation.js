@@ -8,8 +8,6 @@ import {
   Divider
 } from "@mui/material";
 import Parser from 'html-react-parser'
-// import ReactQuill from "react-quill";
-// import 'react-quill/dist/quill.snow.css';
 import WbIncandescentIcon from '@mui/icons-material/WbIncandescent';
 
 
@@ -32,11 +30,6 @@ function ExamOperation({ currentQuestions, answers, handleAnswerChange }) {
                 <Typography variant='body1'>
                   {Parser(question.paragraph)}
                 </Typography>
-                {/* <ReactQuill
-                    readOnly={true}
-                    theme={"bubble"}
-                    value={question.paragraph}
-                  /> */}
               </Box> : null}
 
 

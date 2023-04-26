@@ -7,6 +7,7 @@ import CardActionArea from '@mui/material/CardActionArea'
 import CardMedia from '@mui/material/CardMedia'
 import Axios from 'axios'
 
+
 function TGATFlickity() {
 
     const [TGATList, setTGATList] = useState([])
@@ -30,8 +31,7 @@ function TGATFlickity() {
     }
 
     return (
-        <Box sx={{ width: { xs: '100%', md: '80%' }, mx: 'auto' }}>
-
+        <Box sx={{ width: { xs: '100%', md: TGATList.length >= 5 ? '100%' : '80%' }, mx: 'auto' }}>
             <Flickity
                 className={'carousel'} // default ''
                 elementType={'div'} // default 'div'

@@ -51,6 +51,24 @@ function AnswerContent({ examContent, answered }) {
     setExpanded(newExpanded ? panel : false);
   };
 
+  const checkAnswer = (question) => {
+    const foundAnswer = answered.find(ans => ans.id === question.id);
+    if (foundAnswer) {
+      return foundAnswer.choose
+    } else {
+      return null
+    }
+  }
+
+  const checkAnswerCorrect = (question) => {
+    const correct = answered.find(ans => ans.id === question.id && ans.choose === question.answer);
+    if (correct) {
+      return 'success'
+    } else {
+      return 'error'
+    }
+  }
+
   return (
     <Paper
       elevation={2}
@@ -76,7 +94,7 @@ function AnswerContent({ examContent, answered }) {
             }
 
             <Typography variant="h6" paragraph>
-              {question.id}. {question.question}
+              {question.id}. {Parser(question.question)}
             </Typography>
 
             {question.question_image_sm === "" ? null : (
@@ -106,7 +124,7 @@ function AnswerContent({ examContent, answered }) {
 
 
             <RadioGroup
-              value={question.answer}
+              value={checkAnswer(question)}
             >
               {question.choice.map((choice, key) => (
                 <Box key={key}>
@@ -114,7 +132,7 @@ function AnswerContent({ examContent, answered }) {
                     <FormControlLabel
                       key={key}
                       value={choice.choicevalue}
-                      control={<Radio color="success" />}
+                      control={<Radio color={checkAnswerCorrect(question)} />}
                       label={
                         <Box
                           sx={{
@@ -177,13 +195,13 @@ function AnswerContent({ examContent, answered }) {
                                   "green"
                               }}
                             >
-                              {choice.choicetext}
+                              {Parser(choice.choicetext)}
                             </Typography>
                             :
                             <Typography
                               sx={{ color: answered.find(ans => ans.id === question.id && ans.choose === choice.choicevalue) ? "red" : '' }}
                             >
-                              {choice.choicetext}
+                              {Parser(choice.choicetext)}
                             </Typography>
                           }
                         </Box>
@@ -213,7 +231,7 @@ function AnswerContent({ examContent, answered }) {
                   />
                 }
                 <Typography>
-                  {question?.answerDescription}
+                  {Parser(question?.answerDescription)}
                 </Typography>
               </AccordionDetails>
             </Accordion>

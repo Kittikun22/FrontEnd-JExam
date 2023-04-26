@@ -17,7 +17,7 @@ function CheckoutCart({ checkOutItem, allDiscount, amount, netAmount }) {
     const [openGuideline, setOpenGuideline] = useState(true)
 
     const [qrCode, setqrCode] = useState(null);
-    const promptpayNumber = "0405558000721"
+    const promptpayNumber = "0405558000721" //เลขพร้อมเพย์ พร้อมเพย์ ID หรือ เบอร์โทรศัพท์
 
     const amountFormat = new Intl.NumberFormat('th').format(amount)
     const netAmountFormat = new Intl.NumberFormat('th').format(netAmount);
@@ -81,6 +81,10 @@ function CheckoutCart({ checkOutItem, allDiscount, amount, netAmount }) {
                                             }}
                                         />
                                     </Box>
+                                    <Typography sx={{ display: { xs: 'none', md: 'block' }, m: 1 }} align='center'>
+                                        บริษัท ดีพร้อมวิทยา จำกัด<br />
+                                        0-4055-58000-72-1
+                                    </Typography>
                                 </TableCell>
                                 <TableCell sx={{ fontSize: '1.1rem' }} >
                                     ราคารวม
@@ -157,6 +161,10 @@ function CheckoutCart({ checkOutItem, allDiscount, amount, netAmount }) {
                                 excavate: true,
                             }}
                         />
+                        <Typography sx={{ display: { xs: 'block', md: 'none' }, m: 1 }} align='center'>
+                            บริษัท ดีพร้อมวิทยา จำกัด<br />
+                            0-4055-58000-72-1
+                        </Typography>
                     </Paper>
                 </Box>
             </>

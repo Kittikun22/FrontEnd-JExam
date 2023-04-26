@@ -39,7 +39,7 @@ function GuidelineDialog({ openGuideline, setOpenGuideline }) {
                     <CloseIcon />
                 </IconButton>
             </DialogTitle>
-            <DialogContent sx={{ minHeight: '30vh' }}>
+            <DialogContent sx={{ minHeight: '30vh', mb: 5 }}>
                 <Typography variant='h5' align='center' mb={1}>วิธีการชำระเงิน</Typography>
 
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'space-evenly' }, flexDirection: { xs: 'column', md: 'row' } }}>

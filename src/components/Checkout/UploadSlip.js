@@ -10,6 +10,8 @@ import Axios from 'axios'
 import ImageIcon from '@mui/icons-material/Image';
 import UploadIcon from '@mui/icons-material/Upload';
 
+const CryptoJS = require("crypto-js");
+const EncryptSecret = "Jknow2022";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -53,6 +55,22 @@ function UploadSlip({ selectedItems, user, amount, netAmount }) {
         })
     }
 
+    const handleDelete = (itemToDelete) => {
+        const updateItemInCart = JSON.parse(CryptoJS.AES.decrypt(localStorage.getItem('cart'), EncryptSecret).toString(CryptoJS.enc.Utf8)).filter((item) => !itemToDelete.find(i => i.exam_id === item.exam_id));
+
+        const ciphertext_cart = CryptoJS.AES.encrypt(JSON.stringify(updateItemInCart), EncryptSecret).toString();
+        localStorage.setItem("cart", ciphertext_cart)
+
+        Axios.put('http://localhost:8000/updateCart', {
+            user_id: user.user_id,
+            updateCart: JSON.stringify(updateItemInCart)
+        }).then((res) => {
+            console.log(res);
+        })
+    };
+
+
+
     const onSubmit = async () => {
         await Axios.post('http://localhost:8000/submitSlip', {
             user_id: user.user_id,
@@ -62,7 +80,12 @@ function UploadSlip({ selectedItems, user, amount, netAmount }) {
             image_src: newImage.image_src
         }).then((res) => {
             if (res.data.message === 'successfully') {
+                handleDelete(selectedItems)
                 setUploadImageStatus(true)
+                setTimeout(() => {
+                    localStorage.setItem('ActiveContent', 'profile-myexam')
+                    window.location = '/profile'
+                }, 2000);
             }
         })
     }

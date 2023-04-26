@@ -126,7 +126,7 @@ function Introduction({
           >
             <Box
               component="img"
-              src={`/${examDetail.pic}`}
+              src={`${examDetail.pic}`}
               sx={{
                 width: "225px",
                 borderRadius: 3,
