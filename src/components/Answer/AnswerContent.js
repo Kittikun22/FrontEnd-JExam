@@ -81,6 +81,8 @@ function AnswerContent({ examContent, answered }) {
       }}
     >
 
+      <Typography py={1} align="end" variant="body2">*นำตัวเลือกที่เลือกมาจากการสอบครั้งแรก</Typography>
+
       {examContent.map((question, key) => {
         return (
           <Box key={key} m={2} id={`question-${question.id}`}>
@@ -191,8 +193,9 @@ function AnswerContent({ examContent, answered }) {
                           {choice.choicevalue === question.answer ?
                             <Typography
                               sx={{
-                                color:
-                                  "green"
+                                color: "green",
+                                background: '#DDFFBB',
+                                px: 1
                               }}
                             >
                               {Parser(choice.choicetext)}
